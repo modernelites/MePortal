@@ -1,7 +1,7 @@
 <template>
   <div class="register_p">
     <my-header></my-header>
-    <div class="content_wrapper w_1000" @click="slidShow=false">
+    <div class="content_wrapper " @click="slidShow=false">
       <div class="content_main" id="register_p_content_main">
         <router-view></router-view>
       </div>
@@ -38,8 +38,7 @@
         });
       }
     },
-    mounted() {
-    },
+    mounted() {},
     components: {
       myHeader: myHeader,
       myFooter: myFooter
@@ -260,7 +259,7 @@
   }
 
   .register_p .info_box {
-  / / width: 686 px;
+    width: 686 px;
   }
 
   .register_p .info_box label {
@@ -336,7 +335,6 @@
     position: relative;
     margin-right: 16px;
   }
-
   /* 美化select */
 
   .register_p .info_box .grade_label .grade_area {
@@ -502,8 +500,8 @@
     margin-left: 12px;
   }
 
-  .register_p .item_bottom_con u.tip {
-    display: inline-block;
+  .register_p .item_bottom_con div.tip {
+    display: block;
     font-size: 12px;
     text-decoration: none;
     color: #f24d4d;
@@ -631,9 +629,6 @@
     display: block;
   }
 
-  .register_p .add_wrapper .tips_item_1 {
-  }
-
   .register_p .add_wrapper .tips_item_2 {
     padding-top: 5px;
     padding-left: 70px;
@@ -688,7 +683,7 @@
   }
 
   .register_p .overseas_single .tips_area {
-  / / width: 412 px;
+    width: 412 px;
   }
 
   .register_p .overseas_single .tips_area .tips_item_1 {
@@ -717,15 +712,11 @@
   .register_p .info_box .radio {
     appearance: button;
     -moz-appearance: button;
-    /* Firefox */
     -webkit-appearance: button;
-    /* Safari 和 Chrome */
     outline: none;
     border: none;
     cursor: pointer;
   }
-
-  /*  */
 
   .register_p .course_shade {
     position: fixed;
@@ -924,6 +915,148 @@
     right: -8px;
     color: #ff0b0b;
     font-weight: bold;
+  }
+
+      .content_wrapper .content_item .add_wrapper .origin_1,
+    .content_wrapper .content_item .add_wrapper .origin_2{
+    display: inline;
+    }
+  /* 移动端适配 */
+
+  @media screen and (max-width: 1205px) {
+
+    /* 报名页整体 */
+    /* .content_main {} */
+    .register_p {
+      padding-bottom: 30px;
+    }
+
+    .register_p .content_wrapper {
+      padding: 20px 15px;
+      max-width: 750px;
+      min-width: 350px;
+    }
+    .register_p .content_header .course_wrapper {
+      padding-top: 10px;
+    }
+    .register_p .content_header {
+      padding-bottom: 10px;
+    }
+    .register_p .info_box label,
+    .register_p .info_box .common_label,
+    .register_p .item_bottom_con .parent_box label,
+    .register_p .add_wrapper label {
+      margin-bottom: 10px;
+    }
+    .register_p .content_header .course_wrapper .select_btn {
+      width: 100px;
+      height: 46px;
+    }
+    /* 报名 */
+    .content_wrapper .content_header .title_3 {
+      font-size: 12px;
+    }
+    .register_p .info_box .school_input,
+    .register_p .info_box .grade_label .grade_select {
+      width: 249px;
+    }
+    .register_p .info_box .grade_label .grade_area {
+      display: block;
+    }
+    .register_p .info_box .common_area,
+    .register_p .info_box .grade_label .grade_area {
+      padding-left: 83px;
+      padding-top: 10px;
+    }
+    .register_p .info_box .grade_label .school {
+      padding-left: 0px;
+    }
+  .register_p .info_box input.username,
+  .register_p .info_box .student_phone,
+  .register_p .info_box .common_input,
+  .register_p .add_wrapper .know_label .know_select {
+    width: 300px;
+  }
+  .register_p .info_box input.birth_date{
+    width: 300px;
+  }
+    /* 课程下拉框 */
+    .content_wrapper .content_header .select_wrapper .show_info {
+      font-size: 18px;
+      width: 200px;
+      height: 46px;
+    }
+
+    .content_wrapper .content_header .course_wrapper .info {
+      font-size: 12px;
+    }
+    /* 父母信息 */
+    .content_wrapper .content_item .info_box span,
+    .content_wrapper .content_item .item_bottom_con span {
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .content_wrapper .content_item .info_box select,
+    .content_wrapper .content_item .info_box region,
+    .content_wrapper .content_item .info_box .grade_label i {
+      font-weight: normal；
+    }
+    .content_wrapper .content_item .item_bottom_con i,
+    .content_wrapper .content_item .item_bottom_con u {
+      font-size: 10px;
+      font-weight: normal
+    }
+    .content_wrapper .content_item .item_bottom_con .tip1 {
+      display: none;
+    }
+    .content_wrapper .content_item .item_bottom_con input {
+      width: 249px;
+    }
+    .content_wrapper .content_item .item_bottom_con .mom_phone,
+    .content_wrapper .content_item .item_bottom_con .father_phone {
+      margin-top: 10px;
+    }
+    .content_wrapper .content_item .item_bottom_con .phone_area {
+      padding-left: 104px;
+    }
+    .content_wrapper .content_item .item_bottom_con label.address_label{
+      margin-left: -10px;
+    }
+    .register_p .item_bottom_con .parent_box input.expressage_address{
+      width: 300px;
+    }
+    /* 报名新添加内容 */
+    .content_wrapper .content_item .add_wrapper span {
+      font-size: 12px;
+      font-weight: normal
+    }
+    .content_wrapper .content_item .add_wrapper input {
+      font-size: 14px;
+    }
+    .content_wrapper .content_item .add_wrapper .textarea {
+      width: 258px;
+      height: 200px;
+      /* margin-left: 50px; */
+    }
+    .content_wrapper .content_item .add_wrapper .origin_1,
+    .content_wrapper .content_item .add_wrapper .origin_2{
+      display: inline-block;
+      width: 50%;
+      margin-left: 110px;
+    }
+    .content_wrapper .content_item .add_wrapper .origin_1{
+      margin-left: -1px;
+    }
+    .content_wrapper .content_item .add_wrapper .origin_1 .origin_girl{
+      margin-left:47px;
+    }
+    .register_p .add_wrapper .tips_area{
+      margin-left: 36px;
+    }
+    .register_p .add_wrapper .btn_wrapper .submit_btn{
+      margin: 0 auto;
+    }
   }
 
 </style>

@@ -104,5 +104,11 @@ address .title_6 {
   font-weight: 100;
   padding-bottom: 18px;
 }
+/* 移动端适配 */
+  @media screen and (max-width: 1205px) {
+ .footer{
+   display :none;
+ }
 
+}
 </style>

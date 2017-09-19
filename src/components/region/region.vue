@@ -1,15 +1,15 @@
 <template>
   <div class="region">
-    <div class="common_area">
+    <div class="common_area ca">
       <i>省份：</i>
       <select class="common_select" id="cmbProvince" name="cmbProvince" v-model="region.Province"
               @click="getRegion()"></select>
     </div>
-    <div class="common_area">
+    <div class="common_area ca_1">
       <i class="common_i"> 市区：</i>
       <select class="common_select" id="cmbCity" name="cmbCity" v-model="region.City" @click="getRegion()"></select>
     </div>
-    <div class="common_area">
+    <div class="common_area ca_2">
       <i class="common_i">县：</i>
       <select class="common_select" id="cmbArea" name="cmbArea" v-model="region.County" @click="getRegion()"></select>
     </div>
@@ -859,5 +859,24 @@
   .region {
     display: inline-block;
   }
+   @media screen and (max-width: 1205px) {
+     *{
+    font-weight: normal
+  }
+      .region .ca {
+      margin-left: 32px;
+      display: inline-block;
+    }
+      .region .common_area select{
+        width: 249px;
+        display: inline;
+      }
+      .region .ca_1{
+        margin-left: 4px; 
 
+      }
+            .region .ca_2{
+        margin-left: 15px;
+      }
+  }
 </style>

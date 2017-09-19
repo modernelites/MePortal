@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import VueResource from 'vue-resource';
+// import axios from 'axios';
 import about from '@/components/about/about';
 import about0 from '@/components/about/about0';
 import about1 from '@/components/about/about1';
@@ -46,6 +47,7 @@ import region from '@/components/region/region';
 
 Vue.use(Router);
 Vue.use(VueResource);
+// Vue.use(axios);
 
 export default new Router({
   routes: [{

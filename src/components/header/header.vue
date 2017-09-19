@@ -1,6 +1,7 @@
 <template>
   <!-- header -->
-  <header class="inner_header">
+  <div>
+<header class="inner_header">
     <div class="w_1000 inner_header_con" v-bind:class="{ search_active: showSearch }">
       <div class="inner_header_con_top">
         <a href="#/" class="logo_link"><img src="./../../assets/img/logo_2.png" alt="logo" class="logo"></a>
@@ -73,6 +74,11 @@
       </div>
     </div>
   </header>
+  <!-- <header class="m_header">
+    123
+  </header> -->
+  </div>
+  
 </template>
 <script>
   import {globalPath} from './../../common/js/path';
@@ -614,4 +620,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+/* 移动端适配 */
+  @media screen and (max-width: 1205px) {
+ .inner_header{
+   display :none;
+ }
+
+}
 </style>

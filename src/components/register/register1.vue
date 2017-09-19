@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="content_wrapper" @click="slidShow=false">
+    <div class="content_wrapper1" @click="slidShow=false">
       <div class="content_header">
         <h3 class="title_3"> 报名</h3>
         <div class="select_wrapper" id="select_wrapper">
@@ -18,36 +18,41 @@
           </transition>
         </div>
         <div class="course_wrapper">
-          <span class="info">选择课程 : <u class="star">*</u></span>
+          <span class="info">选择课程 :
+            <u class="star">*</u>
+          </span>
           <a href="javascript:;" title="选择课程" class="select_btn" @click="courseMaskShow=true"> 选择课程</a>
-          <span class="show_info course_show_info" v-show="SelectCourse.CourseName"
-                ref="course_result_info">{{SelectCourse.CourseName}}</span>
+          <span class="show_info course_show_info" v-show="SelectCourse.CourseName" ref="course_result_info">{{SelectCourse.CourseName}}</span>
         </div>
         <div class="course_wrapper">
-          <span class="info">选择期数 : <u class="star">*</u></span>
+          <span class="info">选择期数 :
+            <u class="star">*</u>
+          </span>
           <a href="javascript:;" title="选择期数" class="select_btn" @click="periodMaskShow=true"> 选择期数</a>
-          <span class="show_info course_show_info" v-show="SelectPeriod.PeriodID"
-                ref="course_result_info" v-text="'第'+SelectPeriod.PeriodNum+'期'+(SelectPeriod.PeriodName?SelectPeriod.PeriodName:'')"></span>
-          <!--<div class="tips">说明：三阶课程（ <span class="text">仅限参加一二期的老学员</span> ）<span-->
-          <!--class="date">时间：2017.7.1~2017.7.12</span></div>-->
+          <span class="show_info course_show_info" v-show="SelectPeriod.PeriodID" ref="course_result_info" v-text="'第'+SelectPeriod.PeriodNum+'期'+(SelectPeriod.PeriodName?SelectPeriod.PeriodName:'')"></span>
+          <!-- <div class="tips">说明：三阶课程（ <span class="text">仅限参加一二期的老学员</span> ）<span
+          class="date">时间：2017.7.1~2017.7.12</span></div> -->
         </div>
       </div>
       <dl class="content_item">
         <div class="info_box">
           <label>
-            <span>姓名：<u class="star">*</u></span>
+            <span>姓名：
+              <u class="star">*</u>
+            </span>
             <input type="text" name="username" class="username" required="" v-model="CourseReg.StuName">
           </label>
           <label class="sex_label">
-            <span>性别：<u class="star">*</u></span>
+            <span>性别：
+              <u class="star">*</u>
+            </span>
             <input type="radio" name="radio_sex" class="sex_man sex" value="true" v-model="CourseReg.Gender">男
             <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="CourseReg.Gender">女
           </label>
           <label class="grade_label">
             <span>就读学校： </span>
-            <i>学校：</i>
-            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School"
-                   style="width: 200px;">
+            <i class="school">学校：</i>
+            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School">
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
               <select class="grade_select" v-model="CourseReg.Grade">
@@ -98,7 +103,9 @@
             </div>
           </label>
           <label>
-            <span>出生日期：<u class="star">*</u></span>
+            <span>出生日期：
+              <u class="star">*</u>
+            </span>
             <input type="date" name="date" class="birth_date" v-model="CourseReg.Birthday">
           </label>
           <label>
@@ -114,7 +121,9 @@
             <input type="text" name="student_phone" class="common_input" v-model="CourseReg.StuIDCardNum">
           </label>
           <label class="sex_label common_label">
-            <span>是否是老学员：<u class="star">*</u></span>
+            <span>是否是老学员：
+              <u class="star">*</u>
+            </span>
             <input type="radio" name="radio_OldStu" class="radio radio_1" value="true" v-model="CourseReg.Is_OldStu">是
             <input type="radio" name="radio_OldStu" class="radio radio_2" value="false" v-model="CourseReg.Is_OldStu">否
           </label>
@@ -128,10 +137,9 @@
               <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
-                <input type="number" name="father_phone" class="father_phone" v-model="CourseReg.FPhone"
-                       style="width: 200px">
+                <input type="number" name="father_phone" class="father_phone" v-model="CourseReg.FPhone">
               </div>
-              <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
+              <div class="tip tip1">父亲 &nbsp; 母亲 至少填写一项 </div>
             </label>
             <label>
               <span>母亲：</span>
@@ -139,9 +147,9 @@
               <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
-                <input type="number" name="mom_phone" class="mom_phone" v-model="CourseReg.MPhone" style="width:200px">
+                <input type="number" name="mom_phone" class="mom_phone" v-model="CourseReg.MPhone">
               </div>
-              <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
+              <div class="tip">父亲 &nbsp; 母亲 至少填写一项 </div>
             </label>
             <label class="address_label">
               <span class="ex_address_info">快递地址（详细）：</span>
@@ -153,25 +161,26 @@
         <div class="add_wrapper">
           <label class="origin_label">
             <span>填表人 ：</span>
-            <input type="radio" name="radio_origin" class="origin_man origin" value="父亲" v-model="CourseReg.RegName"
-                   @click="showRegName=false;">父亲
-            <input type="radio" name="radio_origin" class="origin_girl origin" value="母亲" v-model="CourseReg.RegName"
-                   @click="showRegName=false;">母亲
-            <input type="radio" name="radio_origin" class="origi_self origin" value="学生本人" v-model="CourseReg.RegName"
-                   @click="showRegName=false;">学生本人
-            <input type="radio" name="radio_origin" class="originx_other origin" value="其他"
-                   @click="showRegName=true;CourseReg.RegName=''">其他
+            <div class="origin_1">
+              <input type="radio" name="radio_origin" class="origin_man origin" value="父亲" v-model="CourseReg.RegName" @click="showRegName=false;">父亲
+              <input type="radio" name="radio_origin" class="origin_girl origin" value="母亲" v-model="CourseReg.RegName" @click="showRegName=false;">母亲
+              </div>
+            <div class="origin_2">
+              <input type="radio" name="radio_origin" class="origin_self origin" value="学生本人" v-model="CourseReg.RegName" @click="showRegName=false;">学生本人
+              <input type="radio" name="radio_origin" class="originx_other origin" value="其他" @click="showRegName=true;CourseReg.RegName=''">其他</div>
+
             <label style="line-height: 60px; margin-bottom: 0px" v-show="showRegName">
               <span></span>
               <span class="name_i">请输入填表人姓名：</span>
-              <span><input type="text" v-model="CourseReg.RegName" class="regname"/></span>
+              <span>
+                <input type="text" v-model="CourseReg.RegName" class="regname" />
+              </span>
             </label>
           </label>
           <label class="know_label">
             <div class="know_area">
               <span>如何了解到</span>
               <select class="know_select" v-model="CourseReg.Channel">
-                <option value="">请选择</option>
                 <option value="来源1">来源1</option>
                 <option value="来源2">来源2</option>
               </select>
@@ -179,7 +188,7 @@
           </label>
           <label class="remark_area">
             <span>备注 ：</span>
-            <textarea name="textarea" class="textarea" v-model="CourseReg.Remarks" style="width: 660px"></textarea>
+            <textarea name="textarea" class="textarea" v-model="CourseReg.Remarks"></textarea>
           </label>
           <div class="tips_area">
             <span class="tips_item tips_item_1">特别提醒：1：老学员报名，请提前六个月全额汇款，确保名额；</span>
@@ -224,8 +233,7 @@
         <div class="modal_box_middle">
           <label v-for="m in Period_Items_Fillter" @click="Period_Select(m)" style="height: auto;line-height: 30px">
             <input type="radio" name="period" class="radio radio_1">
-            <span class="text" v-text="'第'+m.PeriodNum+'期'+(m.PeriodName?m.PeriodName:'')"
-                  style="margin-left: 5px"></span>
+            <span class="text" v-text="'第'+m.PeriodNum+'期'+(m.PeriodName?m.PeriodName:'')" style="margin-left: 5px"></span>
             <div style="font-size: 14px;margin-left: 25px;">
               开始时间:
               <span class="text">{{m.StartDate | datefmt}}</span>
@@ -252,10 +260,32 @@
       return {
         showRegName: false,
         CourseReg: {
-          CourseID: 0, UserID: 0, StuName: '', Gender: true, School: '', Grade: '', ClassName: '', Birthday: '',
-          StuPhone: '', Email: '', FName: '', FPhone: '', MName: '', MPhone: '', Address: '', Remarks: '', Area: '',
-          Is_Fine: false, Is_Envoy: false, Honor: '', Self_Des: '', Is_OldStu: false, StuIDCardNum: '', RegName: '母亲',
-          Channel: '',CourseTypeID:1
+          CourseID: 0,
+          UserID: 0,
+          StuName: '',
+          Gender: true,
+          School: '',
+          Grade: '',
+          ClassName: '',
+          Birthday: '',
+          StuPhone: '',
+          Email: '',
+          FName: '',
+          FPhone: '',
+          MName: '',
+          MPhone: '',
+          Address: '',
+          Remarks: '',
+          Area: '',
+          Is_Fine: false,
+          Is_Envoy: false,
+          Honor: '',
+          Self_Des: '',
+          Is_OldStu: false,
+          StuIDCardNum: '',
+          RegName: '母亲',
+          Channel: '',
+          CourseTypeID: 1
         },
         slidShow: false,
         courseMaskShow: false,
@@ -265,8 +295,14 @@
         Course_Items_Fillter: [],
         Period_Items: [],
         Period_Items_Fillter: [],
-        SelectCourse: {CourseName: "", CourseID: 0},
-        SelectPeriod: {PeriodName: "", PeriodID: 0},
+        SelectCourse: {
+          CourseName: "",
+          CourseID: 0
+        },
+        SelectPeriod: {
+          PeriodName: "",
+          PeriodID: 0
+        },
         SelectCourseType: {},
         CourseType_Items: []
       }
@@ -280,8 +316,14 @@
       selectOption(m) {
         this.slidShow = false;
         this.SelectCourseType = m;
-        this.SelectCourse = {CourseName: "", CourseID: 0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectCourse = {
+          CourseName: "",
+          CourseID: 0
+        };
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.Course_Items_Fillter = this.Course_List_Fillter(m.CourseTypeID);
       },
       CourseType_List() {
@@ -323,8 +365,14 @@
         });
       },
       Period_Fillter_List(m) {
-        this.SelectCourse = {CourseName: "", CourseID: 0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectCourse = {
+          CourseName: "",
+          CourseID: 0
+        };
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.SelectCourse = m;
         var arr = [];
         for (var i = 0; i < this.Period_Items.length; i++) {
@@ -336,7 +384,10 @@
       },
       Period_Select(m) {
         //this.SelectCourse = {CourseName: "",CourseID:0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.SelectPeriod = m;
       },
       /** 课程报名*/
@@ -396,4 +447,5 @@
     height: 40px;
     line-height: 40px;
   }
+
 </style>
