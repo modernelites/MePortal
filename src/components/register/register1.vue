@@ -55,7 +55,7 @@
             <input type="text" name="school_input" class="school_input" v-model="CourseReg.School">
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
-              <select class="grade_select" v-model="CourseReg.Grade">
+              <select class="grade_select gs_1" v-model="CourseReg.Grade">
                 <option value="" selected>年级</option>
                 <option value="一年级">一年级</option>
                 <option value="二年级">二年级</option>
@@ -77,7 +77,7 @@
             </div>
             <div class="common_area">
               <i class="common_i"> 班级：</i>
-              <select class="common grade_select" v-model="CourseReg.ClassName">
+              <select class="common grade_select class_select" v-model="CourseReg.ClassName">
                 <option value="" selected="selected">班级</option>
                 <option value="一班">一班</option>
                 <option value="二班">二班</option>

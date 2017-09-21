@@ -864,11 +864,11 @@
     font-weight: normal
   }
       .region .ca {
-      margin-left: 32px;
+      margin-left: 15px;
       display: inline-block;
     }
       .region .common_area select{
-        width: 249px;
+        width: 72%;
         display: inline;
       }
       .region .ca_1{
