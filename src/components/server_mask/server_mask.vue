@@ -279,5 +279,23 @@ div.service_shade_con .btn_wrap {
 .side_fixed_wrapper .item.active#side_fixed_go_top_btn {
   display: block;
 }
-
+/* 移动端适配 */
+@media screen and (max-width: 1205px) {
+  .server_mask #side_fixed_apply_btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+  }
+  .server_mask #side_fixed_server_btn{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  .server_mask .side_fixed_wrapper #side_fixed_go_top_btn{
+    display: none !important;
+  }
+}
 </style>
