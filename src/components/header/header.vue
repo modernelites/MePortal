@@ -2,7 +2,7 @@
   <!-- header -->
   <div>
     <header class="inner_header">
-      <div class="w_1000 inner_header_con" v-bind:class="{ search_active: showSearch }">
+      <div class="inner_header_con" v-bind:class="{ search_active: showSearch }">
         <div class="inner_header_con_top">
           <a href="#/" class="logo_link">
             <img src="./../../assets/img/logo_2.png" alt="logo" class="logo">
@@ -253,7 +253,7 @@
   .inner_header {
     position: relative;
     height: 152px;
-    /* background: url("./../../assets/img/top_bg_3.png") no-repeat center 0; */
+    background: url("./../../assets/img/top_bg_3.png") no-repeat center 0;
     margin: 0 auto;
   }
 
@@ -707,20 +707,25 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .inner_header .m_header .m_logo {
+    display: none;
+  }
   /* 移动端适配 */
 
   @media screen and (max-width: 1205px) {
+    .inner_header{
+      height:100%;
+      background: url("./../../assets/img/header@2x.png") no-repeat;
+      background-size: 100% 100%;
+      width: 100%;
+    }
     .inner_nav,
     .toggle_search_btn,
     .logo {
       display: none;
     }
-    .inner_header .m_header .m_logo {
-      position: absolute;
-      top: 22px;
-      left: 22px;
-      cursor: pointer;
-    }
+
     .inner_header .m_header .toogle_btn {
       width: 22px;
       height: 18px;
@@ -782,7 +787,9 @@
       padding: 18px 20px 0;
       /*display: none;*/
     }
-
+    .header_search_box .header_search_input {
+      width: 0;
+    }
     .inner_header .nav_wrapper .nav_item {
       border-bottom: 1px solid #5a5a5a;
     }
@@ -820,71 +827,71 @@
 
 
     .inner_header .search_list .list {
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 24px 28px 0;
-  background: #313131;
-  padding: 18 28px 0;
-}
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 24px 28px 0;
+      background: #313131;
+      padding: 18 28px 0;
+    }
 
-.inner_header .search_list .list .item {
-  display: box;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  border-bottom: 1px solid #434343;
-  padding: 20px 0;
-  text-align: left;
-  cursor: pointer;
-}
+    .inner_header .search_list .list .item {
+      display: box;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      border-bottom: 1px solid #434343;
+      padding: 20px 0;
+      text-align: left;
+      cursor: pointer;
+    }
 
-.inner_header .search_list .list li:last-child {
-  border-bottom: none;
-}
+    .inner_header .search_list .list li:last-child {
+      border-bottom: none;
+    }
 
-.inner_header .search_list .list .item .info_box {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  width: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
+    .inner_header .search_list .list .item .info_box {
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      width: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
 
-.inner_header .search_list .list .item .info_box .text {
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 4px;
-}
+    .inner_header .search_list .list .item .info_box .text {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
 
-.inner_header .search_list .list .item .info_box .date {
-  font-size: 10px;
-  color: #656565;
-}
+    .inner_header .search_list .list .item .info_box .date {
+      font-size: 10px;
+      color: #656565;
+    }
 
-.inner_header .search_list .list .item .apply_btn {
-  width: 82px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  font-size: 12px;
-  color: #000;
-  border-radius: 20px;
-  background: #f8ef1c;
-  font-weight: bold;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
-}
+    .inner_header .search_list .list .item .apply_btn {
+      width: 82px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #000;
+      border-radius: 20px;
+      background: #f8ef1c;
+      font-weight: bold;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+    }
 
-.inner_header .search_list .list .item .apply_btn:hover {
-  background: #fff500;
-}
+    .inner_header .search_list .list .item .apply_btn:hover {
+      background: #fff500;
+    }
   }
 
 </style>

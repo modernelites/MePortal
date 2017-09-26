@@ -170,6 +170,9 @@
     .footer .footer_list li.contact {
       margin: 0 auto;
     }
+    address{
+      margin-bottom: 0;
+    }
   }
 
 </style>

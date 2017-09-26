@@ -24,7 +24,7 @@
       <ul class="m_row clearfix list">
         <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-if="CourseTypeItem.CourseTypeID<5">
           <div class="item_box">
-            <div class="course_img ">
+            <div class="course_img">
               <img :src="CourseTypeItem.FilePath">
             </div>
             <div class="nav">
@@ -42,7 +42,7 @@
           </div>
         </li>
       </ul>
-    </div>ß
+    </div>
     <!-- section_2 -->
     <div class="section_2">
       <h1 class="title_1">推荐课程</h1>
@@ -86,6 +86,72 @@
         <div class="swiper-button-prev swiper-button-prev-01"></div>
       </div>
     </div>
+    <!-- 移动端m_section_2 -->
+
+    <div class="m_section_2 training_camp">
+      <div class="pics_wrapper">
+        <div class="m_row clearfix">
+          <div class="m_col-md-3" v-for="item in CourseType_List">
+            <img :src="item.FilePath ">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-container_outer">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-item swiper-slide" v-for="item in CourseType_List">
+              <h3 class="title">{{item.CourseTypeName}}</h3>
+              <ul class="nav_list">
+                <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID) ">
+                  <a :href=" '#/training_camp/' + courseItem.CourseID ">{{courseItem.CourseName}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next swiper-button-next-1"></div>
+        <div class="swiper-button-prev swiper-button-prev-1"></div>
+      </div>
+    </div>
+    <!-- 移动端section_3 -->
+    <div class="section_3">
+      <h3 class="title3">推荐课程</h3>
+      <!-- 下面是滚动区域 -->
+      <div class="swiper-container_outer">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-item swiper-slide">
+              <img src="./../../assets/img/t1.jpg">
+              <a href="javascript:;" class="btn details_btn_i_1"></a>
+            </div>
+            <div class="swiper-item swiper-slide">
+              <img src="./../../assets/img/t2.jpg">
+              <a href="javascript:;" class="btn details_btn_i_2"></a>
+            </div>
+            <div class="swiper-item swiper-slide">
+              <img src="./../../assets/img/t3.jpg">
+              <a href="javascript:;" class="btn details_btn_i_3"></a>
+            </div>
+            <div class="swiper-item swiper-slide">
+              <img src="./../../assets/img/t4.jpg">
+              <a href="javascript:;" class="btn details_btn_i_3"></a>
+            </div>
+            <div class="swiper-item swiper-slide">
+              <img src="./../../assets/img/t5.jpg">
+              <a href="javascript:;" class="btn details_btn_i_3"></a>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-button-next swiper-button-next-2"></div>
+          <div class="swiper-button-prev swiper-button-prev-2"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
     <!-- 分割线 -->
     <div class="utting_line"></div>
     <my-footer></my-footer>
@@ -162,6 +228,22 @@
         freeMode: true,
         loop: true
       });
+      var mySwiper2 = new Swiper('.m_section_2 .swiper-container', {
+        slidesPerView: 1,
+        paginationClickable: true,
+        loop: true,
+        autoHeight: true,
+        nextButton: '.swiper-button-next-1',
+        prevButton: '.swiper-button-prev-1'
+      });
+      var mySwiper3 = new Swiper('.section_3 .swiper-container', {
+        slidesPerView: 1,
+        paginationClickable: true,
+        loop: true,
+        autoHeight: true,
+        nextButton: '.swiper-button-next-2',
+        prevButton: '.swiper-button-prev-2'
+      });
     },
     components: {
       myHeader: myHeader,
@@ -172,7 +254,7 @@
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
   @import url("../../assets/css/swiper-3.4.2.min.css");
   @import url("../../assets/css/media.css");
   .home_header {
@@ -476,41 +558,186 @@
   .home_p .course_swiper_wrap .swiper-button-prev:hover {
     background-color: #525354;
   }
+
+  .home_p .m_section_2 {
+    display: none;
+  }
+
+  .home_p .section_2 {
+    display: block;
+  }
+
+  .home_p .section_course_type {
+    display: block;
+  }
+
+  .home_p .section_3 {
+    display: none;
+  }
   /* 移动端适配 */
 
   @media screen and (max-width: 1205px) {
-.home_header {
-  max-width: 100%;
-}
-    .home_p .item_box .course_img img {
-
-      max-height: 100%;
+    .home_p {
+      margin: 0 auto;
     }
-
-    .home_p .section_course_type .list .item_box .title_3,
-    .home_p .section_course_type .list .item_box .brief {
-      display: none;
+    .home_p .home_header .inner_header {
+      /* display: none; */
+      background: none;
     }
     .home_p .section_course_type {
-      width: 100%;
-      padding-top: 22px;
-      padding-bottom: 0;
-    }
-    .home_p .section_course_type .m_row {
-      width: 90%;
-      height: auto;
+      display: none;
     }
 
-    .home_p .section_course_type .list .item_box .nav .nav_list {
-      display: block;
-      width: 400%;
-    }
-    .home_p .section_course_type .list .item_box .nav .nav_list .item {
-      width: 100%;
-      display: inline-block
-    }
     .home_p .section_2 {
-      margin-top: 1000px;
+      display: none;
+    }
+    .home_p .m_section_2 {
+      display: block;
+      padding: 0 36px;
+      margin-bottom: 50px;
+    }
+    .home_p .m_section_2 .pics_wrapper .m_row {
+      margin: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .home_p .m_section_2 .pics_wrapper .m_row .m_col-md-3 {
+      padding: 0;
+    }
+    .home_p .m_section_2 .pics_wrapper .m_row .m_col-md-3 img {
+      max-width: 100%;
+      /* width: auto;
+      height: auto; */
+    }
+    .home_p .m_section_2 .swiper-container {
+      width: 100%;
+      background: #fff;
+    }
+
+    .home_p .m_section_2 .swiper-item {
+      padding: 0 30px;
+    }
+
+    .home_p .m_section_2 .swiper-item .title {
+      font-size: 16px;
+      color: #000;
+      font-weight: 500;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .home_p .m_section_2 .swiper-item .nav_list a {
+      display: block;
+      color: #656565;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .home_p .m_section_2 .swiper-item .nav_list li {
+      border-bottom: 1px solid #efefef;
+    }
+
+    .home_p .m_section_2 .swiper-item .nav_list li:last-child {
+      border-bottom: none;
+    }
+
+    .home_p .swiper-container_outer {
+      position: relative;
+    }
+
+    .home_p .m_section_2 .swiper-button-next {
+      background-image: url("./../../assets/img/rec_right_next@2x.png");
+      background-size: 40px;
+      height: 40px;
+      right: -30px;
+    }
+
+    .home_p .m_section_2 .swiper-button-prev {
+      background-image: url("./../../assets/img/rec_left_pre@2x.png");
+      background-size: 40px;
+      height: 40px;
+      left: -30px;
+    }
+    .home_p .section_3 {
+      display: block;
+    }
+    .home_p .section_3 {
+      background: #1f2022;
+      margin-top: 50px;
+      padding-bottom: 45px;
+      margin-bottom: 35px;
+    }
+
+    .home_p .section_3 .title3 {
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+      padding-top: 30px;
+    }
+
+    .home_p .section_3 .swiper-container_outer {
+      color: #1f2022;
+    }
+
+    .home_p .section_3 .swiper-item {
+      text-align: center;
+    }
+
+    .home_p .section_3 .swiper-item img {
+      max-width: 50%;
+    }
+
+    .home_p .section_3 .btn {
+      display: block;
+      width: 85px;
+      height: 31px;
+      margin: 0 auto 0;
+      padding-top: 0;
+      border-radius: 30px;
+      position: relative;
+      z-index: 10000;
+      border-color: transparent;
+    }
+
+    .home_p .section_3 .details_btn_i_1 {
+      background: url(./../../assets/img/m_details_1@2x.png) no-repeat center;
+      background-size: 85px 31px;
+    }
+
+    .home_p .section_3 .details_btn_i_2 {
+      background: url(./../../assets/img/m_details_2@2x.png) no-repeat center;
+      background-size: 85px 31px;
+    }
+
+    .home_p .section_3 .details_btn_i_3 {
+      background: url(./../../assets/img/m_details_3@2x.png) no-repeat center;
+      background-size: 85px 31px;
+    }
+
+
+    .home_p .section_3 .swiper-button-next {
+      background-image: url("./../../assets/img/rec_right_next@2x.png");
+      background-size: 40px;
+      width: 40px;
+      height: 40px;
+      right: 36px;
+    }
+
+    .home_p .section_3 .swiper-button-prev {
+      background-image: url("./../../assets/img/rec_left_pre@2x.png");
+      background-size: 40px;
+      height: 40px;
+      width: 40px;
+      left: 36px;
+    }
+    .m_col-md-3 {
+      display: inline-block;
+    }
+    .home_p .utting_line {
+      height: 0;
     }
   }
 

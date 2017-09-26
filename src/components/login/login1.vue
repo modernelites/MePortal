@@ -3,9 +3,12 @@
   <div class="content_box account_content_box" id="account_content_box">
     <h3 class="title_3">欢迎登录</h3>
     <form action="login_submit" method="get" accept-charset="utf-8">
-      <input ref="username" type="text" name="username" class="username input_item" placeholder="账号" required="" autocomplete="off">
+      <div class="bg_c">
+       <input ref="username" type="text" name="username" class="username input_item" placeholder="账号" required="" autocomplete="off">
       <input ref="password" type="password" name="password" class="password input_item" placeholder="密码" required="" autocomplete="off">
       <input type="button" name="login_submit" class="login_submit_btn" value="登录" @click="loginMethod">
+      </div>
+
       <div v-show="tips" class="tips">{{tips}}</div>
       <div class="bottom_btn">
         <a href="#/login/login2" title="验证码登录" class="verification_btn btn">验证码登录</a>

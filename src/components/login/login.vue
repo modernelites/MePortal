@@ -1,9 +1,9 @@
 <template>
   <div class="login_p">
     <div class="content_wrapper">
-      <div class="header_wrapper w_1000">
+      <div class="header_wrapper ">
       </div>
-      <div class="login_content_wrapper w_1000 clearfix">
+      <div class="login_content_wrapper  clearfix">
         <router-view :getLoginName="getLoginName()"></router-view>
       </div>
     </div>
@@ -70,7 +70,7 @@
     width: 388px;
     min-height: 300px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-    background: #353535;
+    /* background: #353535; */
   }
 
   .login_p .content_box .title_3 {
@@ -81,6 +81,16 @@
     font-weight: 600;
     color: #fff;
     border-bottom: 1px solid #f24d4d;
+    background: #353535;
+  }
+
+  .login_p .content_box .bg_c {
+    background-color: #353535;
+    overflow: hidden;
+  }
+
+  .login_p .content_box input {
+    box-sizing: border-box;
   }
 
   .login_p .content_box .input_item {
@@ -133,7 +143,6 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    background: #000;
   }
 
   .login_p .content_box .bottom_btn .btn {
@@ -152,28 +161,16 @@
     border-radius: 0;
   }
 
-  .login_p .account_content_box .bottom_btn .verification_btn {
-    border-bottom-right-radius: 8px;
-  }
-
-  .login_p .account_content_box .bottom_btn .register_btn {
-    border-bottom-left-radius: 8px;
-  }
-
-  .login_p .verification_content_box .bottom_btn .account_btn {
-    border-bottom-right-radius: 8px;
-  }
-
-  .login_p .verification_content_box .bottom_btn .register_btn {
-    border-bottom-left-radius: 8px;
-  }
-
-  .login_p .register_content_box .bottom_btn .account_btn {
-    border-bottom-right-radius: 8px;
-  }
-
+  .login_p .account_content_box .bottom_btn .verification_btn,
+  .login_p .account_content_box .bottom_btn .register_btn,
+  .login_p .verification_content_box .bottom_btn .account_btn,
+  .login_p .verification_content_box .bottom_btn .register_btn,
+  .login_p .register_content_box .bottom_btn .account_btn,
   .login_p .register_content_box .bottom_btn .verification_btn {
+    background: linear-gradient(rgb(35, 35, 35), rgb(55, 55, 55));
+    border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+    z-index: 1;
   }
 
   .login_p .register_content_box .verification_label,
@@ -236,6 +233,27 @@
     color: #fff;
     cursor: pointer;
     outline: none;
+  }
+
+  @media screen and (max-width: 1205px) {
+    .login_p {
+      background: #fefefe;
+      height: 100%;
+      width: 100%;
+      max-width: 750px;
+      margin: 0 auto;
+      background: url('./../../assets/img/login_bg_mobile@2x.png') no-repeat center top;
+    }
+    .login_p .content_box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      min-height: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+      max-width: 388px;
+    }
   }
 
 </style>

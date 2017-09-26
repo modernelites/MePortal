@@ -2,10 +2,9 @@
   <div class="training_camp_p">
     <my-header></my-header>
     <div class="container_wrap">
-      <div class="w_1000">
         <nav class="tab_nav" id="training_camp_p_tab_nav">
-          <dl @click="select(item)" class="nav_item" :class="{active:selectType===item.CourseTypeID}"
-              v-for="(item,index) in CourseType_List" v-if="item.CourseTypeID<5">
+          <dl @click="select(item)" class="nav_item" :class="{active:selectType===item.CourseTypeID}" v-for="(item,index) in CourseType_List"
+            v-if="item.CourseTypeID<5">
             <dt>
               <a href="javascript:;"> {{item.CourseTypeName}}</a>
             </dt>
@@ -88,7 +87,6 @@
             </div>
           </dl>
         </div>
-      </div>
     </div>
     <my-footer></my-footer>
   </div>
@@ -110,8 +108,7 @@
         Teacher_Con: {}
       };
     },
-    created() {
-    },
+    created() {},
     methods: {
       CourseTypeList() {
         this.$nextTick(function () {
@@ -135,8 +132,8 @@
       },
       CourseItemCon() {
         // 过滤课程
-        for (var i =0;i<this.Course_List.length;i++){
-          if (this.Course_List[i].CourseID==this.$route.params.cid){
+        for (var i = 0; i < this.Course_List.length; i++) {
+          if (this.Course_List[i].CourseID == this.$route.params.cid) {
             this.Course_Con = this.Course_List[i];
           }
         }
@@ -478,8 +475,7 @@
     max-width: 100%;
   }
 
-  .training_camp_p .lecturer_wrap li:nth-child(even) {
-  }
+  .training_camp_p .lecturer_wrap li:nth-child(even) {}
 
   .training_camp_p .lecturer_wrap li:nth-child(even) .content_left {
     float: right;
@@ -517,4 +513,59 @@
     text-decoration: none;
   }
 
+  @media screen and (max-width: 1205px) {
+    .training_camp_p {
+      max-width: 750px;
+      min-width: 320px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .training_camp_p .tab_nav {
+      display: none;
+    }
+
+    .training_camp_p .tab_con_item .img_wrap {
+      width: 100%;
+      padding: 0;
+      position: relative;
+    }
+    .training_camp_p .tab_con_item .img_wrap_btn {
+      width: 210px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      position: absolute;
+      bottom: -25px;
+    }
+    .training_camp_p .tab_con {
+      position: absolute;
+      top: 43px;
+      width: 100%;
+      max-width: 750px;
+      min-width: 320px;
+    }
+    .training_camp_p .inner_header {
+      z-index: 1;
+    }
+    .training_camp_p .container_wrap{
+      /* height: 1302px; */
+      height: 1224px;
+/* position: absolute; */
+/* overflow: hidden; */
+    }
+    .training_camp_p .course_wrap .title_3 {
+      font-size: 12px;
+      padding-bottom: 5px;
+      padding-top: 40px;
+    }
+    .training_camp_p .course_wrap .title_3:before {
+      display: none;
+    }
+    .training_camp_p .course_wrap .text {
+      padding-top: 0;
+    }
+    .training_camp_p .btn_wrap{
+      display: none;
+    }
+  }
 </style>
