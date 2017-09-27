@@ -102,7 +102,7 @@
                 <a :href="m.Link">{{m.MenuName}}</a>
               </li>
               <li v-on:click="searchWrapShow=false" class="nav_item">
-                <a href="#/personal:id/personal1" title="首页">个人中心</a>
+                <a href="#/personal_center/personal_center1" title="首页">个人中心</a>
               </li>
               <li class="nav_item more_course" v-on:click="navSubListShow=!navSubListShow" :class="{active:navSubListShow}">
                 <a href="javascript:;" title="课程">课程
@@ -112,7 +112,7 @@
                 </a>
                 <ul class="nav_sub_list" v-show="navSubListShow">
                   <li v-on:click="searchWrapShow=false" v-for="item in CourseType_List">
-                    <a href="#/register:id/register1"> {{item.CourseTypeName}}</a>
+                    <a :href="'#/training_camp/'+item.CourseTypeID +'/' +getCourseID(item.CourseTypeID) "> {{item.CourseTypeName}}</a>
                   </li>
                 </ul>
               </li>
@@ -173,10 +173,24 @@
         navWrapperShow: false,
         searchListShow: false,
         navSubListShow: false,
-        CourseType_List: {}
+        CourseType_List: {},
+        Course_List: [],
+        CourseID_List: []
       };
     },
     methods: {
+      CourseListFillter(m, p) {
+        var arr = [];
+        for (var i = 0; i < m.length; i++) {
+          if (m[i].CourseTypeID == p) {
+            arr.push(m[i]);
+          }
+        }
+        return arr;
+      },
+      getCourseID(CourseTypeID) {
+        return this.CourseID_List[CourseTypeID - 1];
+      },
       hide() {
         this.showSearch = false;
       },
@@ -236,6 +250,20 @@
         }, function () {
           console.log('请求发送失败');
         });
+
+        function sortNumber(a, b) {
+          return a - b;
+        }
+        for (var i = 1; i < 7; i++) {
+          this.$http.get(path + 'me/Course/Course_List?CourseTypeID=' + i).then((response) => {
+            response = response.body;
+            this.Course_List = response.Data;
+            this.CourseID_List.push(this.Course_List[0].CourseID);
+            this.CourseID_List = this.CourseID_List.sort(sortNumber);
+          }, function () {
+            console.log('请求发送失败');
+          });
+        }
       });
     },
     mounted() {
@@ -714,11 +742,12 @@
   /* 移动端适配 */
 
   @media screen and (max-width: 1205px) {
-    .inner_header{
-      height:100%;
+    .inner_header {
+      height: 100%;
       background: url("./../../assets/img/header@2x.png") no-repeat;
       background-size: 100% 100%;
       width: 100%;
+      ;
     }
     .inner_nav,
     .toggle_search_btn,

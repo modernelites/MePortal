@@ -2,7 +2,7 @@
   <div class="server_mask">
     <!-- 侧边导航按钮 -->
     <div class="side_fixed_wrapper">
-      <a class="item" id="side_fixed_apply_btn" href="#/register/register1"></a>
+      <a class="item" id="side_fixed_apply_btn" href="#/register/register1/:id"></a>
       <a class="item" id="side_fixed_server_btn" href="javascript:;" v-on:click="show = true"></a>
       <a class="item" id="side_fixed_go_top_btn" href="javascript:;" ref="go_top_btn" @click="goTop()"></a>
     </div>

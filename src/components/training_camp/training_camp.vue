@@ -523,7 +523,10 @@
     .training_camp_p .tab_nav {
       display: none;
     }
-
+.training_camp_p .nav_item{
+  width: auto;
+  text-align: left;
+}
     .training_camp_p .tab_con_item .img_wrap {
       width: 100%;
       padding: 0;
@@ -567,5 +570,8 @@
     .training_camp_p .btn_wrap{
       display: none;
     }
+    /* .inner_header .nav_wrapper .nav_item a{
+      float: left;
+    } */
   }
 </style>

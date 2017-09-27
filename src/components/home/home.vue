@@ -103,7 +103,8 @@
               <h3 class="title">{{item.CourseTypeName}}</h3>
               <ul class="nav_list">
                 <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID) ">
-                  <a :href=" '#/training_camp/' + courseItem.CourseID ">{{courseItem.CourseName}}</a>
+                  <a :href=" '#/training_camp/' +item.CourseTypeID+'/'+ courseItem.CourseID ">{{courseItem.CourseName}}</a>
+                                    <!-- <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link> -->
                 </li>
               </ul>
             </div>

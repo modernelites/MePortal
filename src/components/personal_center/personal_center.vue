@@ -60,6 +60,12 @@
         this.selectType = type;
       }
     },
+    created() {
+      if (window.localStorage.getItem('user')=== null) {
+        window.location.href="#/login/login1";
+      }
+      console.log(JSON.parse(window.localStorage.getItem("user")));
+    },
     mounted() {
       let url = window.location.href;
       if (url.indexOf('personal_center1') > 0) {
@@ -86,7 +92,7 @@
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .personal_center_p {
     background: #f7f7f7;
   }
