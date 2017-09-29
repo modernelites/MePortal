@@ -110,6 +110,8 @@
     /* NEW - Chrome */
     display: flex;
     /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .about_p .content_left {
@@ -307,6 +309,7 @@
       max-width: 750px;
       min-width: 320px;
       background: #fff;
+      margin: 0 auto;
     }
     .about_p .content_right {
       width: 100%;
@@ -319,6 +322,8 @@
     }
     .about_p .content_wrapper {
       display: block;
+      width: auto;
+      margin: auto;
     }
     .about_p .content_wrapper .content_left {
       width: 100%;

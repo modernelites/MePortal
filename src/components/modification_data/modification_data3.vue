@@ -12,7 +12,7 @@
             <span class="dec"> 验证码:</span>
             <div class="var_wrapper">
                 <input type="text" name="number" class="number">
-                <a href="javascript:;" class="tips"> 获取验证码</a>
+                <a href="javascript:;" class="tips">获取验证码</a>
             </div>
         </label>
         <div class="btn_wrapper">

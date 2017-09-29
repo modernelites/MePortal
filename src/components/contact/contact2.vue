@@ -17,14 +17,14 @@
                 <span class="district"> 集团邮箱:</span>
                 <a href="mailto:123@myjyjt.com" title="">123@myjujt.com</a>
             </li>
-            <li>
+            <!-- <li>
                 <span class="district"> 集团邮箱:</span>
                 <a href="mailto:123@myjyjt.com" title="">123@myjujt.com</a>
             </li>
             <li>
                 <span class="district"> 集团邮箱:</span>
                 <a href="mailto:123@myjyjt.com" title="">123@myjujt.com</a>
-            </li>
+            </li> -->
         </ul>
     </dl>
 </template>

@@ -2,36 +2,36 @@
   <div class="training_camp_p">
     <my-header></my-header>
     <div class="container_wrap">
-        <nav class="tab_nav" id="training_camp_p_tab_nav">
-          <dl @click="select(item)" class="nav_item" :class="{active:selectType===item.CourseTypeID}" v-for="(item,index) in CourseType_List"
-            v-if="item.CourseTypeID<5">
-            <dt>
-              <a href="javascript:;"> {{item.CourseTypeName}}</a>
-            </dt>
-            <dd>
-              <ul class="item_list">
-                <li class="sub_item" v-for="item in CourseListFillter(Course_List ,item.CourseTypeID)">
-                  <router-link :to="{name:'trainingCamp',params:{ctid:item.CourseTypeID,cid:item.CourseID}}">
-                    {{item.CourseName}}
-                  </router-link>
-                </li>
-              </ul>
-            </dd>
-          </dl>
-        </nav>
-        <div class="tab_con" id="training_camp_p_tab_con">
-          <dl class="tab_con_item active">
-            <div class="img_wrap">
-              <img v-if="!Course_Con.FilePath" src="./../../assets/img/sec_con_bg_1.png" width="100%" height="auto">
-              <img :src="Course_Con.FilePath" width="100%" height="auto" v-if="Course_Con.FilePath">
-              <a href="javascript:;" class="img_wrap_btn">{{Course_Con.CourseName}}</a>
-            </div>
-            <div class="course_wrap">
-              <h3 class="title_3"> 课程介绍</h3>
-              <p class="text" v-html="Course_Con.Brief">
-              </p>
-            </div>
-            <!--  <div class="img_small_wrap">
+      <nav class="tab_nav" id="training_camp_p_tab_nav">
+        <dl @click="select(item)" class="nav_item" :class="{active:selectType===item.CourseTypeID}" v-for="(item,index) in CourseType_List"
+          v-if="item.CourseTypeID<5">
+          <dt>
+            <a href="javascript:;"> {{item.CourseTypeName}}</a>
+          </dt>
+          <dd>
+            <ul class="item_list">
+              <li class="sub_item" v-for="item in CourseListFillter(Course_List ,item.CourseTypeID)">
+                <router-link :to="{name:'trainingCamp',params:{ctid:item.CourseTypeID,cid:item.CourseID}}">
+                  {{item.CourseName}}
+                </router-link>
+              </li>
+            </ul>
+          </dd>
+        </dl>
+      </nav>
+      <div class="tab_con" id="training_camp_p_tab_con">
+        <dl class="tab_con_item active">
+          <div class="img_wrap">
+            <img v-if="!Course_Con.FilePath" src="./../../assets/img/sec_con_bg_1.png" width="100%" height="auto">
+            <img :src="Course_Con.FilePath" width="100%" height="auto" v-if="Course_Con.FilePath">
+            <a href="javascript:;" class="img_wrap_btn">{{Course_Con.CourseName}}</a>
+          </div>
+          <div class="course_wrap">
+            <h3 class="title_3"> 课程介绍</h3>
+            <p class="text" v-html="Course_Con.Brief">
+            </p>
+          </div>
+          <!--  <div class="img_small_wrap">
               <div class="m_row clearfix">
                 <div class="m_col-lg-6">
                   <img src="./../../assets/img/smail_2.png">
@@ -60,33 +60,33 @@
               </div>
             </div> -->
 
-            <!-- 讲师介绍 -->
-            <div class="lecturer_wrap" v-show="Teacher_Con.length>0">
-              <h3 class="title_3"> 讲师介绍</h3>
-              <ul class="con_list">
-                <li class="item_wrap" v-for="item in Teacher_Con">
-                  <div class="content_left">
-                    <h5 class="title_5">{{item.TeacherName}}</h5>
-                    <span class="mark"></span>
+          <!-- 讲师介绍 -->
+          <div class="lecturer_wrap" v-show="Teacher_Con.length>0">
+            <h3 class="title_3"> 讲师介绍</h3>
+            <ul class="con_list">
+              <li class="item_wrap" v-for="item in Teacher_Con">
+                <div class="content_left">
+                  <h5 class="title_5">{{item.TeacherName}}</h5>
+                  <span class="mark"></span>
+                </div>
+                <div class="content_right clearfix">
+                  <div class="brief" v-html="item.Brief">
                   </div>
-                  <div class="content_right clearfix">
-                    <div class="brief" v-html="item.Brief">
-                    </div>
-                    <div class="portrait">
-                      <img :src="item.FilePath">
-                    </div>
+                  <div class="portrait">
+                    <img :src="item.FilePath">
                   </div>
-                </li>
-              </ul>
-            </div>
-            <!-- 点击报名 -->
-            <div class="btn_wrap">
-              <router-link :to="{name:'register'+CourseTypeItemID,params:{id:CourseItemID}}" class="btn">
-                立即报名
-              </router-link>
-            </div>
-          </dl>
-        </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- 点击报名 -->
+          <div class="btn_wrap">
+            <router-link :to="{name:'register'+CourseTypeItemID,params:{id:CourseItemID}}" class="btn">
+              立即报名
+            </router-link>
+          </div>
+        </dl>
+      </div>
     </div>
     <my-footer></my-footer>
   </div>
@@ -192,6 +192,11 @@
 
   .training_camp_p .tab_nav {
     background: #fff;
+  }
+
+  .training_camp_p .container_wrap {
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .training_camp_p .tab_nav {
@@ -520,13 +525,17 @@
       overflow: hidden;
       margin: 0 auto;
     }
+    .training_camp_p .container_wrap {
+      width: auto;
+      margin: auto;
+    }
     .training_camp_p .tab_nav {
       display: none;
     }
-.training_camp_p .nav_item{
-  width: auto;
-  text-align: left;
-}
+    .training_camp_p .nav_item {
+      width: auto;
+      text-align: left;
+    }
     .training_camp_p .tab_con_item .img_wrap {
       width: 100%;
       padding: 0;
@@ -550,11 +559,11 @@
     .training_camp_p .inner_header {
       z-index: 1;
     }
-    .training_camp_p .container_wrap{
+    .training_camp_p .container_wrap {
       /* height: 1302px; */
-      height: 1224px;
-/* position: absolute; */
-/* overflow: hidden; */
+      /* height: 1224px; */
+      /* position: absolute; */
+      /* overflow: hidden; */
     }
     .training_camp_p .course_wrap .title_3 {
       font-size: 12px;
@@ -567,11 +576,20 @@
     .training_camp_p .course_wrap .text {
       padding-top: 0;
     }
-    .training_camp_p .btn_wrap{
-      display: none;
+    .training_camp_p .btn_wrap .btn {
+      width: 150px;
+      height: 55px;
+      line-height: 55px;
+      font-size: 16px;
     }
     /* .inner_header .nav_wrapper .nav_item a{
       float: left;
     } */
+    .training_camp_p .btn_wrap {
+      padding-bottom: 0;
+      padding-top: 0;
+      /* margin-bottom: 20px; */
+    }
   }
+
 </style>

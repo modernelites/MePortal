@@ -40,7 +40,7 @@
             <span class="icon-bar icon-bar_1"></span>
             <span class="icon-bar icon-bar_2"></span>
             <span class="icon-bar icon-bar_3"></span>
-          </a>
+          </a> 
         </div>
         <div class="header_search_box">
           <form method="" action="">
@@ -247,6 +247,7 @@
         this.$http.get(path + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
           this.CourseType_List = response.Data;
+          this.CourseType_List.splice(4,5);
         }, function () {
           console.log('请求发送失败');
         });
@@ -254,7 +255,7 @@
         function sortNumber(a, b) {
           return a - b;
         }
-        for (var i = 1; i < 7; i++) {
+        for (var i = 1; i < 5; i++) {
           this.$http.get(path + 'me/Course/Course_List?CourseTypeID=' + i).then((response) => {
             response = response.body;
             this.Course_List = response.Data;
@@ -741,13 +742,13 @@
   }
   /* 移动端适配 */
 
-  @media screen and (max-width: 1205px) {
+  @media screen  and (max-width: 1105px) {
     .inner_header {
-      height: 100%;
+      height: 90%;
       background: url("./../../assets/img/header@2x.png") no-repeat;
       background-size: 100% 100%;
       width: 100%;
-      ;
+      
     }
     .inner_nav,
     .toggle_search_btn,
@@ -921,6 +922,20 @@
     .inner_header .search_list .list .item .apply_btn:hover {
       background: #fff500;
     }
+
+
+
+
+
   }
+      /* @media screen and (min-width:750px) and (max-width: 1205px){
+      .inner_header{
+        height: 120px;
+      }
+      .inner_header .m_header .toogle_btn{
+        top: 44px;
+        right: 44px;
+      }
+    } */
 
 </style>

@@ -12,7 +12,6 @@ export default {
   },
   mounted() {
     // 百度地图API功能
-    // 百度地图API功能
     // var map = new BMap.Map("allmap"); // 创建Map实例
     // map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
     // map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
@@ -73,5 +72,9 @@ body,
 .allmap {
   height: 600px;
 }
-
+  @media screen and (max-width: 1205px) {
+  
+  
+  
+  }
 </style>

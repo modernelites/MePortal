@@ -71,7 +71,7 @@
                   <a v-on:click="selectOption(3),optionShow=false" class="item" href="#/personal_center/personal_center4"> 摩英网校</a>
                 </li>
                 <li>
-                  <a v-on:click="selectOption(4),optionShow=false" class="item" href="#5/personal_center/personal_center5"> 助教·义工</a>
+                  <a v-on:click="selectOption(4),optionShow=false" class="item" href="#/personal_center/personal_center5"> 助教·义工</a>
                 </li>
               </ul>
             </div>
@@ -131,8 +131,11 @@
     created() {
       if (window.localStorage.getItem('user') === null) {
         window.location.href = "#/login/login1";
+      } else {
+        window.location.href = "#/personal_center/personal_center1";
       }
       console.log(JSON.parse(window.localStorage.getItem("user")));
+      this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
     },
     mounted() {
       let url = window.location.href;
@@ -160,8 +163,8 @@
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-@import url("../../assets/css/swiper-3.4.2.min.css");
+<style scoped>
+  @import url("../../assets/css/swiper-3.4.2.min.css");
   .personal_center_p {
     background: #f7f7f7;
   }
@@ -170,6 +173,8 @@
     background: #fff;
     position: relative;
     margin-bottom: 60px;
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .personal_center_p .portrai_wrapper {
@@ -370,6 +375,10 @@
     padding-left: 30px;
   }
 
+  .personal_center_p .m_content {
+    display: none;
+  }
+
   @media screen and (max-width: 1205px) {
     .personal_center_p {
       max-width: 750px;
@@ -377,8 +386,18 @@
       margin: 0 auto;
     }
     .personal_center_p .content_wrapper {
+    background: #fff;
+    position: relative;
+    margin-bottom: 60px;
+    width: auto;
+    margin:auto;
+  }
+    .personal_center_p .content_wrapper {
       width: 96%;
       margin: 0 auto;
+    }
+    .personal_center_p .m_content {
+      display: block;
     }
     /* .personal_center_p .pic_wrappper{
       width:96px;
@@ -477,13 +496,15 @@
       display: inline-block;
       font-size: 10px;
       color: #656565;
+      position: absolute;
+      left: 35%;
     }
 
     .personal_center_p .content_top .info_wrapper .mod_btn {
       float: right;
       font-size: 10px;
       color: #f28080;
-      margin-right: 4px;
+      /* margin-right: 4px; */
     }
 
     .personal_center_p .content_top .info_wrapper .mod_btn::before {
@@ -717,18 +738,29 @@
     }
     .personal_center_p .no_data_wrapper {
       padding: 0;
+      text-align: center;
     }
     .personal_center_p .no_data_wrapper .no_data_content {
       text-align: center;
+      height: 316px;
+      padding: 20px 0;
+      position: relative;
     }
     .personal_center_p .no_data_wrapper .no_data_content img {
       width: 156px;
       height: 150px;
-      margin-top: 40px;
+      position: absolute;
+      bottom: 100px;
+      left: 20%;
     }
-    .personal_center_p .title_3 {
+    .personal_center_p h3.title_3 {
       font-size: 12px;
+      padding-top: 10px;
+      position: absolute;
+      bottom: 60px;
+      left: 20%;
     }
+
   }
 
 </style>

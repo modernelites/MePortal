@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="content_wrapper" @click="slidShow=false">
+    <div  @click="slidShow=false">
       <div class="content_header">
         <h3 class="title_3"> 报名</h3>
         <div class="select_wrapper" id="select_wrapper">
@@ -11,23 +11,25 @@
           </div>
           <transition name="fade">
             <div class="option_wrapper" id="option_wrapper" ref="option_wrapper" v-show="slidShow">
-              <div v-for="(m,index) in CourseType_Items" data-value="0" class="option"><a @click="selectOption(m)"
-                                                                                          :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
+              <div v-for="(m,index) in CourseType_Items" data-value="0" class="option">
+                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
               </div>
             </div>
           </transition>
         </div>
         <div class="course_wrapper">
-          <span class="info">选择课程 : <u class="star">*</u></span>
+          <span class="info">选择课程 :
+            <u class="star">*</u>
+          </span>
           <a href="javascript:;" title="选择课程" class="select_btn" @click="courseMaskShow=true"> 选择课程</a>
-          <span class="show_info course_show_info" v-show="SelectCourse.CourseName"
-                ref="course_result_info">{{SelectCourse.CourseName}}</span>
+          <span class="show_info course_show_info" v-show="SelectCourse.CourseName" ref="course_result_info">{{SelectCourse.CourseName}}</span>
         </div>
         <div class="course_wrapper">
-          <span class="info">选择期数 : <u class="star">*</u></span>
+          <span class="info">选择期数 :
+            <u class="star">*</u>
+          </span>
           <a href="javascript:;" title="选择期数" class="select_btn" @click="periodMaskShow=true"> 选择期数</a>
-          <span class="show_info course_show_info" v-show="SelectPeriod.PeriodID"
-                ref="course_result_info" v-text="'第'+SelectPeriod.PeriodNum+'期'+(SelectPeriod.PeriodName?SelectPeriod.PeriodName:'')"></span>
+          <span class="show_info course_show_info" v-show="SelectPeriod.PeriodID" ref="course_result_info" v-text="'第'+SelectPeriod.PeriodNum+'期'+(SelectPeriod.PeriodName?SelectPeriod.PeriodName:'')"></span>
           <!--<div class="tips">说明：三阶课程（ <span class="text">仅限参加一二期的老学员</span> ）<span-->
           <!--class="date">时间：2017.7.1~2017.7.12</span></div>-->
         </div>
@@ -35,18 +37,28 @@
       <dl class="content_item overseas_single">
         <div class="info_box">
           <label>
-            <span>姓名：<u class="star">*</u></span>
+            <span>姓名：
+              <u class="star">*</u>
+            </span>
             <input type="text" name="username" class="username" required="" v-model="CourseReg.StuName">
           </label>
           <label class="sex_label">
-            <span>性别：<u class="star">*</u></span>
-            <input type="radio" name="radio_sex" class="sex_man sex" value="true" v-model="CourseReg.Gender">男
-            <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="CourseReg.Gender">女
+            <span>性别：
+              <u class="star">*</u>
+            </span>
+            <div class="s_select">
+              <input type="radio" name="radio_sex" class="sex_man sex" value="true" v-model="CourseReg.Gender">男
+              <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="CourseReg.Gender">女
+            </div>
+
           </label>
           <label class="grade_label">
-            <span>就读学校： </span>
+            <div class="sc">
+                          <span>就读学校： </span>
             <i>学校：</i>
-            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School" style="width: 200px;">
+            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School">
+            </div>
+
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
               <select class="grade_select" v-model="CourseReg.Grade">
@@ -97,7 +109,9 @@
             </div>
           </label>
           <label>
-            <span>出生日期：<u class="star">*</u></span>
+            <span>出生日期：
+              <u class="star">*</u>
+            </span>
             <input type="date" name="date" class="birth_date" v-model="CourseReg.Birthday">
           </label>
           <label>
@@ -113,27 +127,33 @@
         <div class="item_bottom_con">
           <div class="parent_box">
             <label>
-              <span>父亲：</span>
-              <i class="name_i"> 姓名：</i>
-              <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
+              <div class="f_name">
+                <span>父亲：</span>
+                <i class="name_i"> 姓名：</i>
+                <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
+              </div>
+
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
-                <input type="number" name="father_phone" class="father_phone" v-model="CourseReg.FPhone"style="width: 200px;">
+                <input type="number" name="father_phone" class="father_phone" v-model="CourseReg.FPhone" style="width: 200px;">
               </div>
               <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
             </label>
             <label>
-              <span>母亲：</span>
-              <i class="name_i"> 姓名：</i>
-              <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
+              <div class="m_name">
+                <span>母亲：</span>
+                <i class="name_i"> 姓名：</i>
+                <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
+              </div>
+
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
-                <input type="number" name="mom_phone" class="mom_phone" v-model="CourseReg.MPhone"style="width: 200px;">
+                <input type="number" name="mom_phone" class="mom_phone" v-model="CourseReg.MPhone" style="width: 200px;">
               </div>
               <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
             </label>
             <label class="address_label">
-              <span class="ex_address_info">快递地址（详细）：</span>
+              <span class="ex_address_info">快递地址：</span>
               <input type="text" name="expressage_address" class="expressage_address" v-model="CourseReg.Address">
             </label>
           </div>
@@ -141,25 +161,24 @@
 
         <div class="info_box">
           <label>
-            <span>优先条件：</span>
-            <i class="name_i"> 摩英优秀学员：</i>
-            <input type="radio" style="margin-left: 10px;" name="Is_Fine" class=" sex" value="true"
-                   v-model="CourseReg.Is_Fine">是
-            <input type="radio" style="margin-left: 10px;" name="Is_Fine" class=" sex" value="false"
-                   v-model="CourseReg.Is_Fine">否
-            <i class="phone_info" style="margin-left: 20px">摩英星级形象大使：</i>
-            <input type="radio" style="margin-left: 10px;" name="Is_Envoy" class=" sex" value="true"
-                   v-model="CourseReg.Is_Envoy">是
-            <input type="radio" style="margin-left: 10px;" name="Is_Envoy" class=" sex" value="false"
-                   v-model="CourseReg.Is_Envoy">否
+            <div class="e_s">
+              <span>优先条件：</span>
+              <i class="name_i"> 摩英优秀学员：</i>
+              <input type="radio" style="margin-left: 10px;" name="Is_Fine" class=" sex" value="true" v-model="CourseReg.Is_Fine">是
+              <input type="radio" style="margin-left: 10px;" name="Is_Fine" class=" sex" value="false" v-model="CourseReg.Is_Fine">否
+            </div>
+            <div class="am">
+              <i class="phone_info" style="margin-left: 20px">摩英星级形象大使：</i>
+              <input type="radio" style="margin-left: 10px;" name="Is_Envoy" class=" sex" value="true" v-model="CourseReg.Is_Envoy">是
+              <input type="radio" style="margin-left: 10px;" name="Is_Envoy" class=" sex" value="false" v-model="CourseReg.Is_Envoy">否
+            </div>
+
           </label>
-          <label>
-            <span></span>
+          <!-- <label class="honor">
             <i class="name_i" style="width: 65px"> 荣誉：</i>
             <textarea style="width: 550px;" name="textarea" class="textarea" v-model="CourseReg.Honor"></textarea>
           </label>
-          <label>
-            <span></span>
+          <label class="desc">
             <i class="name_i" style="width: 65px"> 自我描述：</i>
             <textarea style="width: 550px;" name="textarea" class="textarea" v-model="CourseReg.Self_Des"></textarea>
           </label>
@@ -173,7 +192,7 @@
             <select class="common grade_select" v-model="CourseReg.InterviewTime">
               <option value="9:00~10:00">9:00~10:00</option>
             </select>
-          </label>
+          </label> -->
         </div>
         <!-- 集训营课程报名 新添加内容 -->
         <div class="add_wrapper">
@@ -182,12 +201,12 @@
             <textarea name="textarea" class="textarea" v-model="CourseReg.Remark" style="width: 660px;"></textarea>
           </label>
           <div class="tips_area">
-        <span class="tips_item tips_item_1">
-                              特别提醒：1：报名年龄必须满14周岁
-          </span>
+            <span class="tips_item tips_item_1">
+              特别提醒：1：报名年龄必须满14周岁
+            </span>
             <span class="tips_item tips_item_2">
-                               2：如果是摩英优秀学员或者星级形象大使优先录取。
-         </span>
+              2：如果是摩英优秀学员或者星级形象大使优先录取。
+            </span>
           </div>
           <div class="btn_wrapper">
             <input type="submit" name="submit" class="submit_btn" @click="CourseReg_Add()" value="确认报名">
@@ -228,8 +247,7 @@
         <div class="modal_box_middle">
           <label v-for="m in Period_Items_Fillter" @click="Period_Select(m)" style="height: auto;line-height: 30px">
             <input type="radio" name="period" class="radio radio_1">
-            <span class="text" v-text="'第'+m.PeriodNum+'期'+(m.PeriodName?m.PeriodName:'')"
-                  style="margin-left: 5px"></span>
+            <span class="text" v-text="'第'+m.PeriodNum+'期'+(m.PeriodName?m.PeriodName:'')" style="margin-left: 5px"></span>
             <div style="font-size: 14px;margin-left: 25px;">
               开始时间:
               <span class="text">{{m.StartDate | datefmt}}</span>
@@ -254,10 +272,34 @@
       return {
         showRegName: false,
         CourseReg: {
-          CourseID: 0, UserID: 0, StuName: '', Gender: true, School: '', Grade: '', ClassName: '', Birthday: '',
-          StuPhone: '', Email: '', FName: '', FPhone: '', MName: '', MPhone: '', Address: '', Remarks: '', Area: '',
-          Is_Fine: false, Is_Envoy: false, Honor: '', Self_Des: '', Is_OldStu: false, StuIDCardNum: '', RegName: '',
-          Channel: '',InterviewWeek:'星期一',InterviewTime:'9:00~10:00',CourseTypeID:3
+          CourseID: 0,
+          UserID: 0,
+          StuName: '',
+          Gender: true,
+          School: '',
+          Grade: '',
+          ClassName: '',
+          Birthday: '',
+          StuPhone: '',
+          Email: '',
+          FName: '',
+          FPhone: '',
+          MName: '',
+          MPhone: '',
+          Address: '',
+          Remarks: '',
+          Area: '',
+          Is_Fine: false,
+          Is_Envoy: false,
+          Honor: '',
+          Self_Des: '',
+          Is_OldStu: false,
+          StuIDCardNum: '',
+          RegName: '',
+          Channel: '',
+          InterviewWeek: '星期一',
+          InterviewTime: '9:00~10:00',
+          CourseTypeID: 3
         },
         slidShow: false,
         courseMaskShow: false,
@@ -267,8 +309,14 @@
         Course_Items_Fillter: [],
         Period_Items: [],
         Period_Items_Fillter: [],
-        SelectCourse: {CourseName: "", CourseID: 0},
-        SelectPeriod: {PeriodName: "", PeriodID: 0},
+        SelectCourse: {
+          CourseName: "",
+          CourseID: 0
+        },
+        SelectPeriod: {
+          PeriodName: "",
+          PeriodID: 0
+        },
         SelectCourseType: {},
         CourseType_Items: []
       }
@@ -277,8 +325,14 @@
       selectOption(m) {
         this.slidShow = false;
         this.SelectCourseType = m;
-        this.SelectCourse = {CourseName: "", CourseID: 0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectCourse = {
+          CourseName: "",
+          CourseID: 0
+        };
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.Course_Items_Fillter = this.Course_List_Fillter(m.CourseTypeID);
       },
       CourseType_List() {
@@ -321,8 +375,14 @@
       },
       Period_Fillter_List(m) {
 
-        this.SelectCourse = {CourseName: "", CourseID: 0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectCourse = {
+          CourseName: "",
+          CourseID: 0
+        };
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.SelectCourse = m;
         var arr = [];
         for (var i = 0; i < this.Period_Items.length; i++) {
@@ -334,7 +394,10 @@
       },
       Period_Select(m) {
         //this.SelectCourse = {CourseName: "",CourseID:0};
-        this.SelectPeriod = {PeriodName: "", PeriodID: 0};
+        this.SelectPeriod = {
+          PeriodName: "",
+          PeriodID: 0
+        };
         this.SelectPeriod = m;
       },
       /** 课程报名*/
@@ -355,18 +418,18 @@
           this.$layer.alert("请输入学员姓名!");
           return;
         }
-//        if (!this.CourseReg.Birthday) {
-//          this.$layer.alert("请选择出生日期!");
-//          return;
-//        }
-//        if (!this.CourseReg.FPhone && !!this.CourseReg.MPhone) {
-//          this.$layer.alert("父母手机号请至少填写一个!");
-//          return;
-//        }
+        //        if (!this.CourseReg.Birthday) {
+        //          this.$layer.alert("请选择出生日期!");
+        //          return;
+        //        }
+        //        if (!this.CourseReg.FPhone && !!this.CourseReg.MPhone) {
+        //          this.$layer.alert("父母手机号请至少填写一个!");
+        //          return;
+        //        }
         console.log(this.CourseReg);
-//        if (true) {
-//          return;
-//        }
+        //        if (true) {
+        //          return;
+        //        }
         this.$http.post(this.ApiUrl + 'me/Course/CourseReg_Add', this.CourseReg).then((response) => {
           response = response.body;
           this.$layer.alert("报名成功!");
@@ -381,6 +444,7 @@
       this.CourseType_List();
     }
   }
+
 </script>
 <style>
   .textarea {
@@ -397,6 +461,7 @@
     border-radius: 16px;
     outline: none;
   }
+
   .grade_select {
     box-sizing: border-box;
     display: inline-block;
@@ -414,4 +479,5 @@
     -webkit-appearance: none;
     color: #656565;
   }
+
 </style>

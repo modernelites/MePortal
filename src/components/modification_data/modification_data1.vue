@@ -28,9 +28,12 @@
             <input type="radio" name="radio_sex" class="sex_girl sex">女
           </label>
           <label class="grade_label">
+            <div class="school">
             <span>就读学校： </span>
             <i>学校：</i>
             <input type="text" name="school_input" class="school_input">
+            </div>
+
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
               <select class="grade_select" id="grade_select">
@@ -53,15 +56,15 @@
               </select>
             </div>
           </label>
-          <label>
+          <label class="b_date">
             <span>出生日期：<u class="star">*</u></span>
             <input type="date" name="date" class="birth_date">
           </label>
-          <label>
+          <label class="phone">
             <span>学员手机：</span>
             <input type="number" name="student_phone" class="student_phone">
           </label>
-          <label>
+          <label class="mail">
             <span>电子邮件：</span>
             <input type="email" name="email" class="student_email">
           </label>
@@ -71,9 +74,11 @@
       <div class="item_bottom_con">
         <div class="parent_box">
           <label>
+            <div class="f_name">
             <span>父亲：</span>
             <i class="name_i"> 姓名：</i>
             <input type="text" name="father_name" class="father_name">
+            </div>
             <div class="phone_area">
               <i class="phone_info">手机：</i>
               <input type="number" name="father_phone" class="father_phone">
@@ -81,9 +86,12 @@
             <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
           </label>
           <label>
+            <div class="m_name">
             <span>母亲：</span>
             <i class="name_i"> 姓名：</i>
             <input type="text" name="mom_name" class="mom_name">
+            </div>
+
             <div class="phone_area">
               <i class="phone_info">手机：</i>
               <input type="number" name="mom_phone" class="mom_phone">
@@ -91,7 +99,7 @@
             <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
           </label>
           <label class="address_label">
-            <span class="ex_address_info">快递地址（详细）：</span>
+            <span class="ex_address_info">快递地址：</span>
             <input type="text" name="expressage_address" class="expressage_address">
           </label>
         </div>

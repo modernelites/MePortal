@@ -1,7 +1,7 @@
 <template>
   <div class="register_p">
     <my-header></my-header>
-    <div class="content_wrapper " @click="slidShow=false">
+    <div class="content_wrapper" @click="slidShow=false">
       <div class="content_main" id="register_p_content_main">
         <router-view></router-view>
       </div>
@@ -51,6 +51,11 @@
   .fade-enter-active,
   .fade-leave-active {
     transition: all .3s
+  }
+
+  .content_wrapper {
+    width: 1000px; 
+    margin: 0 auto;
   }
 
   .fade-enter,
@@ -921,20 +926,43 @@
   .content_wrapper .content_item .add_wrapper .origin_2 {
     display: inline;
   }
+
+
+  .register_p .info_box label.grade_label .sc,
+  .register_p .parent_box .f_name,
+  .register_p .parent_box .m_name {
+    /* width: 400px; */
+    margin-bottom: 36px;
+  }
+
+  .register_p .info_box .sex_label .sel {
+    margin-left: 100px;
+  }
+
+
+  .modification_data_p .mod_data_con .item_top_con .info_box label.grade_label .school {
+    margin-bottom: 36px;
+  }
   /* 移动端适配 */
 
   @media screen and (max-width: 1120px) {
 
     /* 报名页整体 */
-    /* .content_main {} */
+    .content_wrapper {
+      width: auto;
+      margin: auto;
+    }
     .register_p {
-      padding-bottom: 30px;
+      max-width: 750px;
+      min-width: 320px;
+      margin: 0 auto;
+      /* overflow: hidden; */
     }
 
     .register_p .content_wrapper {
       padding: 20px 15px;
       max-width: 750px;
-      min-width: 350px;
+      min-width: 320px;
       margin: 0 auto
     }
     .register_p .content_header .course_wrapper {
@@ -943,84 +971,56 @@
     .register_p .content_header {
       padding-bottom: 10px;
     }
-    .register_p .info_box label,
-    .register_p .info_box .common_label,
-    .register_p .item_bottom_con .parent_box label,
-    .register_p .add_wrapper label {
-      margin-bottom: 10px;
-    }
     .register_p .content_header .course_wrapper .select_btn {
       width: 100px;
       height: 46px;
     }
     /* 报名 */
+    .register_p .content_header .course_wrapper .info {
+      width: 70px;
+    }
+    .register_p .select_wrapper {
+      width: 200px;
+    }
     .content_wrapper .content_header .title_3 {
       font-size: 12px;
+      margin-right: 0;
+      margin-left: 15px;
     }
-    .register_p .info_box .school_input,
-    .register_p .info_box .grade_label .grade_select {
-      width: 56%;
-    }
-    .register_p .info_box .grade_label .gs_1 {
-      width: 70%;
-    }
-    .register_p .info_box .grade_label .grade_area {
-      display: block;
-    }
-    .register_p .info_box .common_area,
-    .register_p .info_box .grade_label .grade_area {
-      padding-left: 83px;
-      padding-top: 10px;
-    }
-    .register_p .info_box .common_area .common_i {
-      margin-left: 10px;
-    }
-     .register_p .info_box .common_area{
-       width:100%;
-     }
-    .register_p .info_box .grade_label  .class_select {
-      width: 70%;
-    }
-    .register_p .info_box .grade_label .school {
-      padding-left: 0px;
-    }
-    .register_p .info_box label i {
-      margin-right: 3px;
-    }
-    .register_p .info_box .grade_i {
-      margin-left: 10px;
-    }
-
-    .register_p .info_box input.username,
-    .register_p .info_box .student_phone,
-    .register_p .info_box .common_input,
-    .register_p .add_wrapper .know_label .know_select {
-      width: 70%;
-    }
-    .register_p .info_box label span:first-child {
-      width: 70px;
-      /* margin-right: 15px; */
-    }
-    .register_p .info_box input.birth_date {
-      width: 70%;
+    .register_p .content_header .title_3:before {
+      top: -6px;
+      width: 2px;
     }
 
 
 
 
 
-
-    /* 课程下拉框 */
     .content_wrapper .content_header .select_wrapper .show_info {
       font-size: 18px;
       width: 200px;
       height: 46px;
+      line-height: 46px;
+      z-index: 99;
     }
 
+    .register_p .select_wrapper .option_wrapper {
+      width: 200px;
+      top: 27px;
+      padding-top: 18px;
+    }
+    .register_p .select_wrapper .option_wrapper a {
+      font-size: 18px;
+    }
+    .register_p .select_wrapper .show_wrapper .show_info:before {
+      top: 13px;
+      right: 25px;
+    }
     .content_wrapper .content_header .course_wrapper .info {
       font-size: 12px;
+      width: 70px;
     }
-    /* 父母信息 */
+
     .content_wrapper .content_item .info_box span,
     .content_wrapper .content_item .item_bottom_con span {
       font-size: 12px;
@@ -1040,17 +1040,13 @@
     .content_wrapper .content_item .item_bottom_con .tip1 {
       display: none;
     }
-    .content_wrapper .content_item .item_bottom_con input {
-      width: 54%;
-    }
+
     .content_wrapper .content_item .item_bottom_con .mom_phone,
     .content_wrapper .content_item .item_bottom_con .father_phone {
       margin-top: 10px;
-      width: 72%;
     }
     .content_wrapper .content_item .item_bottom_con .phone_area {
       padding-left: 95px;
-      width: 100%;
     }
     .content_wrapper .content_item .item_bottom_con label.address_label {
       margin-left: -10px;
@@ -1058,17 +1054,17 @@
     .register_p .item_bottom_con .parent_box input.expressage_address {
       width: 300px;
     }
-    .register_p .item_bottom_con .parent_box label span:first-child{
-      width:70px;
+    .register_p .item_bottom_con .parent_box label span:first-child {
+      width: 70px;
     }
-    .content_wrapper .content_item .item_bottom_con i.name_i{
+    .content_wrapper .content_item .item_bottom_con i.name_i {
       margin-left: 20px;
       margin-right: 8px;
     }
-        .content_wrapper .content_item .item_bottom_con i.phone_info{
-          margin-left: 0;
-        }
-    /* 报名新添加内容 */
+    .content_wrapper .content_item .item_bottom_con i.phone_info {
+      margin-left: 0;
+    }
+
     .content_wrapper .content_item .add_wrapper span {
       font-size: 12px;
       font-weight: normal;
@@ -1082,12 +1078,11 @@
     .content_wrapper .content_item .add_wrapper .textarea {
       width: 258px;
       height: 200px;
-      /* margin-left: 50px; */
     }
     .content_wrapper .content_item .add_wrapper .origin_1,
     .content_wrapper .content_item .add_wrapper .origin_2 {
       display: inline-block;
-      width: 50%;
+
       margin-left: 110px;
     }
     .content_wrapper .content_item .add_wrapper .origin_1 {
@@ -1101,6 +1096,201 @@
     }
     .register_p .add_wrapper .btn_wrapper .submit_btn {
       margin: 0 auto;
+    }
+
+    .register_p .info_box label span:first-child {
+      font-size: 12px;
+      width: 70px;
+      margin-right: 4px !important;
+    }
+
+
+    .register_p .info_box label {
+      height: 46px;
+      line-height: 46px;
+      margin-bottom: 18px;
+    }
+    .register_p .item_bottom_con .parent_box label {
+      margin-bottom: 18px;
+    }
+    .register_p .info_box label.u_name,
+    .register_p .info_box label.sex_label,
+    .register_p .info_box label.c_input,
+    .register_p .info_box label.s_phone,
+    .register_p .info_box label.b_day {
+      display: flex;
+      margin-bottom: 18px;
+      height: 46px;
+      line-height: 46px;
+    }
+    .register_p .info_box label.grade_label .ca_2 {
+      margin-bottom: 0;
+    }
+    .register_p .info_box label.grade_label .sc .school {
+      margin-right: 0;
+    }
+    .register_p .info_box label span:first-child {
+      margin-right: 0;
+    }
+    .register_p .info_box .grade_i,
+    .register_p .info_box .common_i {
+      margin-left: 70px;
+      margin-right: 0;
+    }
+    .register_p .info_box .school_input {
+      width: auto;
+    }
+    .register_p .info_box input,
+    .register_p .info_box .grade_label .grade_select {
+      flex: 1;
+    }
+    .content_wrapper .content_item .add_wrapper .origin_1,
+    .content_wrapper .content_item .add_wrapper .origin_2 {
+      font-size: 12px;
+    }
+    .content_wrapper .content_item .add_wrapper .origin_1 .origin_girl {
+      margin-left: 42px;
+    }
+
+    .register_p .item_bottom_con .parent_box label span:first-child {
+      width: 70px;
+    }
+    .register_p .item_bottom_con .parent_box input {
+      height: 46px;
+    }
+
+    .register_p .parent_box .f_name,
+    .register_p .parent_box .m_name,
+    .register_p .parent_box label.address_label,
+    .register_p .item_bottom_con .phone_area {
+      display: flex;
+      font-size: 12px;
+      height: 46px !important;
+      line-height: 46px;
+      margin-bottom: 18px;
+    }
+    .register_p .add_wrapper .know_label select.know_select {
+      display: inline-block;
+    }
+    .register_p .item_bottom_con .parent_box input,
+    .register_p .add_wrapper .know_label .know_select {
+      flex: 1;
+    }
+    .register_p .add_wrapper label span:first-child {
+      font-size: 12px;
+      height: 46px;
+      line-height: 46px;
+    }
+
+    .content_wrapper .content_item .item_bottom_con i.phone_info {
+      margin-right: 0;
+    }
+    .content_item .item_bottom_con .father_phone,
+    .content_item .item_bottom_con .mom_phone {
+      margin-top: 0!important;
+    }
+    .register_p .add_wrapper label {
+      margin-bottom: 18px;
+    }
+    .register_p .add_wrapper label.know_label .know_area {
+      display: flex;
+    }
+    .register_p .add_wrapper .remark_area {
+      display: flex;
+    }
+    .register_p .add_wrapper .remark_area .textarea {
+      flex: 1;
+    }
+
+    .register_p .add_wrapper .tips_area {
+      width: 100%;
+      margin: 0;
+    }
+    .register_p .info_box .sex_label .sel {
+      margin-left: 0;
+    }
+    .register_p .course_modal_box {
+      width: 90%;
+      max-width: 750px;
+      font-size: 18px;
+      overflow: auto;
+    }
+    .register_p .modal_box_middle label span {
+      font-size: 18px;
+      margin-left: 20px;
+      height: 50px;
+    }
+    .register_p .modal_box_middle label {
+      padding-left: 15%;
+      height: 50px;
+    }
+    .register_p .modal_box_bottom .btn {
+      width: 100px;
+      height: 46px;
+    }
+    .register_p .modal_box_top {
+      height: 50px;
+    }
+
+    .register_p .info_box label {
+      display: flex;
+    }
+    .register_p .info_box input.username {
+      flex: 1;
+    }
+    .content_item .info_box .grade_label i {
+      margin-right: 0;
+    }
+    .register_p .info_box .e_s,
+    .register_p .info_box .am {
+      display: flex;
+      width: 100%;
+    }
+    .register_p .info_box .e_s input,
+    .register_p .info_box .am input {
+      flex: 1;
+    }
+    .register_p .info_box label.honor,
+    .register_p .info_box label.desc,
+    .register_p .info_box .add_wrapper {
+      height: 200px;
+    }
+
+    .register_p .info_box label.grade_label {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .register_p .info_box .grade_label .sc {
+      display: flex;
+      width: auto;
+      margin-right: 0;
+      flex: 1;
+      height: 46px;
+      margin-bottom: 18px !important;
+    }
+    .register_p .info_box .school_input {
+      flex: 1;
+      /* width: 100%; */
+    }
+    .content_wrapper .content_item .info_box .grade_label i {
+      width: 50px;
+    }
+    .register_p .info_box label.grade_label {
+      height: auto;
+      margin-bottom: 0;
+    }
+    .register_p .info_box label.grade_label .grade_area,
+    .register_p .info_box label.grade_label .common_area {
+      width: 100%;
+      display: flex;
+      height: 46px;
+      margin-bottom: 18px;
+    }
+    .register_p .info_box label.gl{
+      display: inline-block;
+      margin-bottom: 18px;
+      width: 100%;
     }
   }
 

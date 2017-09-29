@@ -1,4 +1,5 @@
 <template>
+<div>
     <dl class="content_main_single feedback_single active">
         <p class="info">如果您对我们的工作和服务有任何意见与建议，请填写一下内容进行反馈 ，您的反馈对我们非常重要。为了使您的反馈得到及时回复和处理，请务必完整填写一下信息。谢谢！
         </p>
@@ -12,7 +13,7 @@
                 </select>
             </label>
             <label class="middile_area">
-                <span class="versions">反馈内容：</span>
+                <span class="versions">内容：</span>
                 <textarea name="textarea" class="textarea"></textarea>
                 <span class="tips">注意：最大字数为5000字</span>
             </label>
@@ -22,4 +23,8 @@
             <input type="reset" name="reset" class="reset_btn btn" value="重置">
         </div>
     </dl>
+
+
+</div>
+
 </template>

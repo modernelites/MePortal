@@ -36,23 +36,29 @@
       </div>
       <dl class="content_item">
         <div class="info_box">
-          <label>
+          <label class="u_name">
             <span>姓名：
               <u class="star">*</u>
             </span>
             <input type="text" name="username" class="username" required="" v-model="CourseReg.StuName">
           </label>
           <label class="sex_label">
+            
             <span>性别：
               <u class="star">*</u>
             </span>
-            <input type="radio" name="radio_sex" class="sex_man sex" value="true" v-model="CourseReg.Gender">男
-            <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="CourseReg.Gender">女
+            <div class="s_select">
+              <input type="radio" name="radio_sex" class="sex_man sex" value="true" v-model="CourseReg.Gender">男
+              <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="CourseReg.Gender">女
+            </div>
+
           </label>
-          <label class="grade_label">
-            <span>就读学校： </span>
+          <label class="grade_label gl">
+            <div class="sc">          
+                <span>就读学校： </span>
             <i class="school">学校：</i>
-            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School">
+            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School"></div>
+
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
               <select class="grade_select gs_1" v-model="CourseReg.Grade">
@@ -102,13 +108,13 @@
               </select>
             </div>
           </label>
-          <label>
+          <label class="b_day">
             <span>出生日期：
               <u class="star">*</u>
             </span>
             <input type="date" name="date" class="birth_date" v-model="CourseReg.Birthday">
           </label>
-          <label>
+          <label class="s_phone">
             <span>学员手机：</span>
             <input type="number" name="student_phone" class="student_phone" v-model="CourseReg.StuPhone">
           </label>
@@ -116,25 +122,31 @@
             <span class="common_span">地区 ：</span>
             <region v-on:getRegion="showRegion"></region>
           </label>
-          <label>
-            <span>学员身份证账号:</span>
+          <label class="c_input">
+            <span>学员身份证:</span>
             <input type="text" name="student_phone" class="common_input" v-model="CourseReg.StuIDCardNum">
           </label>
           <label class="sex_label common_label">
             <span>是否是老学员：
               <u class="star">*</u>
             </span>
-            <input type="radio" name="radio_OldStu" class="radio radio_1" value="true" v-model="CourseReg.Is_OldStu">是
+            <div class="sel">
+                          <input type="radio" name="radio_OldStu" class="radio radio_1" value="true" v-model="CourseReg.Is_OldStu">是
             <input type="radio" name="radio_OldStu" class="radio radio_2" value="false" v-model="CourseReg.Is_OldStu">否
+            </div>
+
           </label>
         </div>
         <!-- 下面是个人父母信息 -->
         <div class="item_bottom_con">
           <div class="parent_box">
             <label>
+              <div class="f_name">
               <span>父亲：</span>
               <i class="name_i"> 姓名：</i>
               <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
+              </div>
+
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
                 <input type="number" name="father_phone" class="father_phone" v-model="CourseReg.FPhone">
@@ -142,9 +154,12 @@
               <div class="tip tip1">父亲 &nbsp; 母亲 至少填写一项 </div>
             </label>
             <label>
+              <div class="m_name">
               <span>母亲：</span>
               <i class="name_i"> 姓名：</i>
               <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
+              </div>
+
               <div class="phone_area">
                 <i class="phone_info">手机：</i>
                 <input type="number" name="mom_phone" class="mom_phone" v-model="CourseReg.MPhone">
@@ -152,7 +167,7 @@
               <div class="tip">父亲 &nbsp; 母亲 至少填写一项 </div>
             </label>
             <label class="address_label">
-              <span class="ex_address_info">快递地址（详细）：</span>
+              <span class="ex_address_info">快递地址：</span>
               <input type="text" name="expressage_address" class="expressage_address" v-model="CourseReg.Address">
             </label>
           </div>
@@ -160,8 +175,9 @@
         <!-- 集训营课程报名 新添加内容 -->
         <div class="add_wrapper">
           <label class="origin_label">
+                        <div class="origin_1">
             <span>填表人 ：</span>
-            <div class="origin_1">
+
               <input type="radio" name="radio_origin" class="origin_man origin" value="父亲" v-model="CourseReg.RegName" @click="showRegName=false;">父亲
               <input type="radio" name="radio_origin" class="origin_girl origin" value="母亲" v-model="CourseReg.RegName" @click="showRegName=false;">母亲
               </div>
@@ -181,7 +197,7 @@
             <div class="know_area">
               <span>如何了解到</span>
               <select class="know_select" v-model="CourseReg.Channel">
-                <option value="来源1">来源1</option>
+                <option value="来源1" selected>来源1</option>
                 <option value="来源2">来源2</option>
               </select>
             </div>
@@ -341,6 +357,7 @@
           response = response.body;
           this.Course_Items = response.Data;
           this.Course_Items_Fillter = this.Course_List_Fillter(1);
+          // console.log(this.Course_Items);
         }, function () {
           console.log('请求发送失败');
         });

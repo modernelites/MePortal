@@ -187,6 +187,7 @@
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
           this.CourseType_List = response.Data;
+          this.CourseType_List.splice(4,5);
         }, function () {
           console.log('请求发送失败');
         });
@@ -198,7 +199,15 @@
       CourseList() {
         this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
           response = response.body;
-          this.Course_List = response.Data;
+          let temp = response.Data;
+           temp.forEach(function(item,index,arr) {
+            if (item.CourseTypeID>4) {
+              temp.splice(index);
+            }
+            
+          });
+          this.Course_List = temp;
+          // console.log(this.Course_List[9].CourseTypeID);
         }, function () {
           console.log('请求发送失败');
         });
@@ -601,10 +610,12 @@
       margin: 0;
       width: 100%;
       overflow: hidden;
+      display: flex;
     }
 
     .home_p .m_section_2 .pics_wrapper .m_row .m_col-md-3 {
       padding: 0;
+      flex: 1;
     }
     .home_p .m_section_2 .pics_wrapper .m_row .m_col-md-3 img {
       max-width: 100%;

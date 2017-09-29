@@ -863,20 +863,25 @@
      *{
     font-weight: normal
   }
-      .region .ca {
-      margin-left: 15px;
-      display: inline-block;
-    }
-      .region .common_area select{
-        width: 72%;
-        display: inline;
-      }
-      .region .ca_1{
-        margin-left: 4px; 
-
-      }
-            .region .ca_2{
-        margin-left: 15px;
-      }
+  .region{
+    width: 100%;
+  }
+  .region .common_area{
+    /* display: flex; */
+  }
+  .region .common_area select.common_select
+  {
+    flex: 1;
+  }
+  .region .ca i{
+  margin-left: 70px;
+  margin-right: 0;
+  }
+.region .ca_2 .common_i{
+  /* margin-right: 10px; */
+}
+.region .ca_2{
+  margin-bottom: 0;
+}
   }
 </style>

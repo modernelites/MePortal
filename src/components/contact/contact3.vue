@@ -17,14 +17,14 @@
                 <span class="district"> 上海校区电话:</span>
                 <a href="tel:15632565626" title="">12345678901</a>
             </li>
-            <li>
+            <!-- <li>
                 <span class="district"> 上海校区电话:</span>
                 <a href="tel:15632565626" title="">12345678901</a>
             </li>
             <li>
                 <span class="district"> 上海校区电话:</span>
                 <a href="tel:15632565626" title="">12345678901</a>
-            </li>
+            </li> -->
         </ul>
     </dl>
 </template>

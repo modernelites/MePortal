@@ -1,7 +1,7 @@
 <template>
   <div class="contact_us_p">
     <my-header></my-header>
-    <div class="content_wrapper w_1000">
+    <div class="content_wrapper ">
       <div class="conent_left">
         <ul class="nav_list" id="contact_us_p_nav_list">
           <li @click="select(0)"><a href="#/contact/contact1" :class="{'active':selectType===0}" class="nav_item">地址</a></li>
@@ -146,7 +146,7 @@ export default {
   padding: 30px 20px 60px;
 }
 
-.contact_us_p .content_right .map_wrapper {}
+/* .contact_us_p .content_right .map_wrapper {} */
 
 .contact_us_p .content_right .map_single .address {
   font-size: 16px;
@@ -317,4 +317,165 @@ export default {
   background: #fb3030;
 }
 
+
+
+  @media screen and (max-width: 1205px) {
+  .contact_us_p{
+    max-width: 750px;
+    min-width: 320px;
+    margin: 0 auto;
+    height: auto;
+  }
+  .contact_us_p .content_wrapper{
+    width: auto;
+  }
+  .contact_us_p .content_wrapper .conent_left{
+    width: 100%;
+    /* display: block; */
+    height: 33px;
+    flex: 1 112;
+  
+  }
+  .contact_us_p .content_right{
+    margin-top: 10px;
+    width:100%;
+    flex: auto;
+    margin-bottom: 0;
+  }
+  .contact_us_p .content_wrapper{
+   flex-direction: column
+  }
+  .contact_us_p .content_wrapper .conent_left .nav_list{
+    width: 100%;
+    height: 100%;
+/* overflow: hidden; */
+  }
+  .contact_us_p .content_wrapper .conent_left li{
+        float: left;
+    width: 25%;
+    /* font-size: 12px; */
+  }
+  .contact_us_p .content_wrapper .conent_left a{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+    height: 32px;
+    line-height: 32px;
+   padding: 0;
+  }
+  .contact_us_p .content_wrapper .conent_left a.active:before{
+          content: ' ';
+      position: absolute;
+      left: 0;
+      top: 32px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: #f24d4d !important;
+  }
+  .contact_us_p .content_right .content_main_single.active{
+    width: 100%;
+    padding:0 10px;
+  }
+  .contact_us_p .content_right .map_single .address{
+    font-size: 12px;
+    padding: 28px 0 36px 20px;
+    font-weight: 700;
+  }
+  .contact_us_p .content_con .item.active{
+    display: block;
+    padding: 40px 38px 0;
+  }
+  .contact_us_p .content_right .mail_single ul,
+   .contact_us_p .content_right .phone_single ul{
+          padding: 40px 37px;
+  }
+  .contact_us_p .content_right .mail_single .district,
+  .contact_us_p .content_right .phone_single .district{
+    margin-bottom: 10px;
+  }
+  .contact_us_p .content_right .mail_single a,
+  .contact_us_p .content_right .phone_single a{
+    margin-bottom: 10px;
+    text-align: right;
+  }
+  .contact_us_p .content_right .feedback_single .info{
+    margin-top: 20px;
+  }
+ 
+  .contact_us_p .content_right .feedback_object{
+    font-size: 14px;
+width:70px;
+line-height: 70px;
+margin-right: 20px;
+  }
+  .contact_us_p .content_right .feedback_box{
+    /* padding-top: 20px; */
+    position: relative;
+    height: 342px;
+  }
+    .contact_us_p .content_right .feedback_box .top_area{
+    padding-left: 20px;
+    /* padding-top: 20px; */
+    /* width: 70px; */
+    height: 70px;
+    display: flex;
+  }
+   .contact_us_p .content_right .top_area .select_object{
+     flex: 1;
+     margin-right: 10px;
+     margin-top:10px; 
+    /* width: 90%; */
+    /* min-width: 170px;
+    max-width: 600px; */
+    /* height: 46px;
+    position: absolute;
+    top: 45px;
+    left: 90px; */
+  }
+  .contact_us_p .content_right .middile_area{
+  padding-top: 12px;
+  width: 100%;
+  display: flex;
+}
+  .contact_us_p .content_right .middile_area .versions{
+    padding: 0;
+    width:100px;
+    text-align: center;
+    line-height: 272px;
+  }
+.contact_us_p .content_right .middile_area .textarea{
+  height: 227px;
+  padding: 0;
+  margin: 0 10px;
+  /* width: auto; */
+flex: 1;
+}
+.contact_us_p .content_right .middile_area .tips{
+  display: block;
+  /* width: 100%; */
+  position: absolute;
+  bottom: 10px;
+  left: 110px;
+  font-size: 10px;
+  padding:0;
+  color: #ccc;
+}
+
+
+
+.contact_us_p .content_right .btn_wrapper .btn{
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.contact_us_p .content_right .btn_wrapper .reset_btn{
+  margin-left: 20px;
+}
+
+
+  }
 </style>
