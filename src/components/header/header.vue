@@ -40,7 +40,7 @@
             <span class="icon-bar icon-bar_1"></span>
             <span class="icon-bar icon-bar_2"></span>
             <span class="icon-bar icon-bar_3"></span>
-          </a> 
+          </a>
         </div>
         <div class="header_search_box">
           <form method="" action="">
@@ -247,7 +247,7 @@
         this.$http.get(path + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
           this.CourseType_List = response.Data;
-          this.CourseType_List.splice(4,5);
+          this.CourseType_List.splice(4, 5);
         }, function () {
           console.log('请求发送失败');
         });
@@ -742,13 +742,12 @@
   }
   /* 移动端适配 */
 
-  @media screen  and (max-width: 1105px) {
+  @media screen and (max-width: 1105px) {
     .inner_header {
       height: 90%;
       background: url("./../../assets/img/header@2x.png") no-repeat;
       background-size: 100% 100%;
       width: 100%;
-      
     }
     .inner_nav,
     .toggle_search_btn,
@@ -780,11 +779,9 @@
       left: 50%;
       width: 100%;
       height: 100%;
-      /* max-width: 750px; */
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.7);
       z-index: 400;
-      /*display: none;*/
     }
     .inner_header .search_head {
       display: box;
@@ -815,7 +812,6 @@
     }
     .inner_header .nav_wrapper {
       padding: 18px 20px 0;
-      /*display: none;*/
     }
     .header_search_box .header_search_input {
       width: 0;
@@ -922,20 +918,6 @@
     .inner_header .search_list .list .item .apply_btn:hover {
       background: #fff500;
     }
-
-
-
-
-
   }
-      /* @media screen and (min-width:750px) and (max-width: 1205px){
-      .inner_header{
-        height: 120px;
-      }
-      .inner_header .m_header .toogle_btn{
-        top: 44px;
-        right: 44px;
-      }
-    } */
 
 </style>

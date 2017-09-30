@@ -12,7 +12,7 @@
           <transition name="fade">
             <div class="option_wrapper" id="option_wrapper" ref="option_wrapper" v-show="slidShow">
               <div v-for="(m,index) in CourseType_Items" data-value="0" class="option">
-                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
+                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID+'/0'">{{m.CourseTypeName}}</a>
               </div>
             </div>
           </transition>
@@ -160,8 +160,9 @@
         </div>
 
         <div class="info_box">
-          <label>
+          <label class="info_b">
             <div class="e_s">
+
               <span>优先条件：</span>
               <i class="name_i"> 摩英优秀学员：</i>
               <input type="radio" style="margin-left: 10px;" name="Is_Fine" class=" sex" value="true" v-model="CourseReg.Is_Fine">是

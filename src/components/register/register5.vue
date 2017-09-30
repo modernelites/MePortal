@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="content_wrapper" @click="slidShow=false">
+    <div @click="slidShow=false">
       <div class="content_header">
         <h3 class="title_3"> 报名</h3>
         <div class="select_wrapper" id="select_wrapper">
@@ -12,7 +12,7 @@
           <transition name="fade">
             <div class="option_wrapper" id="option_wrapper" ref="option_wrapper" v-show="slidShow">
               <div v-for="(m,index) in CourseType_Items" data-value="0" class="option">
-                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
+                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID+'/0'">{{m.CourseTypeName}}</a>
               </div>
             </div>
           </transition>
@@ -32,10 +32,13 @@
               <input type="text" name="username" class="username" required="" v-model="CourseReg.StuName">
             </label>
             <label class="grade_label">
-              <span>就读学校： </span>
+              <div class="sc">
+                              <span>就读学校： </span>
               <i>学校：</i>
               <input type="text" name="school_input" class="school_input" v-model="CourseReg.School"
-                     style="width:200px">
+                     >
+              </div>
+
               <div class="grade_area">
                 <i class="grade_i"> 年级：</i>
                 <select class="grade_select" v-model="CourseReg.Grade">

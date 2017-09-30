@@ -1271,7 +1271,6 @@
     }
     .register_p .info_box .school_input {
       flex: 1;
-      /* width: 100%; */
     }
     .content_wrapper .content_item .info_box .grade_label i {
       width: 50px;
@@ -1292,6 +1291,20 @@
       margin-bottom: 18px;
       width: 100%;
     }
+.register_p .info_box label.info_b{
+  display: inline-block;
+    margin-bottom: 18px;
+}
+.register_p .info_box .am{
+  margin-left: 35px;
+
+}
+.register_p .add_wrapper .remark_area{
+  margin-top: 18px;
+}
+.register_p .info_box label i.phone_info{
+  margin-right: 0;
+}
   }
 
 </style>

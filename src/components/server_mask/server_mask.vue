@@ -299,7 +299,7 @@ div.service_shade_con .btn_wrap {
   }
 
 .service_shade_con {
-  width: 96%;
+  width: 98%;
   max-width: 750px;
   height: 222px;
   padding-bottom: 36px;
@@ -399,8 +399,22 @@ div.service_shade_con .btn_wrap {
 
 .service_shade_con .service_link {
   padding: 12px 0 0;
+  /* display: flex; */
+  width:100%;
+  margin: 0;
+  margin-left: 10px;
+  /* text-align: center; */
 }
-
+.service_shade_con .service_link .m_col-lg-4{
+  padding: 0;
+}
+.service_shade_con .service_link .line_ser,
+.service_shade_con .service_link .we_char,
+.service_shade_con .service_link .phone{
+/* flex:1; */
+padding: 0;
+background-size: contain;
+}
 .service_shade_con .service_link a {
   display: block;
   height: 100%;
@@ -408,7 +422,11 @@ div.service_shade_con .btn_wrap {
 }
 
 .service_shade_con .service_link .line_ser {
-  background: url("./../../assets/img/12_line_ser_1@2x.png") no-repeat center center;
+  background: url("./../../assets/img/在线客服（选择）@2x.png") no-repeat center;
+  background-size: contain;
+  height:35px;
+  width: 100px;
+  margin: 0 auto;
 }
 
 .service_shade_con .service_link .we_char {
@@ -459,5 +477,7 @@ div.service_shade_con .btn_wrap {
 }
 
   
+
+
 }
 </style>
