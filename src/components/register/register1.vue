@@ -12,7 +12,7 @@
           <transition name="fade">
             <div class="option_wrapper" id="option_wrapper" ref="option_wrapper" v-show="slidShow">
               <div v-for="(m,index) in CourseType_Items" data-value="0" class="option">
-                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
+                <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID+'/0'">{{m.CourseTypeName}}</a>
               </div>
             </div>
           </transition>
@@ -330,17 +330,17 @@
         console.log(this.CourseReg.Area)
       },
       selectOption(m) {
-        this.slidShow = false;
-        this.SelectCourseType = m;
-        this.SelectCourse = {
-          CourseName: "",
-          CourseID: 0
-        };
-        this.SelectPeriod = {
-          PeriodName: "",
-          PeriodID: 0
-        };
-        this.Course_Items_Fillter = this.Course_List_Fillter(m.CourseTypeID);
+        // this.slidShow = false;
+        // this.SelectCourseType = m;
+        // this.SelectCourse = {
+        //   CourseName: "",
+        //   CourseID: 0
+        // };
+        // this.SelectPeriod = {
+        //   PeriodName: "",
+        //   PeriodID: 0
+        // };
+        // this.Course_Items_Fillter = this.Course_List_Fillter(m.CourseTypeID);
       },
       CourseType_List() {
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {

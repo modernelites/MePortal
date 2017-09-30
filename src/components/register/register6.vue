@@ -11,8 +11,8 @@
           </div>
           <transition name="fade">
             <div class="option_wrapper" id="option_wrapper" ref="option_wrapper" v-show="slidShow">
-              <div v-for="(m,index) in CourseType_Items" data-value="0" class="option"><a @click="selectOption(m)"
-                                                                                          :href="'#/register/register'+m.CourseTypeID">{{m.CourseTypeName}}</a>
+              <div v-for="(m,index) in CourseType_Items" data-value="0" class="option">
+                 <a @click="selectOption(m)" :href="'#/register/register'+m.CourseTypeID+'/0'">{{m.CourseTypeName}}</a>
               </div>
             </div>
           </transition>
