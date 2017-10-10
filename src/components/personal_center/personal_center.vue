@@ -47,10 +47,10 @@
           </div>
           <div class="right_wrapper">
             <div class="info_wrapper clearfix">
-              <span class="name">Yvonne</span>
+              <span class="name">{{!user.UserName?user.LoginName:user.UserName}}</span>
               <div class="info">
-                <span class="grade">初二 | </span>
-                <span class="age">12 岁</span>
+                <span class="grade">{{!user.Grade?'年级:未填写':user.Grade}} |</span>
+                <span class="age">{{user.Birthday|datediff}} 岁</span>
               </div>
               <a href="#/modification_data/modification_data1" class="mod_btn">修改资料</a>
               <!-- 模拟下拉列表 -->
@@ -322,7 +322,11 @@
     transform: scale(1);
   }
 
-  .personal_center_p .content_item_table {
+  .personal_center_p .nav_item{
+    width:920px;
+  }
+
+  .personal_center_p .content_item .content_item_table {
     width: 100%;
   }
 
