@@ -54,7 +54,7 @@
   }
 
   .content_wrapper {
-    width: 1000px; 
+    width: 1000px;
     margin: 0 auto;
   }
 
@@ -1046,10 +1046,10 @@
       margin-top: 10px;
     }
     .content_wrapper .content_item .item_bottom_con .phone_area {
-      padding-left: 95px;
+      padding-left: 90px;
     }
     .content_wrapper .content_item .item_bottom_con label.address_label {
-      margin-left: -10px;
+      /* margin-left: -10px; */
     }
     .register_p .item_bottom_con .parent_box input.expressage_address {
       width: 300px;
@@ -1063,6 +1063,7 @@
     }
     .content_wrapper .content_item .item_bottom_con i.phone_info {
       margin-left: 0;
+      margin-right: 8px;
     }
 
     .content_wrapper .content_item .add_wrapper span {
@@ -1182,9 +1183,6 @@
       line-height: 46px;
     }
 
-    .content_wrapper .content_item .item_bottom_con i.phone_info {
-      margin-right: 0;
-    }
     .content_item .item_bottom_con .father_phone,
     .content_item .item_bottom_con .mom_phone {
       margin-top: 0!important;
@@ -1286,25 +1284,36 @@
       height: 46px;
       margin-bottom: 18px;
     }
-    .register_p .info_box label.gl{
+    .register_p .info_box label.gl {
       display: inline-block;
       margin-bottom: 18px;
       width: 100%;
     }
-.register_p .info_box label.info_b{
-  display: inline-block;
-    margin-bottom: 18px;
-}
-.register_p .info_box .am{
-  margin-left: 35px;
+    .register_p .info_box label.info_b {
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .register_p .info_box .am {
+      margin-left: 35px;
+    }
+    .register_p .add_wrapper .remark_area {
+      margin-top: 18px;
+    }
+    .register_p .info_box label i.phone_info {
+      margin-right: 0;
+    }
 
-}
-.register_p .add_wrapper .remark_area{
-  margin-top: 18px;
-}
-.register_p .info_box label i.phone_info{
-  margin-right: 0;
-}
+
+    .register_p .add_wrapper .tips_area {
+      /* background: none; */
+      background-size: 16px, 16px;
+      padding-left: 18px;
+      padding-top: 2px;
+      text-align: left;
+    }
+    .register_p .add_wrapper .tips_item_2{
+      padding-left: 59px;
+    }
   }
 
 </style>

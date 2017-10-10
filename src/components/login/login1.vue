@@ -33,7 +33,11 @@ export default {
   methods: {
     // 用户登录方法
     loginMethod: function() {
-      let userName = this.$refs.username.value;
+      // if (userName === null) {
+        console.log('未登录');
+      // } else {
+
+     let userName = this.$refs.username.value;
       let passWord = md5(md5(this.$refs.password.value));
       if (!userName || !passWord) {
         this.tips = '账号或者密码为空 请重新输入';
@@ -55,7 +59,9 @@ export default {
       }, function() {
         console.log('请求发送失败');
       });
-    }
+      }
+
+    // }
   }
 };
 

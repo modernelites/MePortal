@@ -25,13 +25,28 @@
             <img v-if="!Course_Con.FilePath" src="./../../assets/img/sec_con_bg_1.png" width="100%" height="auto">
             <img :src="Course_Con.FilePath" width="100%" height="auto" v-if="Course_Con.FilePath">
             <a href="javascript:;" class="img_wrap_btn">{{Course_Con.CourseName}}</a>
+
+
+            <div class="camp_nav" :class="{active:show}">
+              <h3 class="title" v-on:click="show=!show">{{Course_Con.CourseName}}
+                <i class="icon"></i>
+              </h3>
+              <ul class="camp_list">
+                <li class="item" v-for="item in Course_List">
+                  <a href="javascript:;" @click="CourseItemCon(item),show=false"> {{item.CourseName}}</a>
+                </li>
+              </ul>
+            </div>
+
+
+
           </div>
           <div class="course_wrap">
             <h3 class="title_3"> 课程介绍</h3>
             <p class="text" v-html="Course_Con.Brief">
             </p>
           </div>
-          <!--  <div class="img_small_wrap">
+          <!-- <div class="img_small_wrap">
               <div class="m_row clearfix">
                 <div class="m_col-lg-6">
                   <img src="./../../assets/img/smail_2.png">
@@ -105,7 +120,8 @@
         CourseTypeItemID: this.$route.params.ctid,
         CourseItemID: this.$route.params.cid,
         Course_Con: {},
-        Teacher_Con: {}
+        Teacher_Con: {},
+        show: false
       };
     },
     created() {},
@@ -130,43 +146,56 @@
           console.log('请求发送失败');
         });
       },
-      CourseItemCon() {
-        // 过滤课程
-        for (var i = 0; i < this.Course_List.length; i++) {
-          if (this.Course_List[i].CourseID == this.$route.params.cid) {
-            this.Course_Con = this.Course_List[i];
-          }
+      // CourseItemCon() {
+      //   // 过滤课程
+      //   for (var i = 0; i < this.Course_List.length; i++) {
+      //     if (this.Course_List[i].CourseID == this.$route.params.cid) {
+      //       this.Course_Con = this.Course_List[i];
+      //     }
+      //   }
+      // },
+      CourseItemCon(item) {
+        if (item) {
+          this.CourseItemID = item.CourseID || this.CourseItemID;
         }
-      },
-      TeacherCon(tids) {
-        this.$http.get(this.ApiUrl + 'me/Teacher/Teacher_Get?Teachers=' + tids).then((response) => {
-          //debugger
+        this.$http.get(this.ApiUrl + 'me/Course/Course_Get?CourseID=' + this.CourseItemID).then((response) => {
           response = response.body;
-          this.Teacher_Con = response.Data;
+          this.Course_Con = response.Data;
+          this.Course_Name = this.Course_Con.CourseName;
         }, function () {
           console.log('请求发送失败');
         });
-      },
-      select(item) {
-        this.selectType = item.CourseTypeID;
-      },
-      CourseListFillter(m, p) {
-        var arr = [];
-        for (var i = 0; i < m.length; i++) {
-          if (m[i].CourseTypeID == p) {
-            arr.push(m[i]);
-          }
-        }
-        return arr;
-      },
-      getUrl() {
-        this.CourseTypeItemID = this.$route.params.ctid;
-        this.CourseItemID = this.$route.params.cid;
-        this.selectType = this.CourseTypeItemID;
-        this.CourseItemCon();
-      }
+      
     },
-    watch: {
+    TeacherCon(tids) {
+      this.$http.get(this.ApiUrl + 'me/Teacher/Teacher_Get?Teachers=' + tids).then((response) => {
+        //debugger
+        response = response.body;
+        this.Teacher_Con = response.Data;
+      }, function () {
+        console.log('请求发送失败');
+      });
+    },
+    select(item) {
+      this.selectType = item.CourseTypeID;
+    },
+    CourseListFillter(m, p) {
+      var arr = [];
+      for (var i = 0; i < m.length; i++) {
+        if (m[i].CourseTypeID == p) {
+          arr.push(m[i]);
+        }
+      }
+      return arr;
+    },
+    getUrl() {
+      this.CourseTypeItemID = this.$route.params.ctid;
+      this.CourseItemID = this.$route.params.cid;
+      this.selectType = this.CourseTypeItemID;
+      this.CourseItemCon();
+    }
+  },
+  watch: {
       // 如果路由有变化，会再次执行该方法
       "$route": "getUrl"
 
@@ -518,6 +547,10 @@
     text-decoration: none;
   }
 
+  .training_camp_p .camp_nav {
+    display: none !important;
+  }
+
   @media screen and (max-width: 1205px) {
     .training_camp_p {
       max-width: 750px;
@@ -548,6 +581,7 @@
       font-size: 16px;
       position: absolute;
       bottom: -25px;
+      display: none;
     }
     .training_camp_p .tab_con {
       position: absolute;
@@ -589,6 +623,79 @@
       padding-bottom: 0;
       padding-top: 0;
       /* margin-bottom: 20px; */
+    }
+
+
+
+
+
+    .training_camp_p .img_wrap .camp_nav {
+      position: absolute;
+      width: 200px;
+      position: absolute;
+      left: 50%;
+      width: 200px;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: block !important;
+    }
+
+    .training_camp_p .camp_nav .title {
+      width: 210px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: linear-gradient(90deg, #f24f4f, #f28585);
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff;
+      margin-top: -25px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .training_camp_p .camp_nav .title .icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: url("./../../assets/img/camp_menu_down@2x.png") no-repeat;
+      background-size: 14px 9px;
+      position: absolute;
+      top: 16px;
+      right: 10px;
+      transform: rotate(-180deg);
+    }
+
+    .training_camp_p .camp_list {
+      padding: 5px;
+      width: 210px;
+      background: #fff;
+      display: none;
+    }
+
+    .training_camp_p .camp_nav.active .camp_list {
+      display: block;
+    }
+
+    .training_camp_p .camp_nav.active .icon {
+      top: 22px;
+      transform: rotate(0deg);
+    }
+
+    .training_camp_p .camp_list .item {
+      text-align: center;
+    }
+
+    .training_camp_p .camp_list .item a {
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      color: #656565;
+      transition: all .3s ease;
+    }
+
+    .training_camp_p .camp_list .item a:hover {
+      color: #000;
     }
   }
 

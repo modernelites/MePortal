@@ -73,7 +73,7 @@ body,
   height: 600px;
 }
   @media screen and (max-width: 1205px) {
-  
+
   
   
   }

@@ -104,7 +104,7 @@
               <ul class="nav_list">
                 <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID) ">
                   <a :href=" '#/training_camp/' +item.CourseTypeID+'/'+ courseItem.CourseID ">{{courseItem.CourseName}}</a>
-                                    <!-- <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link> -->
+                  <!-- <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link> -->
                 </li>
               </ul>
             </div>
@@ -187,7 +187,7 @@
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
           this.CourseType_List = response.Data;
-          this.CourseType_List.splice(4,5);
+          this.CourseType_List.splice(4, 5);
         }, function () {
           console.log('请求发送失败');
         });
@@ -200,11 +200,11 @@
         this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
           response = response.body;
           let temp = response.Data;
-           temp.forEach(function(item,index,arr) {
-            if (item.CourseTypeID>4) {
+          temp.forEach(function (item, index, arr) {
+            if (item.CourseTypeID > 4) {
               temp.splice(index);
             }
-            
+
           });
           this.Course_List = temp;
           // console.log(this.Course_List[9].CourseTypeID);

@@ -21,8 +21,13 @@
     },
     methods: {
       getLoginName(data) {
-        this.loginName = data;
-        console.log(this.loginName);
+        if (data === null) {
+          console.log('未登录');
+        }else{
+          this.loginName = data;
+          console.log(this.loginName);
+        }
+
       }
     },
     mounted() {
@@ -253,6 +258,9 @@
       min-height: 300px;
       box-shadow: 0 0 20px rgba(0, 0, 0, .3);
       max-width: 388px;
+    }
+    .login_p .tips{
+      background-color: #353535;
     }
   }
 

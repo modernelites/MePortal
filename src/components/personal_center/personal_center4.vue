@@ -3,7 +3,7 @@
     <table class="content_item_table" v-show="CourseReg_Items.length>0">
       <!-- <caption>table title and/or explanatory text</caption> -->
       <thead>
-      <tr>
+      <tr class='table_h'>
         <th>课程名称</th>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -14,7 +14,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="m in CourseReg_Items">
+      <tr v-for="m in CourseReg_Items" class="table_content">
         <td v-text="m.CourseName"></td>
         <td>{{m.StartDate | datefmt}}</td>
         <td>{{m.EndDate | datefmt}}</td>
@@ -79,3 +79,27 @@
   }
 
 </script>
+<style>
+  @media screen and (max-width: 1205px) {
+  
+.content_item .content_item_table tr.table_h th{
+    display: none;
+  }
+  
+  .content_item .content_item_table tr.table_content{
+    display: flex;
+    flex-direction:column;
+    height: 316px;
+    width: 100%;
+  }
+   .content_item .content_item_table tr.table_content td{
+     display: block;
+     flex: 1;
+     line-height: 52px;
+     text-align: center;
+     /* padding-left: 10%; */
+     width: 120%;
+   }
+  
+  }
+</style>

@@ -399,42 +399,6 @@
     .personal_center_p .m_content {
       display: block;
     }
-    /* .personal_center_p .pic_wrappper{
-      width:96px;
-      height: 96px;
-      left: 98px;
-      top:-48px;
-      z-index: 1;
-      float: left;
-    }
-    img{
-      width: 96px;
-    }
-  .personal_center_p .content_wrapper{
-    width: 96%;
-    margin: 0 auto;
-  }
-  .personal_center_p .portrai_wrapper .name{
-    font-size: 16px;
-    padding-top: 16px;
-    margin-left: 106px;
-    text-align: left;
-  }
-  .personal_center_p .mod_btn{
-    font-size: 10px;
-    }
-    .personal_center_p .mod_btn:before{
-      width: 7px;
-      height: 10px;
-      background-size: contain;
-      margin-right: 4px;
-    }
-  .personal_center_p .portrai_wrapper .info{
-    position: absolute;
-    top: 16px;
-    left: 50%;
-    font-size: 10px;
-  }*/
     .personal_center_p .m_content {
       margin-top: 66px;
     }
@@ -760,7 +724,13 @@
       bottom: 60px;
       left: 20%;
     }
+.personal_center_p .content_bottom{
+  width: 100%;
+}
 
+.personal_center_p .content_bottom .right_area{
+  text-align: center
+}
   }
 
 </style>

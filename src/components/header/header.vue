@@ -116,6 +116,10 @@
                   </li>
                 </ul>
               </li>
+
+              <li class="nav_item">
+                <a href="javsscript:;" @click="m_logout(),searchWrapShow=false,navWrapperShow=false">退出登录</a>
+              </li>
             </ul>
           </nav>
         </transition>
@@ -172,11 +176,18 @@
         searchHeadeShow: false,
         navWrapperShow: false,
         searchListShow: false,
-        navSubListShow: false,
+        navSubListShow: true,
         CourseType_List: {},
         Course_List: [],
         CourseID_List: []
       };
+    },
+    filter:{
+      login:function(){
+        if (condition) {
+          
+        }
+      }
     },
     methods: {
       CourseListFillter(m, p) {
@@ -231,6 +242,18 @@
         window.localStorage.setItem("user", '');
         window.location.reload(true);
         this.getUser();
+      },
+      m_logout(){
+        if (window.localStorage.hasOwnProperty('user')) {
+                  this.getUser();
+        window.localStorage.removeItem("user");
+        window.location.reload(true);
+        console.log('logout');
+        window.location.href = "#/index";
+        } else {
+          window.location.href = "#/login/login1";
+        }
+
       }
     },
     created() {
@@ -748,6 +771,7 @@
       background: url("./../../assets/img/header@2x.png") no-repeat;
       background-size: 100% 100%;
       width: 100%;
+    z-index: 999;
     }
     .inner_nav,
     .toggle_search_btn,
@@ -781,7 +805,7 @@
       height: 100%;
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.7);
-      z-index: 400;
+      z-index: 999;
     }
     .inner_header .search_head {
       display: box;
