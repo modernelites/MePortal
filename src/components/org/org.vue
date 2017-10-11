@@ -152,6 +152,8 @@
   @import url("../../assets/css/media.css");
   .sub_mechanism_p {
     background: #f7f7f7;
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .sub_mechanism_p .content_wrapper {
@@ -302,6 +304,7 @@
       max-width: 750px;
       min-width: 320px;
       margin: 0 auto;
+      width: auto;
     }
     .sub_mechanism_p .content {
 

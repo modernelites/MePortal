@@ -3,6 +3,8 @@
   <div>
     <header class="inner_header">
       <div class="inner_header_con" v-bind:class="{ search_active: showSearch }">
+
+        <a :href="'#/index'" class="m_logo"></a>
         <div class="inner_header_con_top">
           <a href="#/" class="logo_link">
             <img src="./../../assets/img/logo_2.png" alt="logo" class="logo">
@@ -118,7 +120,7 @@
               </li>
 
               <li class="nav_item">
-                <a href="javsscript:;" @click="m_logout(),searchWrapShow=false,navWrapperShow=false">退出登录</a>
+                <a href="javascript:;" @click="m_logout(),searchWrapShow=false,navWrapperShow=false">退出登录</a>
               </li>
             </ul>
           </nav>
@@ -182,10 +184,10 @@
         CourseID_List: []
       };
     },
-    filter:{
-      login:function(){
+    filter: {
+      login: function () {
         if (condition) {
-          
+
         }
       }
     },
@@ -243,13 +245,13 @@
         window.location.reload(true);
         this.getUser();
       },
-      m_logout(){
+      m_logout() {
         if (window.localStorage.hasOwnProperty('user')) {
-                  this.getUser();
-        window.localStorage.removeItem("user");
-        window.location.reload(true);
-        console.log('logout');
-        window.location.href = "#/index";
+          this.getUser();
+          window.localStorage.removeItem("user");
+          window.location.reload(true);
+          console.log('logout');
+          window.location.href = "#/index";
         } else {
           window.location.href = "#/login/login1";
         }
@@ -767,18 +769,29 @@
 
   @media screen and (max-width: 1105px) {
     .inner_header {
-      height: 90%;
-      background: url("./../../assets/img/header@2x.png") no-repeat;
-      background-size: 100% 100%;
-      width: 100%;
-    z-index: 999;
+      height: 60px;
+      background: url("./../../assets/img/header@2x.png") no-repeat center;
+      /* background-size: 100% 100%; */
+      /* width: 100%; */
+      z-index: 999;
+      /* float: left; */
     }
     .inner_nav,
     .toggle_search_btn,
     .logo {
       display: none;
     }
-
+    .inner_header .inner_header_con .m_logo{
+      position: absolute;
+    top: 15px;
+    left: 15px;
+      height: 30px;
+      width: 28px;
+      background: url("./../../assets/img/logo.png") no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      z-index: 999;
+    }
     .inner_header .m_header .toogle_btn {
       width: 22px;
       height: 18px;
@@ -806,6 +819,7 @@
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.7);
       z-index: 999;
+      float: none;
     }
     .inner_header .search_head {
       display: box;
@@ -827,7 +841,7 @@
       border: none;
     }
     .inner_header .search_head .search_btn {
-      width: 24px;
+      width: 26px;
       height: 40px;
       margin-left: 22px;
       background: url("./../../assets/img/search@2x.png") no-repeat center;
@@ -853,10 +867,10 @@
       position: relative;
     }
     .inner_header .search_head .close_btn {
-      width: 20px;
+      width: 26px;
       height: auto;
       margin-right: 22px;
-      background: url("./../../assets/img/search_close@2x.png") no-repeat center;
+      background: url("./../../assets/img/search_close@2x.png") no-repeat right;
       background-size: 20px;
       cursor: pointer;
     }

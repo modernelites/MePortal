@@ -53,31 +53,31 @@
               <div class="title_3 title_3_i_1">
                 <img src="./../../assets/img/t1.jpg">
               </div>
-              <a href="javascript:;" class="btn details_btn_i_3"></a>
+              <a :href="'#/training_camp/1/11'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_2">
                 <img src="./../../assets/img/t2.jpg">
               </div>
-              <a href="javascript:;" class="btn details_btn_i_2"></a>
+              <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <img src="./../../assets/img/t3.jpg">
               </div>
-              <a href="javascript:;" class="btn details_btn_i_3"></a>
+              <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <img src="./../../assets/img/t4.jpg">
               </div>
-              <a href="javascript:;" class="btn details_btn_i_1"></a>
+              <a :href="'#/training_camp/1/2'" class="btn details_btn_i_1"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <img src="./../../assets/img/t5.jpg">
               </div>
-              <a href="javascript:;" class="btn details_btn_i_1"></a>
+              <a :href="'#/training_camp/4/19'" class="btn details_btn_i_1"></a>
             </div>
           </div>
           <!-- Add Arrows -->
@@ -110,7 +110,7 @@
             </div>
           </div>
         </div>
-
+        <!-- <div class="swiper-scrollbar"></div> -->
         <div class="swiper-button-next swiper-button-next-1"></div>
         <div class="swiper-button-prev swiper-button-prev-1"></div>
       </div>
@@ -124,23 +124,23 @@
           <div class="swiper-wrapper">
             <div class="swiper-item swiper-slide">
               <img src="./../../assets/img/t1.jpg">
-              <a href="javascript:;" class="btn details_btn_i_1"></a>
+              <a :href="'#/training_camp/1/11'" class="btn details_btn_i_1"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <img src="./../../assets/img/t2.jpg">
-              <a href="javascript:;" class="btn details_btn_i_2"></a>
+              <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <img src="./../../assets/img/t3.jpg">
-              <a href="javascript:;" class="btn details_btn_i_3"></a>
+              <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <img src="./../../assets/img/t4.jpg">
-              <a href="javascript:;" class="btn details_btn_i_3"></a>
+              <a :href="'#/training_camp/1/2'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <img src="./../../assets/img/t5.jpg">
-              <a href="javascript:;" class="btn details_btn_i_3"></a>
+              <a :href="'#/training_camp/4/19'" class="btn details_btn_i_3"></a>
             </div>
           </div>
           <!-- Add Pagination -->
@@ -176,27 +176,23 @@
         banner2: '../static/images/1_banner@3x.png',
         banner3: '../static/images/1_banner@3x.png',
         CourseType_List: {},
-        Course_List: [],
+        Course_List: {},
         showNum: 4
-
       };
     },
     created() {
       // 获取课程类型列表
+      var path = globalPath();
       this.$nextTick(function () {
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
           this.CourseType_List = response.Data;
           this.CourseType_List.splice(4, 5);
+          // console.log(this.CourseType_List);
         }, function () {
           console.log('请求发送失败');
         });
 
-      })
-    },
-    methods: {
-      // 获取课程列表
-      CourseList() {
         this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
           response = response.body;
           let temp = response.Data;
@@ -204,14 +200,30 @@
             if (item.CourseTypeID > 4) {
               temp.splice(index);
             }
-
           });
           this.Course_List = temp;
-          // console.log(this.Course_List[9].CourseTypeID);
         }, function () {
           console.log('请求发送失败');
         });
-      },
+      })
+    },
+    methods: {
+      // 获取课程列表
+      // CourseList() {
+      //   this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
+      //     response = response.body;
+      //     let temp = response.Data;
+      //     temp.forEach(function (item, index, arr) {
+      //       if (item.CourseTypeID > 4) {
+      //         temp.splice(index);
+      //       }
+      //     });
+      //     this.Course_List = temp;
+      //     // console.log(this.Course_List[9].CourseTypeID);
+      //   }, function () {
+      //     console.log('请求发送失败');
+      //   });
+      // },
       CourseListFillter(m, p) {
         var arr = [];
         for (var i = 0; i < m.length; i++) {
@@ -222,8 +234,9 @@
         return arr;
       }
     },
-    mounted() {
-      this.CourseList();
+    beforeUpdate() {
+      // this.CourseList();
+          this.$nextTick(function() {
       var mySwiper = new Swiper('.home_banner .swiper-container', {
         direction: 'horizontal',
         loop: true
@@ -238,15 +251,16 @@
         freeMode: true,
         loop: true
       });
-      var mySwiper2 = new Swiper('.m_section_2 .swiper-container', {
+      var mySwiper3 = new Swiper('.m_section_2 .swiper-container', {
         slidesPerView: 1,
         paginationClickable: true,
         loop: true,
         autoHeight: true,
         nextButton: '.swiper-button-next-1',
-        prevButton: '.swiper-button-prev-1'
+        prevButton: '.swiper-button-prev-1',
+  
       });
-      var mySwiper3 = new Swiper('.section_3 .swiper-container', {
+      var mySwiper4 = new Swiper('.section_3 .swiper-container', {
         slidesPerView: 1,
         paginationClickable: true,
         loop: true,
@@ -254,6 +268,7 @@
         nextButton: '.swiper-button-next-2',
         prevButton: '.swiper-button-prev-2'
       });
+          })
     },
     components: {
       myHeader: myHeader,
@@ -363,11 +378,12 @@
 
   .home_p .section_course_type .list .item_box .nav .nav_list {
     position: absolute;
-    z-index: 3;
+    z-index: 11;
     top: 60px;
     left: 0;
     width: 100%;
     display: none;
+    /* float: none; */
   }
 
   .home_p .section_course_type .list .item_box .nav .item a {
@@ -598,7 +614,8 @@
       display: none;
     }
 
-    .home_p .section_2 {
+    .home_p .section_2,
+    .inner_header .inner_header_con .m_logo {
       display: none;
     }
     .home_p .m_section_2 {

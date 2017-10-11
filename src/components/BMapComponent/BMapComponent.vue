@@ -26,8 +26,13 @@ export default {
     //创建地图函数：
     function createMap() {
       var map = new BMap.Map("allmap"); //在百度地图容器中创建一个地图
-      var point = new BMap.Point(121.598002, 31.251129); //定义一个中心点坐标
-      map.centerAndZoom(point, 18); //设定地图的中心点和坐标并将地图显示在地图容器中
+      var point = new BMap.Point(121.599695,31.252657); //定义一个中心点坐标
+      map.centerAndZoom(point, 16); //设定地图的中心点和坐标并将地图显示在地图容器中
+      var marker = new BMap.Marker(point);        // 创建标注    
+      map.addOverlay(marker);  
+
+      var label = new BMap.Label("摩英教育",{offset:new BMap.Size(20,-10)});
+	    marker.setLabel(label);
       window.map = map; //将map变量存储在全局
     }
 
@@ -73,7 +78,9 @@ body,
   height: 600px;
 }
   @media screen and (max-width: 1205px) {
-
+.allmap{
+  height: 400px;
+}
   
   
   }

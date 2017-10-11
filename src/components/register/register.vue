@@ -1212,15 +1212,30 @@
       max-width: 750px;
       font-size: 18px;
       overflow: auto;
+      /* margin-top: 40px; */
+      z-index: 9999;
     }
+    .register_p .modal_box_middle{
+      height: 300px;    
+      padding: 0;  
+      overflow: auto;
+      width: 100%;
+    }
+    .register_p .modal_box_middle span{
+      display: flex;
+    }
+
     .register_p .modal_box_middle label span {
-      font-size: 18px;
-      margin-left: 20px;
-      height: 50px;
+      font-size: 14px;
+      margin-left: 10px;
+      height: 46px;
+      line-height: 46px;
+      flex:1;
     }
     .register_p .modal_box_middle label {
-      padding-left: 15%;
+      padding-left: 10%;
       height: 50px;
+      width: 100%;
     }
     .register_p .modal_box_bottom .btn {
       width: 100px;

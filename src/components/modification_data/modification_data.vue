@@ -807,19 +807,24 @@
   .modification_data_p .mod_data_con .item_bottom_con .parent_box .m_name {
     margin-bottom: 36px;
   }
-  .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_area{
+
+  .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_area {
     margin-left: 85px;
   }
-    .modification_data_p .mod_data_con .item_bottom_con .parent_box .f_name input,
-  .modification_data_p .mod_data_con .item_bottom_con .parent_box .m_name input{
-    width:300px;
+
+  .modification_data_p .mod_data_con .item_bottom_con .parent_box .f_name input,
+  .modification_data_p .mod_data_con .item_bottom_con .parent_box .m_name input {
+    width: 300px;
   }
-.modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area{
-  margin-left: 100px;
-}
-.modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area input{
-  width: 300px;
-}
+
+  .modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area {
+    margin-left: 100px;
+  }
+
+  .modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area input {
+    width: 300px;
+  }
+
   @media screen and (max-width: 1205px) {
     .modification_data_p {
       max-width: 750px;
@@ -1048,23 +1053,75 @@
       line-height: 50px;
       margin-bottom: 0;
     }
-    .modification_data_p .mod_data_con{
+    .modification_data_p .mod_data_con {
       padding: 0;
     }
-    .modification_data_p .mod_data_con .item_bottom_con i.phone_info{
+    .modification_data_p .mod_data_con .item_bottom_con i.phone_info {
       margin-left: 0
     }
-    .modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area{
+    .modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area {
       margin-left: 80px;
     }
-    .modification_data_p .mod_number_single{
+    .modification_data_p .mod_number_single {
       padding: 0 20px;
     }
-    .modification_data_p .mod_data_con .item_top_con .info_box .grade_i{
+    .modification_data_p .mod_data_con .item_top_con .info_box .grade_i {
       margin-left: 0;
     }
-    .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_area{
+    .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_area {
       margin-left: 75px;
+    }
+    .modal.in .modal-dialog{
+      width: 100%;
+      margin: 30px 0;
+    }
+    .modal-content {
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+    }
+    .avatar-wrapper {
+      height: 150px !important;
+      width: 150px !important;
+      margin: 0 auto;
+    }
+    .avatar-upload {
+      height: 46px;
+      width: 100%;
+      font-size: 14px !important;
+    }
+    .avatar-upload .uploading_btn {
+      font-size: 14px !important;
+    }
+    .row.avatar-btns {
+      display: flex;
+    }
+    .modal-content .avatar-form .modal-body .row .col-md-8 {
+      text-align: center;
+    }
+    .preview_head {
+      font-size: 12px;
+    }
+    .row.avatar-btns .left_btn_area,
+    .row.avatar-btns .right_btn_area {
+      flex: 1;
+      text-align: center !important;
+      padding: 0;
+    }
+    .modal-content .preview-lg {
+      width: 80px;
+      height: 80px;
+      margin-left: 10%;
+    }
+    .row .col-md-4 {
+      /* display: flex; */
+      text-align: center;
+    }
+    .row.avatar-btns .avatar_btn {
+      width: 65px !important;
+      height: 30px !important;
+      font-size: 14px !important;
+      line-height: 30px !important;
     }
   }
 

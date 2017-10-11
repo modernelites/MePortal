@@ -282,17 +282,18 @@ div.service_shade_con .btn_wrap {
 /* 移动端适配 */
 @media screen and (max-width: 1205px) {
   .server_mask{
-    z-index: 999;
+    z-index: 99;
   }
   .server_mask #side_fixed_apply_btn{
     position: fixed;
-    bottom: 20px;
+    bottom: 5px;
     right: 20px;
     border-radius: 50%;
+    z-index: 500;
   }
   .server_mask #side_fixed_server_btn{
     position: fixed;
-    bottom: 20px;
+    bottom: 5px;
     left: 20px;
     border-radius: 50%;
     background-color: #fff;

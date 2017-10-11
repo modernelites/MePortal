@@ -84,52 +84,52 @@
 
 </script>
 <style>
-
-
-.content_item .content_item_table {
+  .content_item .content_item_table {
     width: 100%;
   }
 
-   .content_item_table tr {
+  .content_item_table tr {
     border-bottom: 2px solid #e0e0e0;
   }
 
-   .content_item_table tr th {
+  .content_item_table tr th {
     font-size: 20px;
     color: #000;
     padding: 26px 0;
   }
 
-   .content_item_table tr td {
+  .content_item_table tr td {
     padding: 22px 0;
     font-size: 14px;
     color: #000;
   }
 
-   .content_item_table tr th,
-   .content_item_table tr td {
+  .content_item_table tr th,
+  .content_item_table tr td {
     text-align: center;
   }
 
-   .content_item_table tr td.pay {
+  .content_item_table tr td.pay {
     color: #72c11d;
   }
 
-   .content_item_table tr td.cancel {
+  .content_item_table tr td.cancel {
     color: #ff0000;
   }
-   .no_data_wrapper {
+
+  .no_data_wrapper {
     padding: 10px 0 0 180px;
   }
-   .pic_img {
+
+  .pic_img {
     float: left;
   }
 
-   .pic_img {
+  .pic_img {
     float: left;
   }
 
-   .title_3 {
+  .title_3 {
     float: left;
     font-size: 24px;
     color: #9b9b9b;
@@ -138,41 +138,41 @@
   }
 
   @media screen and (max-width: 1205px) {
-        .content_item .content_item_table {
-    /* width: 100%; */
-    overflow: hidden;
-  }
+    
+    .content_item .content_item_table {
+      overflow: hidden;
+    }
 
-   .content_item_table tr {
-    border-bottom: 2px solid #e0e0e0;
-  }
+    .content_item_table tr {
+      border-bottom: 2px solid #e0e0e0;
+    }
 
-   .content_item_table tr th {
-    font-size: 20px;
-    color: #000;
-    padding:  0;
-  }
+    .content_item_table tr th {
+      font-size: 20px;
+      color: #000;
+      padding: 0;
+    }
 
-   .content_item_table tr td {
-    padding:  0;
-    font-size: 14px;
-    color: #000;
-  }
+    .content_item_table tr td {
+      padding: 0;
+      font-size: 14px;
+      color: #000;
+    }
 
-   .no_data_wrapper {
-    padding: 0;
-  }
-   .pic_img {
-    float: none;
-  }
+    .no_data_wrapper {
+      padding: 0;
+    }
+    .pic_img {
+      float: none;
+    }
 
-   .title_3 {
-    float: none;
-    /* font-size: 24px; */
-    color: #9b9b9b;
-    padding-top: 0;
-    padding-left: 0;
-  }
+    .title_3 {
+      float: none;
+      /* font-size: 24px; */
+      color: #9b9b9b;
+      padding-top: 0;
+      padding-left: 0;
+    }
 
 
 
@@ -207,10 +207,6 @@
     .content_item .no_data_wrapper .pic_img {
       width: 100%;
     }
-
-
-
-
   }
 
 </style>

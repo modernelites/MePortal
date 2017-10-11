@@ -69,6 +69,8 @@ export default {
 <style>
 .contact_us_p {
   background: #f7f7f7;
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .contact_us_p .content_wrapper {
@@ -325,6 +327,7 @@ export default {
     min-width: 320px;
     margin: 0 auto;
     height: auto;
+    width: auto;
   }
   .contact_us_p .content_wrapper{
     width: auto;
