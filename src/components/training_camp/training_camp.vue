@@ -75,7 +75,7 @@
               </div>
             </div> -->
 
-          <!-- 讲师介绍 -->
+          <!-- 讲师介绍 v-show="Teacher_Con.length>0"-->
           <div class="lecturer_wrap" v-show="Teacher_Con.length>0">
             <h3 class="title_3"> 讲师介绍</h3>
             <ul class="con_list">
@@ -120,11 +120,12 @@
         CourseTypeItemID: this.$route.params.ctid,
         CourseItemID: this.$route.params.cid,
         Course_Con: {},
-        Teacher_Con: {},
+        Teacher_Con: [],
         show: false
       };
     },
-    created() {},
+    created() {
+    },
     methods: {
       CourseTypeList() {
         this.$nextTick(function () {
@@ -162,6 +163,13 @@
           response = response.body;
           this.Course_Con = response.Data;
           this.Course_Name = this.Course_Con.CourseName;
+          if (this.Course_Con.Teachers ==='') {
+                      console.log('1');
+          } else{
+            console.log(this.Course_Con.Teachers);
+            this.TeacherCon(this.Course_Con.Teachers);
+          }
+
         }, function () {
           console.log('请求发送失败');
         });
@@ -171,7 +179,9 @@
       this.$http.get(this.ApiUrl + 'me/Teacher/Teacher_Get?Teachers=' + tids).then((response) => {
         //debugger
         response = response.body;
+        console.log(response);
         this.Teacher_Con = response.Data;
+        // console.log(response.D);
       }, function () {
         console.log('请求发送失败');
       });

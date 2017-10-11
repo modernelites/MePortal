@@ -240,7 +240,7 @@
     outline: none;
   }
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
     .login_p {
       background: #fefefe;
       height: 100%;

@@ -299,7 +299,7 @@
     padding-right: 10px;
   }
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
     .sub_mechanism_p{
       max-width: 750px;
       min-width: 320px;

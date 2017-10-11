@@ -383,7 +383,7 @@
     display: none;
   }
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
     .personal_center_p {
       max-width: 750px;
       min-width: 320px;

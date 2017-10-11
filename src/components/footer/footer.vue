@@ -130,7 +130,7 @@
   }
   /* 移动端适配 */
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
     .footer {
       font-size: 12px;
     }

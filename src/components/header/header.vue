@@ -4,7 +4,7 @@
     <header class="inner_header">
       <div class="inner_header_con" v-bind:class="{ search_active: showSearch }">
 
-        <a :href="'#/index'" class="m_logo"></a>
+        <!-- <a :href="'#/index'" class="m_logo"></a> -->
         <div class="inner_header_con_top">
           <a href="#/" class="logo_link">
             <img src="./../../assets/img/logo_2.png" alt="logo" class="logo">
@@ -78,7 +78,9 @@
       </div>
 
       <div class="m_header">
-        <img src="./../../assets/img/logo_2.png" alt="logo" class="m_logo">
+        <a :href="'#/index'" class="m_logo">
+         <img src="./../../assets/img/logo_2.png" alt="logo" class="m_logo"></a>
+       
         <div class="toogle_btn" @click="searchWrapShow=true,navWrapperShow=true">
           <span class="line0 line"></span>
           <span class="line1 line"></span>
@@ -767,7 +769,7 @@
   }
   /* 移动端适配 */
 
-  @media screen and (max-width: 1105px) {
+  @media screen and (max-width: 1020px) {
     .inner_header {
       height: 60px;
       background: url("./../../assets/img/header@2x.png") no-repeat center;
@@ -781,7 +783,17 @@
     .logo {
       display: none;
     }
-    .inner_header .inner_header_con .m_logo{
+      .inner_header .m_header .m_logo {
+    display: block;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    z-index: 999;
+  }
+    /* .inner_header .inner_header_con .m_logo{
       position: absolute;
     top: 15px;
     left: 15px;
@@ -791,7 +803,7 @@
       background-size: contain;
       cursor: pointer;
       z-index: 999;
-    }
+    } */
     .inner_header .m_header .toogle_btn {
       width: 22px;
       height: 18px;
@@ -819,7 +831,6 @@
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.7);
       z-index: 999;
-      float: none;
     }
     .inner_header .search_head {
       display: box;

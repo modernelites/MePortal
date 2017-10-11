@@ -602,7 +602,7 @@
   }
   /* 移动端适配 */
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
     .home_p {
       margin: 0 auto;
     }
@@ -615,8 +615,8 @@
     }
 
     .home_p .section_2,
-    .inner_header .inner_header_con .m_logo {
-      display: none;
+     .home_p .inner_header .m_header .m_logo{
+      display: none !important;
     }
     .home_p .m_section_2 {
       display: block;
