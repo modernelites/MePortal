@@ -1001,7 +1001,7 @@
       width: 200px;
       height: 46px;
       line-height: 46px;
-      z-index: 99;
+      /* z-index: 99; */
     }
 
     .register_p .select_wrapper .option_wrapper {
@@ -1218,7 +1218,8 @@
     .register_p .modal_box_middle{
       height: 300px;    
       padding: 0;  
-      overflow: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
       width: 100%;
     }
     .register_p .modal_box_middle span{

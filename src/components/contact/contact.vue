@@ -321,7 +321,7 @@ export default {
 
 
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
   .contact_us_p{
     max-width: 750px;
     min-width: 320px;

@@ -116,7 +116,8 @@
     data() {
       return {
         selectType: 0,
-        user: JSON.parse(window.localStorage.getItem("user")),
+        user: JSON.parse(window.localStorage.getItem("user")) ? JSON.parse(window.localStorage.getItem("user")) : "test",
+        // user,
         optionShow: false
       };
     },
@@ -129,13 +130,17 @@
       }
     },
     created() {
-      if (window.localStorage.getItem('user') === null) {
-        window.location.href = "#/login/login1";
-      } else {
-        window.location.href = "#/personal_center/personal_center1";
-      }
-      console.log(JSON.parse(window.localStorage.getItem("user")));
-      this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
+      this.$nextTick(function () {
+
+        if (window.localStorage.getItem('user') === null) {
+          window.location.href = "#/login/login1";
+        } else {
+          window.location.href = "#/personal_center/personal_center1";
+        }
+        console.log(JSON.parse(window.localStorage.getItem("user")));
+        this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
+      });
+
     },
     mounted() {
       let url = window.location.href;
@@ -154,6 +159,11 @@
       if (url.indexOf('personal_center5') > 0) {
         this.selectType = 4;
       }
+
+
+    },
+    update() {
+
     },
     components: {
       myHeader: myHeader,
@@ -322,8 +332,8 @@
     transform: scale(1);
   }
 
-  .personal_center_p .nav_item{
-    width:920px;
+  .personal_center_p .nav_item {
+    width: 920px;
   }
 
   .personal_center_p .content_item .content_item_table {
@@ -390,12 +400,12 @@
       margin: 0 auto;
     }
     .personal_center_p .content_wrapper {
-    background: #fff;
-    position: relative;
-    margin-bottom: 60px;
-    width: auto;
-    margin:auto;
-  }
+      background: #fff;
+      position: relative;
+      margin-bottom: 60px;
+      width: auto;
+      margin: auto;
+    }
     .personal_center_p .content_wrapper {
       width: 96%;
       margin: 0 auto;
@@ -728,13 +738,13 @@
       bottom: 60px;
       left: 20%;
     }
-.personal_center_p .content_bottom{
-  width: 100%;
-}
+    .personal_center_p .content_bottom {
+      width: 100%;
+    }
 
-.personal_center_p .content_bottom .right_area{
-  text-align: center
-}
+    .personal_center_p .content_bottom .right_area {
+      text-align: center
+    }
   }
 
 </style>

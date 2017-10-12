@@ -104,7 +104,7 @@
     margin-left: 22px;
   }
 
-  @media screen and (max-width: 1120px) {
+  @media screen and (max-width: 1020px) {
     .error_p_wrapper {
       max-width: 750px;
       min-width: 320px;

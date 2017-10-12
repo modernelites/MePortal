@@ -303,7 +303,7 @@
   }
 
 
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
 
     .about_p {
       max-width: 750px;

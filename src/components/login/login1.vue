@@ -66,3 +66,9 @@ export default {
 };
 
 </script>
+<style>
+.login_p .account_content_box .bottom_btn .register_btn, .login_p .account_content_box .bottom_btn .verification_btn, .login_p .register_content_box .bottom_btn .account_btn, .login_p .register_content_box .bottom_btn .verification_btn, .login_p .verification_content_box .bottom_btn .account_btn, .login_p .verification_content_box .bottom_btn .register_btn{
+  border:none !important;
+}
+</style>
+

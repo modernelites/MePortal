@@ -80,7 +80,7 @@
 
 </script>
 <style>
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
   
 .content_item .content_item_table tr.table_h th{
     display: none;

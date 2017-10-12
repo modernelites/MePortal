@@ -13,7 +13,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr v-for="m in CourseReg_Items" class="table_content">
           <td v-text="m.CourseName"></td>
           <td>{{m.StartDate | datefmt}}</td>
@@ -33,6 +33,8 @@
         </tr>
       </tbody>
     </table>
+      <!-- <div class="swiper-button-next swiper-button-next-01"></div>
+      <div class="swiper-button-prev swiper-button-prev-01"></div> -->
     <div class="no_data_wrapper" v-show="CourseReg_Items.length==0">
       <div class="no_data_content clearfix">
         <img class="pic_img" src="./../../assets/img/not_course@2x.png">
@@ -49,16 +51,48 @@
         CourseReg_Items: []
       }
     },
+    beforeUpdate() {
+      this.$nextTick(function () {
+        if (JSON.parse(window.localStorage.getItem("user"))) {
+          let user = JSON.parse(window.localStorage.getItem("user"));
+          this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
+            response = response.body;
+            this.CourseReg_Items = response.Data;
+          }, function () {
+            console.log('请求发送失败');
+          });
+        } else {
+          // return;
+          console.log('empty');
+        }
+
+      })
+    },
     methods: {
-      CourseReg_List: function () {
-        let user = JSON.parse(window.localStorage.getItem("user"));
-        this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
-          response = response.body;
-          this.CourseReg_Items = response.Data;
-        }, function () {
-          console.log('请求发送失败');
-        });
-      },
+      // CourseReg_List: function () {
+      // if (JSON.parse(window.localStorage.getItem("user"))) {
+      //   let user = JSON.parse(window.localStorage.getItem("user"));
+      //           this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
+      //   response = response.body;
+      //   this.CourseReg_Items = response.Data;
+      // }, function () {
+      //   console.log('请求发送失败');
+      // });
+      // } else {
+      // return;
+      //   console.log('empty');
+      // }
+      // },
+      // _initSwiper() {
+      //   let mSwiper01 = new Swiper('.content_item .swiper-container', {
+      //     slidesPerView: 1,
+      //     paginationClickable: true,
+      //     loop: true,
+      //     nextButton: '.swiper-button-next-01',
+      //     prevButton: '.swiper-button-prev-01'
+      //   });
+      //   console.log(mSwiper01);
+      // },
       Course_Reg_Status_Upd: function (m) {
         let obj = this;
         let id = obj.$layer.confirm("确定取消报名吗?", {
@@ -78,7 +112,7 @@
       }
     },
     mounted() {
-      this.CourseReg_List();
+      // this.CourseReg_List();
     }
   }
 
@@ -120,12 +154,11 @@
   .no_data_wrapper {
     padding: 10px 0 0 180px;
   }
-
   /* .no_data_wrapper .pic_img {
     float: left;
   } */
 
-   .no_data_wrapper .no_data_content .pic_img {
+  .no_data_wrapper .no_data_content .pic_img {
     float: left;
   }
 
@@ -137,8 +170,8 @@
     padding-left: 30px;
   }
 
-  @media screen and (max-width: 1205px) {
-    
+  @media screen and (max-width: 1020px) {
+
     .content_item .content_item_table {
       overflow: hidden;
     }
@@ -162,16 +195,23 @@
     .no_data_wrapper {
       padding: 0;
     }
+    .no_data_wrapper .no_data_content {
+      height: auto;
+    }
     .no_data_wrapper .no_data_content .pic_img {
       float: none;
+      width: 150px;
+      height: 150px;
+      vertical-align: middle;
+      margin-top: 20%;
     }
 
     .no_data_wrapper .no_data_content .title_3 {
       float: none;
-      /* font-size: 24px; */
+      font-size: 12px;
       color: #9b9b9b;
-      padding-top: 0;
-      padding-left: 0;
+      padding: 47px 0;
+      /* padding-left: 0; */
     }
 
 
@@ -205,7 +245,7 @@
       /* position: relative; */
     }
     .content_item .no_data_wrapper .pic_img {
-      width: 100%;
+      /* width: 100%; */
     }
   }
 

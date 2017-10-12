@@ -254,6 +254,7 @@
           window.location.reload(true);
           console.log('logout');
           window.location.href = "#/index";
+          
         } else {
           window.location.href = "#/login/login1";
         }
@@ -772,16 +773,20 @@
   @media screen and (max-width: 1020px) {
     .inner_header {
       height: 60px;
-      background: url("./../../assets/img/header@2x.png") no-repeat center;
+      background: url("./../../assets/img/header@3x.png") no-repeat center;
       /* background-size: 100% 100%; */
       /* width: 100%; */
       z-index: 999;
       /* float: left; */
+      z-index: 1;
     }
     .inner_nav,
     .toggle_search_btn,
-    .logo {
-      display: none;
+    .logo,
+    .inner_nav_list{
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
     }
       .inner_header .m_header .m_logo {
     display: block;

@@ -77,7 +77,7 @@ body,
 .allmap {
   height: 600px;
 }
-  @media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1020px) {
 .allmap{
   height: 400px;
 }

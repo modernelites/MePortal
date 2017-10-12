@@ -75,9 +75,10 @@
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
+                <!-- <a :href="'#/training_camp/4/19'"> -->
                 <img src="./../../assets/img/t5.jpg">
               </div>
-              <a :href="'#/training_camp/4/19'" class="btn details_btn_i_1"></a>
+              <a href="'#/training_camp/4/19'" class="btn details_btn_i_1"></a>
             </div>
           </div>
           <!-- Add Arrows -->
