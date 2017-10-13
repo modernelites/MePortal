@@ -1124,6 +1124,14 @@
       height: 46px;
       line-height: 46px;
     }
+    .register_p .info_box label.sex_label span {
+      width: 90px;
+    }
+    .register_p .add_wrapper label.origin_label label {
+      height: 46px;
+      line-height: 46px;
+      /* margin-bottom: 18px; */
+    }
     .register_p .info_box label.grade_label .ca_2 {
       margin-bottom: 0;
     }
@@ -1215,14 +1223,14 @@
       /* margin-top: 40px; */
       z-index: 9999;
     }
-    .register_p .modal_box_middle{
-      height: 300px;    
-      padding: 0;  
+    .register_p .modal_box_middle {
+      height: 300px;
+      padding: 0;
       overflow-x: hidden;
       overflow-y: auto;
       width: 100%;
     }
-    .register_p .modal_box_middle span{
+    .register_p .modal_box_middle span {
       display: flex;
     }
 
@@ -1231,7 +1239,7 @@
       margin-left: 10px;
       height: 46px;
       line-height: 46px;
-      flex:1;
+      flex: 1;
     }
     .register_p .modal_box_middle label {
       padding-left: 10%;
@@ -1327,7 +1335,7 @@
       padding-top: 2px;
       text-align: left;
     }
-    .register_p .add_wrapper .tips_item_2{
+    .register_p .add_wrapper .tips_item_2 {
       padding-left: 59px;
     }
   }

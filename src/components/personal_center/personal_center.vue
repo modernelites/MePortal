@@ -11,7 +11,7 @@
         <h3 class="name">{{!user.UserName?user.LoginName:user.UserName}}</h3>
         <div class="info">
           <span class="grade">{{!user.Grade?'年级:未填写':user.Grade}}</span> |
-          <span class="age">{{user.Birthday|datediff}}岁</span>
+          <span class="age">{{user.Birthday | datediff}}岁</span>
         </div>
       </div>
       <!-- 主题内容信息 -->
@@ -110,7 +110,7 @@
 <script>
   import myHeader from '@/components/header/header';
   import myFooter from '@/components/footer/footer';
-
+import router from 'vue-router';
   export default {
     name: 'personalCenter',
     data() {
@@ -127,22 +127,41 @@
       },
       selectOption(num) {
         this.$refs.per_show_info.innerHTML = this.optionMap[num];
+      },
+      login(){
+               if (window.localStorage.getItem('user') === null) {
+         
+          // window.location.href = "#/login/login1";
+          this.$router.push({path:'/login/login1'})
+        } else {
+          // window.location.href = "#/personal_center/personal_center1";
+          this.$router.push({path:'/personal_center/personal_center1'})
+        }
       }
+    },
+    beforeCreate(){
+ 
+
     },
     created() {
       this.$nextTick(function () {
-
-        if (window.localStorage.getItem('user') === null) {
-          window.location.href = "#/login/login1";
-        } else {
-          window.location.href = "#/personal_center/personal_center1";
-        }
+        
         console.log(JSON.parse(window.localStorage.getItem("user")));
         this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
       });
 
     },
     mounted() {
+      //  if (window.localStorage.getItem('user') === null) {
+         
+      //     // window.location.href = "#/login/login1";
+      //     this.$router.push({path:'/login/login1'})
+      //   } else {
+      //     // window.location.href = "#/personal_center/personal_center1";
+      //     this.$router.push({path:'/personal_center/personal_center1'})
+      //   }
+
+
       let url = window.location.href;
       if (url.indexOf('personal_center1') > 0) {
         this.selectType = 0;
@@ -162,9 +181,12 @@
 
 
     },
-    update() {
+      watch: {
+      // 如果路由有变化，会再次执行该方法
+      "$route": "login"
 
     },
+
     components: {
       myHeader: myHeader,
       myFooter: myFooter
@@ -475,7 +497,8 @@
       font-size: 10px;
       color: #656565;
       position: absolute;
-      left: 35%;
+      left: 10px;
+      top: 40px;
     }
 
     .personal_center_p .content_top .info_wrapper .mod_btn {

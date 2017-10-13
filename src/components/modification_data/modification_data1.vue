@@ -1,6 +1,6 @@
 <template>
   <dl class="item basic_data_single active">
-    <form action="" method="">
+    <form action="" method="" @submit.prevent="submit">
       <div class="item_top_con clearfix">
         <!-- 下面是头像内容 -->
         <div class="portrait_box">
@@ -19,24 +19,28 @@
         </div>
         <div class="info_box">
           <label>
-            <span>姓名：<u class="star">*</u></span>
-            <input type="text" name="username" class="username" required="">
+            <span>姓名：
+              <u class="star">*</u>
+            </span>
+            <input type="text" name="username" class="username" required="" v-model="user.UserName">
           </label>
           <label class="sex_label">
-            <span>性别：<u class="star">*</u></span>
-            <input type="radio" name="radio_sex" class="sex_man sex" checked="checked">男
-            <input type="radio" name="radio_sex" class="sex_girl sex">女
+            <span>性别：
+              <u class="star">*</u>
+            </span>
+            <input type="radio" name="radio_sex" class="sex_man sex" checked="checked" value="true" v-model="user.Gender">男
+            <input type="radio" name="radio_sex" class="sex_girl sex" value="false" v-model="user.Gender">女
           </label>
           <label class="grade_label">
             <div class="school">
-            <span>就读学校： </span>
-            <i>学校：</i>
-            <input type="text" name="school_input" class="school_input">
+              <span>就读学校： </span>
+              <i>学校：</i>
+              <input type="text" name="school_input" class="school_input" v-model="user.School">
             </div>
 
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
-              <select class="grade_select" id="grade_select">
+              <select class="grade_select" id="grade_select" v-model="user.Grade">
                 <option value="1">一年级</option>
                 <option value="2">二年级</option>
                 <option value="3">三年级</option>
@@ -57,16 +61,18 @@
             </div>
           </label>
           <label class="b_date">
-            <span>出生日期：<u class="star">*</u></span>
-            <input type="date" name="date" class="birth_date">
+            <span>出生日期：
+              <u class="star">*</u>
+            </span>
+            <input type="date" name="date" class="birth_date" v-model="user.Birthday">
           </label>
           <label class="phone">
             <span>学员手机：</span>
-            <input type="number" name="student_phone" class="student_phone">
+            <input type="number" name="student_phone" class="student_phone" v-model="user.Phone">
           </label>
           <label class="mail">
             <span>电子邮件：</span>
-            <input type="email" name="email" class="student_email">
+            <input type="email" name="email" class="student_email" v-model="user.Email">
           </label>
         </div>
       </div>
@@ -75,32 +81,32 @@
         <div class="parent_box">
           <label>
             <div class="f_name">
-            <span>父亲：</span>
-            <i class="name_i"> 姓名：</i>
-            <input type="text" name="father_name" class="father_name">
+              <span>父亲：</span>
+              <i class="name_i"> 姓名：</i>
+              <input type="text" name="father_name" class="father_name" v-model="user.FName">
             </div>
             <div class="phone_area">
               <i class="phone_info">手机：</i>
-              <input type="number" name="father_phone" class="father_phone">
+              <input type="number" name="father_phone" class="father_phone" v-model="user.FPhone">
             </div>
             <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
           </label>
           <label>
             <div class="m_name">
-            <span>母亲：</span>
-            <i class="name_i"> 姓名：</i>
-            <input type="text" name="mom_name" class="mom_name">
+              <span>母亲：</span>
+              <i class="name_i"> 姓名：</i>
+              <input type="text" name="mom_name" class="mom_name" v-model="user.MName">
             </div>
 
             <div class="phone_area">
               <i class="phone_info">手机：</i>
-              <input type="number" name="mom_phone" class="mom_phone">
+              <input type="number" name="mom_phone" class="mom_phone" v-model="user.MPhone">
             </div>
             <u class="tip">父亲 &nbsp; 母亲 至少填写一项 </u>
           </label>
           <label class="address_label">
             <span class="ex_address_info">快递地址：</span>
-            <input type="text" name="expressage_address" class="expressage_address">
+            <input type="text" name="expressage_address" class="expressage_address" v-model="user.Address">
           </label>
         </div>
       </div>
@@ -111,3 +117,43 @@
     </form>
   </dl>
 </template>
+<script>
+  export default {
+
+    data() {
+      return {
+        user:{
+          UserID:JSON.parse(window.localStorage.getItem("user")).UserID,
+          LoginName:JSON.parse(window.localStorage.getItem("user")).LoginName,
+          Pwd:JSON.parse(window.localStorage.getItem("user")).Pwd,
+          UserName:JSON.parse(window.localStorage.getItem("user")).UserName,
+          Gender:JSON.parse(window.localStorage.getItem("user")).Gender,
+          School:JSON.parse(window.localStorage.getItem("user")).School,
+          Grade:JSON.parse(window.localStorage.getItem("user")).Grade,
+          Birthday:JSON.parse(window.localStorage.getItem("user")).Birthday,
+          Phone:JSON.parse(window.localStorage.getItem("user")).Phone,
+          Email:JSON.parse(window.localStorage.getItem("user")).Email,
+          FName:JSON.parse(window.localStorage.getItem("user")).FName,
+          FPhone:JSON.parse(window.localStorage.getItem("user")).FPhone,
+          MName:JSON.parse(window.localStorage.getItem("user")).MName,
+          MPhone:JSON.parse(window.localStorage.getItem("user")).MPhone,
+          Address:JSON.parse(window.localStorage.getItem("user")).Address
+        }
+      }
+    },
+    methods: {
+        submit:function(){
+          this.$http.post(this.ApiUrl + 'me/User/UserInfo_Edit',this.user).then((response)=>{
+            response = response.body;
+            console.log(response);
+            window.localStorage.setItem('user',JSON.stringify(this.user));
+          },function(){
+            console.log('failure');
+          })
+
+        }
+    }
+
+  }
+
+</script>

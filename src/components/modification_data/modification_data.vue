@@ -891,6 +891,11 @@
     .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_select {
       flex: 1;
     }
+    .modification_data_p .mod_data_con .item_top_con .info_box .sex_man,
+    .modification_data_p .mod_data_con .item_top_con .info_box .sex_girl,
+    .register_p .info_box input.sex {
+      margin-top: 14px;
+    }
     .modification_data_p .mod_data_con .item_top_con .info_box .b_date {
       display: flex;
       margin-bottom: 18px;
@@ -1071,7 +1076,7 @@
     .modification_data_p .mod_data_con .item_top_con .info_box .grade_label .grade_area {
       margin-left: 75px;
     }
-    .modal.in .modal-dialog{
+    .modal.in .modal-dialog {
       width: 100%;
       margin: 30px 0;
     }
@@ -1123,6 +1128,24 @@
       font-size: 14px !important;
       line-height: 30px !important;
     }
+    .modification_data_p .mod_paw_single .new_password{
+      margin-top: 36px;
+    }
+    .modification_data_p .mod_paw_single .old_password{
+      padding-top: 36px;
+    }
+    .modification_data_p .mod_data_nav{
+      margin-bottom: 36px;
+    }
+
+
+    .login_p .tips {
+  background: #353535;
+  text-align: center;
+  color: #d0d0d0;
+  font-size: 12px;
+  margin-top: -1px;
+}
   }
 
 </style>

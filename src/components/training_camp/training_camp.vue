@@ -88,7 +88,10 @@
                   <div class="brief" v-html="item.Brief">
                   </div>
                   <div class="portrait">
-                    <img :src="item.FilePath">
+                    <span>
+                      <img :src="item.FilePath">
+                    </span>
+
                   </div>
                 </div>
               </li>
@@ -127,12 +130,12 @@
     // created() {},
     methods: {
       CourseTypeList() {
-          this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
-            response = response.body;
-            this.CourseType_List = response.Data;
-          }, function () {
-            console.log('请求发送失败');
-          });
+        this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
+          response = response.body;
+          this.CourseType_List = response.Data;
+        }, function () {
+          console.log('请求发送失败');
+        });
       },
       CourseList() {
         this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
@@ -157,20 +160,20 @@
         }
         if (this.CourseItemID !== null) {
           this.$http.get(this.ApiUrl + 'me/Course/Course_Get?CourseID=' + this.CourseItemID).then((response) => {
-          response = response.body;
-          this.Course_Con = response.Data;
-          this.Course_Name = this.Course_Con.CourseName;
-          if (this.Course_Con.Teachers === '') {
-            // console.log('1');
-            return;
-          } else {
-            // console.log(this.Course_Con.Teachers);
-            this.TeacherCon(this.Course_Con.Teachers);
-          }
-        }, function () {
-          console.log('请求发送失败');
-        });
-        }else{
+            response = response.body;
+            this.Course_Con = response.Data;
+            this.Course_Name = this.Course_Con.CourseName;
+            if (this.Course_Con.Teachers === '') {
+              // console.log('1');
+              return;
+            } else {
+              // console.log(this.Course_Con.Teachers);
+              this.TeacherCon(this.Course_Con.Teachers);
+            }
+          }, function () {
+            console.log('请求发送失败');
+          });
+        } else {
           console.log('this.CourseItemId:null');
         }
 
@@ -603,10 +606,10 @@
       z-index: 1;
     }
     /* .training_camp_p .container_wrap { */
-      /* height: 1302px; */
-      /* height: 1224px; */
-      /* position: absolute; */
-      /* overflow: hidden; */
+    /* height: 1302px; */
+    /* height: 1224px; */
+    /* position: absolute; */
+    /* overflow: hidden; */
     /* } */
     .training_camp_p .course_wrap .title_3 {
       font-size: 12px;
@@ -663,7 +666,7 @@
       position: relative;
       cursor: pointer;
       z-index: 1;
-      overflow: hidden; 
+      overflow: hidden;
     }
 
     .training_camp_p .camp_nav .title .icon {
@@ -710,19 +713,72 @@
       color: #000;
     }
 
-    .training_camp_p .lecturer_wrap .content_right{
-      width:100%;
+    .training_camp_p .lecturer_wrap div.content_right {
+      width: 100%;
+      padding: 10px;
+      background: none;
+      height: auto;
     }
-    .training_camp_p .lecturer_wrap .content_left{
+    .training_camp_p .lecturer_wrap .content_left {
       width: 100%;
       margin: 0 auto;
     }
-    .training_camp_p .lecturer_wrap .content_right .portrait{
-      margin:0 auto;
+    .training_camp_p .lecturer_wrap .content_right .portrait {
+      margin: 0 auto;
     }
-    .training_camp_p .lecturer_wrap .content_right .brief{
-      padding:0;
-      width:90%;
+    .training_camp_p .lecturer_wrap .content_right .brief {
+      padding: 0;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .training_camp_p .lecturer_wrap .content_right .brief p {
+      float: left !important;
+    }
+    .training_camp_p .lecturer_wrap .title_3 {
+      padding-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 0;
+    }
+    .training_camp_p .lecturer_wrap .title_3:before {
+      top: 0;
+    }
+    .training_camp_p .lecturer_wrap .content_left .title_5 {
+      padding-top: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .training_camp_p .lecturer_wrap .content_left {
+      width: 35%;
+      height: 193px;
+      line-height: 193px;
+      float: left !important;
+      /* text-align: center; */
+    }
+    .training_camp_p .lecturer_wrap .con_list .item_wrap {
+      position: relative;
+      height: auto;
+    }
+    .training_camp_p .lecturer_wrap .portrait {
+      position: absolute;
+      height: 193px !important;
+      width: 193px !important;
+      top: 0;
+      padding: 0 !important;
+      /* overflow: hidden; */
+      right: 45px !important;
+      vertical-align: middle;
+      display: table;
+    }
+    .training_camp_p .lecturer_wrap .portrait span {
+      display: table-cell;
+      vertical-align: middle;
+      width: 193px !important;
+      height: 193px !important;
+      text-align: center;
+    }
+    .training_camp_p .lecturer_wrap .portrait span img {
+      max-width: 193px;
+      max-height: 193px;
     }
   }
 

@@ -124,23 +124,33 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-item swiper-slide">
-              <img src="./../../assets/img/t1.jpg">
+              <a :href="'#/training_camp/1/11'">
+                <img src="./../../assets/img/t1.jpg">
+              </a>
               <a :href="'#/training_camp/1/11'" class="btn details_btn_i_1"></a>
             </div>
             <div class="swiper-item swiper-slide">
-              <img src="./../../assets/img/t2.jpg">
+              <a :href="'#/training_camp/1/10'">
+                <img src="./../../assets/img/t2.jpg">
+              </a>
               <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
             </div>
             <div class="swiper-item swiper-slide">
-              <img src="./../../assets/img/t3.jpg">
+              <a :href="'#/training_camp/3/12'">
+                <img src="./../../assets/img/t3.jpg">
+              </a>
               <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
-              <img src="./../../assets/img/t4.jpg">
+              <a :href="'#/training_camp/1/2'">
+                <img src="./../../assets/img/t4.jpg">
+              </a>
               <a :href="'#/training_camp/1/2'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
-              <img src="./../../assets/img/t5.jpg">
+              <a :href="'#/training_camp/4/19'">
+                <img src="./../../assets/img/t5.jpg">
+              </a>
               <a :href="'#/training_camp/4/19'" class="btn details_btn_i_3"></a>
             </div>
           </div>
@@ -237,39 +247,39 @@
     },
     beforeUpdate() {
       // this.CourseList();
-          this.$nextTick(function() {
-      var mySwiper = new Swiper('.home_banner .swiper-container', {
-        direction: 'horizontal',
-        loop: true
-      });
-      // Swiper 推荐课程
-      var swiper2 = new Swiper('.course_swiper_wrap .swiper-container', {
-        slidesPerView: 3,
-        paginationClickable: true,
-        nextButton: '.swiper-button-next-01',
-        prevButton: '.swiper-button-prev-01',
-        spaceBetween: 30,
-        freeMode: true,
-        loop: true
-      });
-      var mySwiper3 = new Swiper('.m_section_2 .swiper-container', {
-        slidesPerView: 1,
-        paginationClickable: true,
-        loop: true,
-        autoHeight: true,
-        nextButton: '.swiper-button-next-1',
-        prevButton: '.swiper-button-prev-1',
-  
-      });
-      var mySwiper4 = new Swiper('.section_3 .swiper-container', {
-        slidesPerView: 1,
-        paginationClickable: true,
-        loop: true,
-        autoHeight: true,
-        nextButton: '.swiper-button-next-2',
-        prevButton: '.swiper-button-prev-2'
-      });
-          })
+      this.$nextTick(function () {
+        var mySwiper = new Swiper('.home_banner .swiper-container', {
+          direction: 'horizontal',
+          loop: true
+        });
+        // Swiper 推荐课程
+        var swiper2 = new Swiper('.course_swiper_wrap .swiper-container', {
+          slidesPerView: 3,
+          paginationClickable: true,
+          nextButton: '.swiper-button-next-01',
+          prevButton: '.swiper-button-prev-01',
+          spaceBetween: 30,
+          freeMode: true,
+          loop: true
+        });
+        var mySwiper3 = new Swiper('.m_section_2 .swiper-container', {
+          slidesPerView: 1,
+          paginationClickable: true,
+          loop: true,
+          autoHeight: true,
+          nextButton: '.swiper-button-next-1',
+          prevButton: '.swiper-button-prev-1',
+
+        });
+        var mySwiper4 = new Swiper('.section_3 .swiper-container', {
+          slidesPerView: 1,
+          paginationClickable: true,
+          loop: true,
+          autoHeight: true,
+          nextButton: '.swiper-button-next-2',
+          prevButton: '.swiper-button-prev-2'
+        });
+      })
     },
     components: {
       myHeader: myHeader,
@@ -616,7 +626,7 @@
     }
 
     .home_p .section_2,
-     .home_p .inner_header .m_header .m_logo{
+    .home_p .inner_header .m_header .m_logo {
       display: none !important;
     }
     .home_p .m_section_2 {
@@ -768,6 +778,13 @@
     }
     .home_p .utting_line {
       height: 0;
+    }
+    .swiper-button-next-1,
+    .swiper-button-prev-1 {
+      z-index: 0;
+    }
+    .inner_header .search_head .search_input:active {
+      border: none;
     }
   }
 

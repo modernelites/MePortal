@@ -53,18 +53,18 @@
     },
     beforeUpdate() {
       this.$nextTick(function () {
-        if (JSON.parse(window.localStorage.getItem("user"))) {
-          let user = JSON.parse(window.localStorage.getItem("user"));
-          this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
-            response = response.body;
-            this.CourseReg_Items = response.Data;
-          }, function () {
-            console.log('请求发送失败');
-          });
-        } else {
-          // return;
-          console.log('empty');
-        }
+        // if (JSON.parse(window.localStorage.getItem("user"))) {
+        //   let user = JSON.parse(window.localStorage.getItem("user"));
+        //   this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
+        //     response = response.body;
+        //     this.CourseReg_Items = response.Data;
+        //   }, function () {
+        //     console.log('请求发送失败');
+        //   });
+        // } else {
+        //   // return;
+        //   console.log('empty');
+        // }
 
       })
     },
@@ -113,6 +113,28 @@
     },
     mounted() {
       // this.CourseReg_List();
+        //       if (window.localStorage.getItem('user') === null) {
+        //   window.location.href = "#/login/login1";
+        // } else {
+        //   window.location.href = "#/personal_center/personal_center1";
+        // }
+          if (JSON.parse(window.localStorage.getItem("user"))) {
+          let user = JSON.parse(window.localStorage.getItem("user"));
+          this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
+            response = response.body;
+            this.CourseReg_Items = response.Data;
+          }, function () {
+            console.log('请求发送失败');
+          });
+        } else {
+          // return;
+          console.log('empty');
+        }
+    },
+          watch: {
+      // 如果路由有变化，会再次执行该方法
+      "$route": "login"
+
     }
   }
 
