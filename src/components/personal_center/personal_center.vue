@@ -110,7 +110,7 @@
 <script>
   import myHeader from '@/components/header/header';
   import myFooter from '@/components/footer/footer';
-import router from 'vue-router';
+  import router from 'vue-router';
   export default {
     name: 'personalCenter',
     data() {
@@ -127,41 +127,31 @@ import router from 'vue-router';
       },
       selectOption(num) {
         this.$refs.per_show_info.innerHTML = this.optionMap[num];
-      },
-      login(){
-               if (window.localStorage.getItem('user') === null) {
-         
-          // window.location.href = "#/login/login1";
-          this.$router.push({path:'/login/login1'})
-        } else {
-          // window.location.href = "#/personal_center/personal_center1";
-          this.$router.push({path:'/personal_center/personal_center1'})
-        }
       }
     },
-    beforeCreate(){
- 
-
-    },
+    beforeCreate() {},
     created() {
       this.$nextTick(function () {
-        
+
         console.log(JSON.parse(window.localStorage.getItem("user")));
         this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
       });
 
     },
     mounted() {
-      //  if (window.localStorage.getItem('user') === null) {
-         
-      //     // window.location.href = "#/login/login1";
-      //     this.$router.push({path:'/login/login1'})
-      //   } else {
-      //     // window.location.href = "#/personal_center/personal_center1";
-      //     this.$router.push({path:'/personal_center/personal_center1'})
-      //   }
+      // debugger;
+      if (window.localStorage.getItem('user') === null) {
 
-
+        // window.location.href = "#/login/login1";
+        this.$router.push({
+          path: '/login/login1'
+        })
+      } else {
+        // window.location.href = "#/personal_center/personal_center1";
+        this.$router.push({
+          path: '/personal_center/personal_center1'
+        })
+      }
       let url = window.location.href;
       if (url.indexOf('personal_center1') > 0) {
         this.selectType = 0;
@@ -179,13 +169,8 @@ import router from 'vue-router';
         this.selectType = 4;
       }
 
-
     },
-      watch: {
-      // 如果路由有变化，会再次执行该方法
-      "$route": "login"
 
-    },
 
     components: {
       myHeader: myHeader,

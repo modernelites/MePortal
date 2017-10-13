@@ -21,7 +21,7 @@
                 </ul>
               </li>
               <li class="inner_nav_item person_center_item" v-show="userName">
-                <router-link :to="{path:'/personal_center/personal_center1'}" style="padding: 0" class="person_center">
+                <router-link :to="{path:'/personal_center'}" style="padding: 0" class="person_center">
                   个人中心&nbsp;
                 </router-link>
               </li>
