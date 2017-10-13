@@ -51,9 +51,11 @@
     methods: {
       CourseReg_List: function () {
         let user = JSON.parse(window.localStorage.getItem("user"));
+        console.log(user);
         this.$http.get(this.ApiUrl + 'me/Course/Course_Reg_List?UserID=' + user.UserID+'&CourseTypeID=2').then((response) => {
           response = response.body;
           this.CourseReg_Items = response.Data;
+          console.log(this.CourseReg_Items);
         }, function () {
           console.log('请求发送失败');
         });

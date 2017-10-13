@@ -158,18 +158,33 @@ export default new Router({
       children: [{
         path: 'personal_center1',
         component: personalCenter1
+      //   meta: {
+      //     keepAlive: false
+      // }
       }, {
         path: 'personal_center2',
         component: personalCenter2
+      //   meta: {
+      //     keepAlive: false
+      // }
       }, {
         path: 'personal_center3',
         component: personalCenter3
+      //   meta: {
+      //     keepAlive: false
+      // }
       }, {
         path: 'personal_center4',
         component: personalCenter4
+      //   meta: {
+      //     keepAlive: false
+      // }
       }, {
         path: 'personal_center5',
         component: personalCenter5
+      //   meta: {
+      //     keepAlive: false
+      // }
       }]
     }, {
       path: '/register/',

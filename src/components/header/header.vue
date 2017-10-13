@@ -106,7 +106,7 @@
                 <a :href="m.Link">{{m.MenuName}}</a>
               </li>
               <li v-on:click="searchWrapShow=false" class="nav_item">
-                <a href="#/personal_center/personal_center1" title="首页">个人中心</a>
+                <a href="javascript:;" @click="loginStates()" title="首页">个人中心</a>
               </li>
               <li class="nav_item more_course" v-on:click="navSubListShow=!navSubListShow" :class="{active:navSubListShow}">
                 <a href="javascript:;" title="课程">课程
@@ -194,6 +194,20 @@
       }
     },
     methods: {
+      loginStates(){
+        if (window.localStorage.getItem('user') === null) {
+
+        // window.location.href = "#/login/login1";
+        this.$router.push({
+          path: '/login/login1'
+        })
+      } else {
+        // window.location.href = "#/personal_center/personal_center1";
+        this.$router.push({
+          path: '/personal_center/personal_center1'
+        })
+      }
+      },
       CourseListFillter(m, p) {
         var arr = [];
         for (var i = 0; i < m.length; i++) {

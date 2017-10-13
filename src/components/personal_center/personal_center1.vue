@@ -45,6 +45,7 @@
 </template>
 
 <script>
+
   export default {
     data() {
       return {
@@ -110,16 +111,10 @@
         });
 
       },
-        login(){
-               if (window.localStorage.getItem('user') === null) {
-         
-          // window.location.href = "#/login/login1";
-          this.$router.push({path:'/login/login1'})
-        } else {
-          // window.location.href = "#/personal_center/personal_center1";
-          this.$router.push({path:'/personal_center/personal_center1'})
-        }
+      getMsg:function(){
+        alert('1');
       }
+
     },
     mounted() {
       // this.CourseReg_List();
@@ -140,12 +135,11 @@
           // return;
           console.log('empty');
         }
-    },
-          watch: {
-      // 如果路由有变化，会再次执行该方法
-      // "$route": "login"
-
     }
+    // ,
+    //     watch: {
+    //   '$route': 'getMsg'
+    // }
   }
 
 </script>
@@ -265,6 +259,7 @@
       flex-direction: column;
       height: 316px;
       width: 100%;
+      overflow: hidden;
     }
     .content_item .content_item_table tr.table_content td {
       display: inline-block;
@@ -273,6 +268,11 @@
       text-align: center;
       width: 120%;
     }
+     .content_item .content_item_table tbody{
+       overflow: hidden;
+       height: 316px;
+       display: block
+     }
     .content_item .no_data_wrapper {
       /* position: relative; */
     }
