@@ -1,6 +1,6 @@
 <template>
-  <dl class="content_item">
-    <table class="content_item_table" v-show="CourseReg_Items.length>0">
+  <dl class="content_item ">
+    <table class="content_item_table " v-show="CourseReg_Items.length>0">
       <!-- <caption>table title and/or explanatory text</caption> -->
       <thead>
         <tr class="table_h">
@@ -13,28 +13,30 @@
           <th></th>
         </tr>
       </thead>
-      <tbody >
-        <tr v-for="m in CourseReg_Items" class="table_content">
-          <td v-text="m.CourseName"></td>
-          <td>{{m.StartDate | datefmt}}</td>
-          <td>{{m.EndDate | datefmt}}</td>
-          <td v-text="m.Price"></td>
-          <td>
-            <div v-show="m.Reg_Status==1">报名成功</div>
-            <div v-show="m.Reg_Status==0">已取消</div>
-          </td>
-          <td class="pay">
-            <div v-show="m.Pay_Status==1" style="color: #1e2022;">完成</div>
-            <div v-show="m.Pay_Status==0">去支付</div>
-          </td>
-          <td class="cancel" v-show="m.Reg_Status==1">
-            <div style="cursor: pointer;" @click="Course_Reg_Status_Upd(m)">取消报名</div>
-          </td>
-        </tr>
+      <tbody class='swiper-container'>
+        <div class="swiper-wrapper">
+          <tr v-for="m in CourseReg_Items" class="table_content swiper-item swiper-slide">
+            <td v-text="m.CourseName"></td>
+            <td>{{m.StartDate | datefmt}}</td>
+            <td>{{m.EndDate | datefmt}}</td>
+            <td v-text="m.Price"></td>
+            <td>
+              <div v-show="m.Reg_Status==1">报名成功</div>
+              <div v-show="m.Reg_Status==0">已取消</div>
+            </td>
+            <td class="pay">
+              <div v-show="m.Pay_Status==1" style="color: #1e2022;">完成</div>
+              <div v-show="m.Pay_Status==0">去支付</div>
+            </td>
+            <td class="cancel" v-show="m.Reg_Status==1">
+              <div style="cursor: pointer;" @click="Course_Reg_Status_Upd(m)">取消报名</div>
+            </td>
+          </tr>
+        </div>
       </tbody>
+      <div class="swiper-button-next swiper-button-next-1"></div>
+      <div class="swiper-button-prev swiper-button-prev-1"></div>
     </table>
-      <!-- <div class="swiper-button-next swiper-button-next-01"></div>
-      <div class="swiper-button-prev swiper-button-prev-01"></div> -->
     <div class="no_data_wrapper" v-show="CourseReg_Items.length==0">
       <div class="no_data_content clearfix">
         <img class="pic_img" src="./../../assets/img/not_course@2x.png">
@@ -45,8 +47,10 @@
 </template>
 
 <script>
-
+  import Swiper from '@/../static/js/swiper.min.js';
+  import MScript from '@/../static/js/script.js';
   export default {
+
     data() {
       return {
         CourseReg_Items: []
@@ -54,46 +58,15 @@
     },
     beforeUpdate() {
       this.$nextTick(function () {
-        // if (JSON.parse(window.localStorage.getItem("user"))) {
-        //   let user = JSON.parse(window.localStorage.getItem("user"));
-        //   this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
-        //     response = response.body;
-        //     this.CourseReg_Items = response.Data;
-        //   }, function () {
-        //     console.log('请求发送失败');
-        //   });
-        // } else {
-        //   // return;
-        //   console.log('empty');
-        // }
-
+        var mySwiper = new Swiper('.content_item .swiper-container', {
+          direction: 'horizontal',
+          loop: true,
+          nextButton: '.swiper-button-next-1',
+          prevButton: '.swiper-button-prev-1'
+        })
       })
     },
     methods: {
-      // CourseReg_List: function () {
-      // if (JSON.parse(window.localStorage.getItem("user"))) {
-      //   let user = JSON.parse(window.localStorage.getItem("user"));
-      //           this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
-      //   response = response.body;
-      //   this.CourseReg_Items = response.Data;
-      // }, function () {
-      //   console.log('请求发送失败');
-      // });
-      // } else {
-      // return;
-      //   console.log('empty');
-      // }
-      // },
-      // _initSwiper() {
-      //   let mSwiper01 = new Swiper('.content_item .swiper-container', {
-      //     slidesPerView: 1,
-      //     paginationClickable: true,
-      //     loop: true,
-      //     nextButton: '.swiper-button-next-01',
-      //     prevButton: '.swiper-button-prev-01'
-      //   });
-      //   console.log(mSwiper01);
-      // },
       Course_Reg_Status_Upd: function (m) {
         let obj = this;
         let id = obj.$layer.confirm("确定取消报名吗?", {
@@ -104,46 +77,37 @@
             response = response.body;
             obj.$layer.close(id);
             obj.CourseReg_List();
-            console.log(response);
+            // console.log(response);
           }, function () {
             console.log('请求发送失败');
           });
         });
-
       },
-      getMsg:function(){
+      getMsg: function () {
         alert('1');
       }
-
     },
     mounted() {
-      // this.CourseReg_List();
-        //       if (window.localStorage.getItem('user') === null) {
-        //   window.location.href = "#/login/login1";
-        // } else {
-        //   window.location.href = "#/personal_center/personal_center1";
-        // }
-          if (JSON.parse(window.localStorage.getItem("user"))) {
-          let user = JSON.parse(window.localStorage.getItem("user"));
-          this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
-            response = response.body;
-            this.CourseReg_Items = response.Data;
-          }, function () {
-            console.log('请求发送失败');
-          });
-        } else {
-          // return;
-          console.log('empty');
-        }
+      if (JSON.parse(window.localStorage.getItem("user"))) {
+        let user = JSON.parse(window.localStorage.getItem("user"));
+        this.$http.get(this.ApiUrl + 'me/Course/CourseReg_List?UserID=' + user.UserID).then((response) => {
+          response = response.body;
+          this.CourseReg_Items = response.Data;
+          // console.log(this.CourseReg_Items);
+        }, function () {
+          console.log('请求发送失败');
+        });
+      } else {
+        // return;
+        console.log('empty');
+      }
     }
-    // ,
-    //     watch: {
-    //   '$route': 'getMsg'
-    // }
   }
 
 </script>
 <style>
+  @import url("../../assets/css/swiper-3.4.2.min.css");
+  @import url("../../assets/css/media.css");
   .content_item .content_item_table {
     width: 100%;
   }
@@ -268,16 +232,34 @@
       text-align: center;
       width: 120%;
     }
-     .content_item .content_item_table tbody{
-       overflow: hidden;
-       height: 316px;
-       display: block
-     }
+    .content_item .content_item_table tbody {
+      overflow: hidden;
+      height: 316px;
+      display: block,
+    }
+    .content_item .content_item_table .swiper-container .table_content {
+      /* display: block; */
+    }
     .content_item .no_data_wrapper {
       /* position: relative; */
     }
     .content_item .no_data_wrapper .pic_img {
       /* width: 100%; */
+    }
+    .content_item .swiper-slide {
+      width: 100% !important;
+    }
+    .content_item .swiper-container {
+      z-index: 0;
+    }
+    .content_item .swiper-button-next{
+          background-image: url("./../../assets/img/rec_right_next@2x.png");
+          background-size: 40px;
+    }
+    .content_item .swiper-button-prev{
+      background-image: url("./../../assets/img/rec_left_pre@2x.png");
+      left: 106px;
+        background-size: 40px;
     }
   }
 

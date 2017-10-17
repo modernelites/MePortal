@@ -105,13 +105,12 @@
               <ul class="nav_list">
                 <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID) ">
                   <a :href=" '#/training_camp/' +item.CourseTypeID+'/'+ courseItem.CourseID ">{{courseItem.CourseName}}</a>
-                  <!-- <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link> -->
+
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <!-- <div class="swiper-scrollbar"></div> -->
         <div class="swiper-button-next swiper-button-next-1"></div>
         <div class="swiper-button-prev swiper-button-prev-1"></div>
       </div>
@@ -220,21 +219,6 @@
     },
     methods: {
       // 获取课程列表
-      // CourseList() {
-      //   this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
-      //     response = response.body;
-      //     let temp = response.Data;
-      //     temp.forEach(function (item, index, arr) {
-      //       if (item.CourseTypeID > 4) {
-      //         temp.splice(index);
-      //       }
-      //     });
-      //     this.Course_List = temp;
-      //     // console.log(this.Course_List[9].CourseTypeID);
-      //   }, function () {
-      //     console.log('请求发送失败');
-      //   });
-      // },
       CourseListFillter(m, p) {
         var arr = [];
         for (var i = 0; i < m.length; i++) {
@@ -246,7 +230,6 @@
       }
     },
     beforeUpdate() {
-      // this.CourseList();
       this.$nextTick(function () {
         var mySwiper = new Swiper('.home_banner .swiper-container', {
           direction: 'horizontal',

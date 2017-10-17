@@ -12,8 +12,9 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="m in CourseReg_Items" class="table_content">
+      <tbody class="swiper-container">
+        <div class="swiper-wrapper">
+        <tr v-for="m in CourseReg_Items" class="table_content swiper-item swiper-slide">
           <td>
             <div v-show="m.CourseTypeID==5">助教</div>
             <div v-show="m.CourseTypeID==6">义工
@@ -30,7 +31,11 @@
             <div style="cursor: pointer;" @click="Course_Reg_Status_Upd(m)">取消报名</div>
           </td>
         </tr>
+        </div>
+
       </tbody>
+            <div class="swiper-button-next swiper-button-next-1"></div>
+      <div class="swiper-button-prev swiper-button-prev-1"></div>
     </table>
     <div class="no_data_wrapper" v-show="CourseReg_Items.length==0">
       <div class="no_data_content clearfix">
@@ -41,11 +46,23 @@
   </dl>
 </template>
 <script>
+  import Swiper from '@/../static/js/swiper.min.js';
+  import MScript from '@/../static/js/script.js';
   export default {
     data() {
       return {
         CourseReg_Items: []
       }
+    },
+        beforeUpdate() {
+      this.$nextTick(function () {
+        var mySwiper = new Swiper('.content_item .swiper-container', {
+          direction: 'horizontal',
+          loop: true,
+          nextButton: '.swiper-button-next-1',
+          prevButton: '.swiper-button-prev-1'
+        })
+      })
     },
     methods: {
       CourseReg_List: function () {
@@ -82,6 +99,8 @@
 
 </script>
 <style>
+  @import url("../../assets/css/swiper-3.4.2.min.css");
+  @import url("../../assets/css/media.css");
   @media screen and (max-width: 1020px) {
 
     .content_item .content_item_table tr.table_h th {
@@ -101,6 +120,22 @@
       text-align: center;
       width: 120%;
     }
+        .content_item .swiper-slide {
+      width: 100% !important;
+    }
+    .content_item .swiper-container {
+      z-index: 0;
+    }
+    .content_item .swiper-button-next{
+          background-image: url("./../../assets/img/rec_right_next@2x.png");
+          background-size: 40px;
+    }
+    .content_item .swiper-button-prev{
+      background-image: url("./../../assets/img/rec_left_pre@2x.png");
+      left: 106px;
+        background-size: 40px;
+    }
   }
 
 </style>
+

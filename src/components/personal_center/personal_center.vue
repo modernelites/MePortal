@@ -58,38 +58,30 @@
             <div class="per_slide_tab_wrapper" :class="{active:optionShow}">
               <p ref="per_show_info" class="per_show_info" v-on:click="optionShow=!optionShow">集训营课程</p>
               <ul class="per_list" id="per_sub_nav">
-                <li v-on:click="selectOption(0),optionShow=false" >
+                <li v-on:click="selectOption(0),optionShow=false">
                   <router-link :to="{path:'/personal_center1'}" style="padding: 0" class="item">
-                  集训营课程&nbsp;
-                </router-link>
-                  <!-- <a class="item" href="#/personal_center/personal_center1"> </a> -->
+                    集训营课程&nbsp;
+                  </router-link>
                 </li>
                 <li v-on:click="selectOption(1),optionShow=false">
                   <router-link :to="{path:'/personal_center2'}" style="padding: 0" class="item">
-                  大学生课程&nbsp;
-                </router-link>
-                  <!-- <a  class="item" href="#/personal_center/personal_center2"> 大学生课程</a> -->
+                    大学生课程&nbsp;
+                  </router-link>
                 </li>
-              
-                                  <li v-on:click="selectOption(2),optionShow=false">
+                <li v-on:click="selectOption(2),optionShow=false">
                   <router-link :to="{path:'/personal_center3'}" style="padding: 0" class="item">
-                  海外游学课程&nbsp;
-                </router-link>
-                  <!-- <a v-on:click="selectOption(2),optionShow=false" class="item" href="#/personal_center/personal_center3"> 海外游学课程</a> -->
+                    海外游学课程&nbsp;
+                  </router-link>
                 </li>
-                
-                                  <li v-on:click="selectOption(3),optionShow=false">
+                <li v-on:click="selectOption(3),optionShow=false">
                   <router-link :to="{path:'/personal_center4'}" style="padding: 0" class="item">
-                  摩英网校&nbsp;
-                </router-link>
-                  <!-- <a v-on:click="selectOption(3),optionShow=false" class="item" href="#/personal_center/personal_center4"> 摩英网校</a> -->
+                    摩英网校&nbsp;
+                  </router-link>
                 </li>
-          
-                                  <li v-on:click="selectOption(4),optionShow=false">
+                <li v-on:click="selectOption(4),optionShow=false">
                   <router-link :to="{path:'/personal_center5'}" style="padding: 0" class="item">
-                  助教·义工&nbsp;
-                </router-link>
-                  <!-- <a v-on:click="selectOption(4),optionShow=false" class="item" href="#/personal_center/personal_center5"> 助教·义工</a> -->
+                    助教·义工&nbsp;
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -145,32 +137,29 @@
       },
       selectOption(num) {
         this.$refs.per_show_info.innerHTML = this.optionMap[num];
-         this.$router.push({
-          path: '/personal_center/personal_center'+(num+1)
+        this.$router.push({
+          path: '/personal_center/personal_center' + (num + 1)
         })
       }
     },
     beforeCreate() {},
     created() {
       this.$nextTick(function () {
-            if (window.localStorage.getItem('user') === null) {
-
-        // window.location.href = "#/login/login1";
-        this.$router.push({
-          path: '/login/login1'
-        })
-      } else {
-        // window.location.href = "#/personal_center/personal_center1";
-        this.$router.push({
-          path: '/personal_center/personal_center1'
-        })
-      }
-        console.log(JSON.parse(window.localStorage.getItem("user")));
+        if (window.localStorage.getItem('user') === null) {
+          this.$router.push({
+            path: '/login/login1'
+          })
+        } else {
+          this.$router.push({
+            path: '/personal_center/personal_center1'
+          })
+        }
+        // console.log(JSON.parse(window.localStorage.getItem("user")));
         this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
       });
 
     },
-    beforeRouteUpdate(){
+    beforeRouteUpdate() {
 
     },
     mounted() {
