@@ -824,7 +824,9 @@
   .modification_data_p .mod_data_con .item_bottom_con .parent_box .phone_area input {
     width: 300px;
   }
-
+div.school{
+  margin-bottom: 36px;
+}
   @media screen and (max-width: 1020px) {
     .modification_data_p {
       max-width: 750px;
@@ -1145,6 +1147,9 @@
   color: #d0d0d0;
   font-size: 12px;
   margin-top: -1px;
+}
+div.school{
+  margin-bottom: 18px;
 }
   }
 

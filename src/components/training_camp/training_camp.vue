@@ -38,42 +38,12 @@
               </ul>
             </div>
 
-
-
           </div>
           <div class="course_wrap">
             <h3 class="title_3"> 课程介绍</h3>
             <p class="text" v-html="Course_Con.Brief">
             </p>
           </div>
-          <!-- <div class="img_small_wrap">
-              <div class="m_row clearfix">
-                <div class="m_col-lg-6">
-                  <img src="./../../assets/img/smail_2.png">
-                </div>
-                <div class="m_col-lg-6">
-                  <img src="./../../assets/img/smail_2.png">
-                </div>
-              </div>
-            </div>
-            <div class="course_wrap">
-              <p class="text">
-                课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-              </p>
-            </div>
-            <div class="img_xmall_wrap">
-              <div class="m_row clearfix">
-                <div class="m_col-lg-4">
-                  <img src="./../../assets/img/xamll_1.png">
-                </div>
-                <div class="m_col-lg-4">
-                  <img src="./../../assets/img/xamll_1.png">
-                </div>
-                <div class="m_col-lg-4">
-                  <img src="./../../assets/img/xamll_1.png">
-                </div>
-              </div>
-            </div> -->
 
           <!-- 讲师介绍 v-show="Teacher_Con.length>0"-->
           <div class="lecturer_wrap" v-show="Teacher_Con.length>0">
@@ -146,14 +116,7 @@
           console.log('请求发送失败');
         });
       },
-      // CourseItemCon() {
-      //   // 过滤课程
-      //   for (var i = 0; i < this.Course_List.length; i++) {
-      //     if (this.Course_List[i].CourseID == this.$route.params.cid) {
-      //       this.Course_Con = this.Course_List[i];
-      //     }
-      //   }
-      // },
+
       CourseItemCon(item) {
         if (item) {
           this.CourseItemID = item.CourseID || this.CourseItemID;
@@ -204,7 +167,8 @@
         this.CourseTypeItemID = this.$route.params.ctid;
         this.CourseItemID = this.$route.params.cid;
         this.selectType = this.CourseTypeItemID;
-        this.CourseItemCon();
+        // this.CourseItemCon();
+        window.location.reload(true);
       }
     },
     watch: {
@@ -212,9 +176,10 @@
       "$route": "getUrl"
 
     },
-    mounted() {
+    activated() {
       this.CourseTypeList();
       this.CourseList();
+      // this.getUrl();
     },
     components: {
       myHeader: myHeader,
@@ -562,13 +527,34 @@
   .training_camp_p .camp_nav {
     display: none !important;
   }
-
+      p.text{
+      width:70%;
+      margin: 0 auto;
+    }
+    p.text video{
+      width: 100%;
+    }
+    div.course_wrap iframe{
+      width:100% !important;
+    }
+    div.course_wrap  video{
+      width: 100% !important;
+    }
+    div.course_wrap img{
+      width: 100% !important;
+    }
+        div.course_wrap section{
+      width: 100% !important;
+      margin:0 !important;
+      padding: 0 !important;
+    }
   @media screen and (max-width: 1020px) {
     .training_camp_p {
       max-width: 750px;
       min-width: 320px;
       overflow: hidden;
       margin: 0 auto;
+      height: 60px;
     }
     .training_camp_p .container_wrap {
       width: auto;
@@ -615,7 +601,9 @@
       font-size: 12px;
       padding-bottom: 5px;
       padding-top: 0;
-      margin-top: 40px;
+      margin-top: 30px;
+      z-index: 0;
+
     }
     .training_camp_p .course_wrap .title_3:before {
       display: none;
@@ -765,7 +753,7 @@
       top: 0;
       padding: 0 !important;
       /* overflow: hidden; */
-      right: 45px !important;
+      right: 40px !important;
       vertical-align: middle;
       display: table;
     }
@@ -775,11 +763,18 @@
       width: 193px !important;
       height: 193px !important;
       text-align: center;
+      /* margin-left: 20px; */
     }
     .training_camp_p .lecturer_wrap .portrait span img {
-      max-width: 193px;
-      max-height: 193px;
+      max-width: 170px;
+      max-height: 170px;
     }
+    p.text{
+      width:100%;
+      margin: 0 auto;
+    }
+
+
   }
 
 </style>

@@ -18,21 +18,41 @@
       <div class="content_main_wrapper">
         <nav>
           <ul class="nav_list" id="personal_center_p_nav_list">
-            <li class="nav_item" :class="{active:selectType===0}" @click="select(0)">
-              <a href="#/personal_center/personal_center1" title=""> 集训营课程</a>
-            </li>
-            <li class="nav_item" :class="{active:selectType===1}" @click="select(1)">
-              <a href="#/personal_center/personal_center2" title="">大学生课程</a>
-            </li>
-            <li class="nav_item" :class="{active:selectType===2}" @click="select(2)">
-              <a href="#/personal_center/personal_center3" title="">海外游学课程</a>
-            </li>
-            <li class="nav_item" :class="{active:selectType===3}" @click="select(3)">
-              <a href="#/personal_center/personal_center4" title="">摩英网校</a>
-            </li>
-            <li class="nav_item" :class="{active:selectType===4}" @click="select(4)">
-              <a href="#/personal_center/personal_center5" title="">助教`义工</a>
-            </li>
+                <li class="nav_item" v-on:click="selectOption(0),optionShow=false"><a href="javascript:;">
+                                    <router-link :to="{path:'/personal_center1'}" style="padding: 0" class="item">
+                    集训营课程&nbsp;
+                  </router-link>
+                </a>
+
+                </li>
+                <li class="nav_item" v-on:click="selectOption(1),optionShow=false">
+                  <a href="javascript:;">
+                  <router-link :to="{path:'/personal_center2'}" style="padding: 0" class="item">
+                    大学生课程&nbsp;
+                  </router-link>
+                  </a>
+                </li>
+                <li class="nav_item" v-on:click="selectOption(2),optionShow=false">
+                  <a href="javascript:;">
+                  <router-link :to="{path:'/personal_center3'}" style="padding: 0" class="item">
+                    海外游学课程&nbsp;
+                  </router-link>
+                  </a>
+                </li>
+                <li class="nav_item" v-on:click="selectOption(3),optionShow=false">
+                  <a href="javascript:;">
+                  <router-link :to="{path:'/personal_center4'}" style="padding: 0" class="item">
+                    摩英网校&nbsp;
+                  </router-link>
+                  </a>
+                </li>
+                <li class="nav_item" v-on:click="selectOption(4),optionShow=false">
+                  <a href="javascript:;">
+                  <router-link :to="{path:'/personal_center5'}" style="padding: 0" class="item">
+                    助教·义工&nbsp;
+                  </router-link>
+                  </a>
+                </li>
           </ul>
         </nav>
         <div class="content_list" id="personal_center_p_content_list">
@@ -140,10 +160,19 @@
         this.$router.push({
           path: '/personal_center/personal_center' + (num + 1)
         })
+      },
+      getUrl() {
+        // window.location.reload(true);
       }
+    },    
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      "$route": "getUrl"
+
     },
     beforeCreate() {},
-    created() {
+    
+    activated() {
       this.$nextTick(function () {
         if (window.localStorage.getItem('user') === null) {
           this.$router.push({
@@ -158,11 +187,6 @@
         this.optionMap = ['集训营课程', '大学生课程', '海外游学课程', '摩英网校', '助教·义工'];
       });
 
-    },
-    beforeRouteUpdate() {
-
-    },
-    mounted() {
 
       let url = window.location.href;
       if (url.indexOf('personal_center1') > 0) {
@@ -180,6 +204,28 @@
       if (url.indexOf('personal_center5') > 0) {
         this.selectType = 4;
       }
+    },
+    beforeRouteUpdate() {
+
+    },
+    mounted() {
+
+      // let url = window.location.href;
+      // if (url.indexOf('personal_center1') > 0) {
+      //   this.selectType = 0;
+      // }
+      // if (url.indexOf('personal_center2') > 0) {
+      //   this.selectType = 1;
+      // }
+      // if (url.indexOf('personal_center3') > 0) {
+      //   this.selectType = 2;
+      // }
+      // if (url.indexOf('personal_center4') > 0) {
+      //   this.selectType = 3;
+      // }
+      // if (url.indexOf('personal_center5') > 0) {
+      //   this.selectType = 4;
+      // }
 
     },
 
@@ -311,13 +357,13 @@
     padding: 56px 20px 0;
   }
 
-  .personal_center_p .nav_item a:after {
+  .personal_center_p .nav_item .item:after {
     position: absolute;
     content: " ";
     display: block;
     width: 100%;
     left: 0;
-    bottom: -2px;
+    bottom: -17px;
     height: 4px;
     background: #f24d4d;
     opacity: 0;

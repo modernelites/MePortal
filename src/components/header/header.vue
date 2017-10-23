@@ -60,20 +60,6 @@
                 <a href="javascript:;" class="apply_btn">报名</a>
               </li>
               </div>
-              <!-- <li class="item">
-                      <div class="info_box">
-                        <p class="text">96期青少年领袖特训营</p>
-                        <p class="date">2017.07.06</p>
-                      </div>
-                      <a href="javascript:;" class="apply_btn">报名</a>
-                    </li>
-                    <li class="item">
-                      <div class="info_box">
-                        <p class="text">96期青少年领袖特训营</p>
-                        <p class="date">2017.07.06</p>
-                      </div>
-                      <a href="javascript:;" class="apply_btn">报名</a>
-                    </li> -->
             </ul>
           </form>
         </div>
@@ -121,6 +107,7 @@
                 <ul class="nav_sub_list" v-show="navSubListShow">
                   <li v-on:click="searchWrapShow=false" v-for="item in CourseType_List">
                     <a :href="'#/training_camp/'+item.CourseTypeID +'/' +getCourseID(item.CourseTypeID) "> {{item.CourseTypeName}}</a>
+                    <!-- <router-link :to="{name:'trainingCamp',params:{ctid:item.CourseTypeID,cid:getCourseID(item.CourseTypeID)}}">{{item.CourseTypeName}}</router-link> -->
                   </li>
                 </ul>
               </li>
@@ -206,6 +193,7 @@ export default {
       return arr;
     },
     getCourseID(CourseTypeID) {
+      // console.log(this.Course_List[CourseTypeID-1]);
       return this.CourseID_List[CourseTypeID - 1];
     },
     hide() {
@@ -267,7 +255,7 @@ export default {
       console.log('1');
     }
   },
-  created() {
+  activated() {
     var path = globalPath();
     // 获取导航菜单列表
     this.$nextTick(function() {
@@ -300,6 +288,8 @@ export default {
         });
       }
     });
+
+    
   },
   mounted() {
     this.getUser();
@@ -812,11 +802,8 @@ export default {
   .inner_header {
     height: 60px;
     background: url("./../../assets/img/header@3x.png") no-repeat center;
-    /* background-size: 100% 100%; */
-    /* width: 100%; */
+
     z-index: 999;
-    /* float: left; */
-    z-index: 1;
   }
   .inner_nav,
   .toggle_search_btn,
@@ -836,17 +823,6 @@ export default {
     cursor: pointer;
     z-index: 999;
   }
-  /* .inner_header .inner_header_con .m_logo{
-      position: absolute;
-    top: 15px;
-    left: 15px;
-      height: 30px;
-      width: 28px;
-      background: url("./../../assets/img/logo.png") no-repeat center;
-      background-size: contain;
-      cursor: pointer;
-      z-index: 999;
-    } */
   .inner_header .m_header .toogle_btn {
     width: 22px;
     height: 18px;
@@ -940,7 +916,8 @@ export default {
     display: inline-block;
   }
 
-  .inner_header .nav_wrapper .nav_sub_list a {
+  .inner_header .nav_wrapper .nav_sub_list a,
+  .inner_header .nav_wrapper .nav_sub_list router-link {
     font-weight: 200;
     padding-left: 56px
   }

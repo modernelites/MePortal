@@ -28,7 +28,7 @@
               <img :src="CourseTypeItem.FilePath">
             </div>
             <div class="nav">
-              <a href="#/register/register1" class="title_3">{{CourseTypeItem.CourseTypeName}}</a>
+              <a href="javascript:;" class="title_3">{{CourseTypeItem.CourseTypeName}}</a>
               <ul class="nav_list">
                 <li class="item" v-for="CourseItem in CourseListFillter(Course_List ,CourseTypeItem.CourseTypeID)">
                   <!--<a :href="'#/training_camp/' +CourseTypeItem.CourseTypeID +','+ CourseItem.CourseID">{{CourseItem.CourseName}}</a>-->
@@ -51,32 +51,42 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="title_3 title_3_i_1">
-                <img src="./../../assets/img/t1.jpg">
+                <a :href="'#/training_camp/1/11'">
+                  <img src="./../../assets/img/t1.jpg">
+                </a>
               </div>
               <a :href="'#/training_camp/1/11'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_2">
-                <img src="./../../assets/img/t2.jpg">
+                <a :href="'#/training_camp/1/10'">
+                  <img src="./../../assets/img/t2.jpg">
+                </a>
               </div>
               <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
-                <img src="./../../assets/img/t3.jpg">
+                <a :href="'#/training_camp/3/12'">
+                  <img src="./../../assets/img/t3.jpg">
+                </a>
               </div>
               <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
-                <img src="./../../assets/img/t4.jpg">
+                <a :href="'#/training_camp/1/2'">
+                  <img src="./../../assets/img/t4.jpg">
+                </a>
               </div>
               <a :href="'#/training_camp/1/2'" class="btn details_btn_i_1"></a>
             </div>
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <!-- <a :href="'#/training_camp/4/19'"> -->
-                <img src="./../../assets/img/t5.jpg">
+                <a :href="'#/training_camp/4/19'">
+                  <img src="./../../assets/img/t5.jpg">
+                </a>
               </div>
               <a href="'#/training_camp/4/19'" class="btn details_btn_i_1"></a>
             </div>
@@ -190,7 +200,7 @@
         showNum: 4
       };
     },
-    created() {
+    activated() {
       // 获取课程类型列表
       var path = globalPath();
       this.$nextTick(function () {
@@ -206,11 +216,12 @@
         this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
           response = response.body;
           let temp = response.Data;
-          temp.forEach(function (item, index, arr) {
-            if (item.CourseTypeID > 4) {
-              temp.splice(index);
+          for (let i = 0; i < temp.length; i++) {
+            if (temp[i].CourseTypeID > 4) {
+              temp.splice(i, 1);
+              i = i - 1;
             }
-          });
+          }
           this.Course_List = temp;
         }, function () {
           console.log('请求发送失败');
@@ -364,10 +375,9 @@
   .home_p .section_course_type .list .item_box:hover .nav .nav_list {
     display: block;
   }
-
-  .home_p .section_course_type .list .item_box:hover .nav .title_3 {
+  /* .home_p .section_course_type .list .item_box:hover .nav .title_3 {
     background: #fff;
-  }
+  } */
   /* hover显示下拉菜单 */
 
   .home_p .section_course_type .list .item_box .nav .nav_list {
