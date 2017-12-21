@@ -22,7 +22,7 @@
     <!-- Swiper end  -->
     <div class="section_course_type ">
       <ul class="m_row clearfix list">
-        <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-if="CourseTypeItem.CourseTypeID<5">
+        <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-bind:key="index"  v-if="CourseTypeItem.CourseTypeID<5">
           <div class="item_box">
             <div class="course_img">
               <img :src="CourseTypeItem.FilePath">
@@ -30,7 +30,7 @@
             <div class="nav">
               <a href="javascript:;" class="title_3">{{CourseTypeItem.CourseTypeName}}</a>
               <ul class="nav_list">
-                <li class="item" v-for="CourseItem in CourseListFillter(Course_List ,CourseTypeItem.CourseTypeID)">
+                <li class="item" v-for="CourseItem in CourseListFillter(Course_List,CourseTypeItem.CourseTypeID)" v-bind:key="CourseItem.index">
                   <!--<a :href="'#/training_camp/' +CourseTypeItem.CourseTypeID +','+ CourseItem.CourseID">{{CourseItem.CourseName}}</a>-->
                   <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link>
                 </li>

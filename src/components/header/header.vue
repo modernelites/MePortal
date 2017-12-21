@@ -138,11 +138,9 @@
   </div>
 </template>
 <script>
-import {
-  globalPath
-} from './../../common/js/path';
+import { globalPath } from "./../../common/js/path";
 export default {
-  name: 'hello',
+  name: "hello",
   data() {
     return {
       showSearch: false,
@@ -160,7 +158,7 @@ export default {
       Course_List: [],
       CourseID_List: [],
       search: {
-        value: ' '
+        value: " "
       },
       classList: {},
       searchResult: []
@@ -168,19 +166,20 @@ export default {
   },
   filter: {
     login: function() {
-      if (condition) { }
+      if (condition) {
+      }
     }
   },
   methods: {
     loginStates() {
-      if (window.localStorage.getItem('user') === null) {
+      if (window.localStorage.getItem("user") === null) {
         this.$router.push({
-          path: '/login/login1'
-        })
+          path: "/login/login1"
+        });
       } else {
         this.$router.push({
-          path: '/personal_center/personal_center1'
-        })
+          path: "/personal_center/personal_center1"
+        });
       }
     },
     CourseListFillter(m, p) {
@@ -203,16 +202,16 @@ export default {
       this.showSearch = true;
     },
     show_search_input() {
-      this.$refs.searchBoxList.style.display = 'block';
+      this.$refs.searchBoxList.style.display = "block";
     },
     hide_search_input() {
-      this.$refs.searchBoxList.style.display = 'none';
+      this.$refs.searchBoxList.style.display = "none";
     },
     select(str) {
-      this.$emit('select', str);
+      this.$emit("select", str);
     },
     aboutSelect(str) {
-      this.$emit('aboutSelect', str);
+      this.$emit("aboutSelect", str);
     },
     menuFillter(m, p) {
       var arr = [];
@@ -229,20 +228,20 @@ export default {
         var jsonObj = JSON.parse(obj);
         this.userName = jsonObj.LoginName;
       } else {
-        this.userName = '';
+        this.userName = "";
       }
     },
     logout() {
-      window.localStorage.setItem("user", '');
+      window.localStorage.setItem("user", "");
       window.location.reload(true);
       this.getUser();
     },
     m_logout() {
-      if (window.localStorage.hasOwnProperty('user')) {
+      if (window.localStorage.hasOwnProperty("user")) {
         this.getUser();
         window.localStorage.removeItem("user");
         window.location.reload(true);
-        console.log('logout');
+        console.log("logout");
         window.location.href = "#/index";
       } else {
         window.location.href = "#/login/login1";
@@ -252,65 +251,75 @@ export default {
       console.log(name.id.time);
     },
     alert() {
-      console.log('1');
+      console.log("1");
     }
   },
   activated() {
     var path = globalPath();
     // 获取导航菜单列表
     this.$nextTick(function() {
-      this.$http.get(this.ApiUrl + 'me/Menu/Menu_List').then((response) => {
+      this.$http.get(this.ApiUrl + "me/Menu/Menu_List").then(response => {
         response = response.body;
         this.menuList = response.Data;
-      }, function() {
-        console.log('请求发送失败');
+      },
+      function() {
+        console.log("请求发送失败");
       });
 
-      this.$http.get(path + 'me/CourseType/CourseType_List').then((response) => {
+      this.$http.get(path + "me/CourseType/CourseType_List").then(response => {
         response = response.body;
         this.CourseType_List = response.Data;
         this.CourseType_List.splice(4, 5);
-      }, function() {
-        console.log('请求发送失败');
+      },
+      function() {
+        console.log("请求发送失败");
       });
 
       function sortNumber(a, b) {
         return a - b;
       }
       for (var i = 1; i < 5; i++) {
-        this.$http.get(path + 'me/Course/Course_List?CourseTypeID=' + i).then((response) => {
-          response = response.body;
-          this.Course_List = response.Data;
-          this.CourseID_List.push(this.Course_List[0].CourseID);
-          this.CourseID_List = this.CourseID_List.sort(sortNumber);
-        }, function() {
-          console.log('请求发送失败');
-        });
+        this.$http
+          .get(path + "me/Course/Course_List?CourseTypeID=" + i)
+          .then(
+            response => {
+              response = response.body;
+              this.Course_List = response.Data;
+              this.CourseID_List.push(this.Course_List[0].CourseID);
+              this.CourseID_List = this.CourseID_List.sort(sortNumber);
+            },
+            function() {
+              console.log("请求发送失败");
+            }
+          );
       }
     });
-
-    
   },
   mounted() {
     this.getUser();
-    this.$http.get(this.ApiUrl + 'me/Course/Course_List?CourseTypeID=0').then((response) => {
-      response = response.body;
-      this.classList = response.Data;
-      this.searchResult = this.classList;
-      // console.log(this.searchResult);
-    }, function() {
-      console.log('请求发送失败');
-    });
+    this.$http
+      .get(this.ApiUrl + "me/Course/Course_List?CourseTypeID=0")
+      .then(
+        response => {
+          response = response.body;
+          this.classList = response.Data;
+          this.searchResult = this.classList;
+          // console.log(this.searchResult);
+        },
+        function() {
+          console.log("请求发送失败");
+        }
+      );
   },
   watch: {
-    '$route': 'getUser',
+    $route: "getUser",
     search: {
       handler: function(val, oldval) {
-        this.searchResult=[];
-        let str = this.$refs.searchValue.value.replace(/(^\s+)|(\s+$)/g,"");
+        this.searchResult = [];
+        let str = this.$refs.searchValue.value.replace(/(^\s+)|(\s+$)/g, "");
         for (let i = 0, l = this.classList.length; i < l; i++) {
           if (this.classList[i].CourseName.indexOf(str) > -1) {
-            // console.log(this.classList[i].CourseName);           
+            // console.log(this.classList[i].CourseName);
             this.searchResult.push(this.classList[i]);
           }
         }
@@ -319,7 +328,6 @@ export default {
     }
   }
 };
-
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -346,21 +354,18 @@ export default {
   height: 28px;
   background: url("./../../assets/img/search_2.png") no-repeat center center;
   vertical-align: middle;
-  opacity: .6;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  opacity: 0.6;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 101;
 }
 
 .toggle_search_btn:hover {
   opacity: 1;
 }
-
-
-
 
 /* 头部搜索区域的样式 */
 
@@ -410,7 +415,7 @@ export default {
 
 .header_search_box .list .item .info_box .text {
   font-size: 16px;
-  color: #000
+  color: #000;
 }
 
 .header_search_box .list .item .info_box .date {
@@ -433,11 +438,11 @@ export default {
   border-radius: 20px;
   background: #f8ef1c;
   font-weight: bold;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header_search_box .list .item .apply_btn:hover {
@@ -449,13 +454,14 @@ export default {
   width: 32px;
   height: 32px;
   vertical-align: middle;
-  background: url("./../../assets/img/searchh_close.png") no-repeat center center;
-  opacity: .6;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  background: url("./../../assets/img/searchh_close.png") no-repeat center
+    center;
+  opacity: 0.6;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header_search_box .header_search_close_btn:hover {
@@ -469,13 +475,14 @@ export default {
   width: 32px;
   height: 32px;
   vertical-align: middle;
-  background: url("./../../assets/img/inner_search_3x.png") no-repeat center center;
-  opacity: .6;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  background: url("./../../assets/img/inner_search_3x.png") no-repeat center
+    center;
+  opacity: 0.6;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header_search_box .header_search_btn:hover {
@@ -509,33 +516,30 @@ export default {
   transform: translateX(-50%);
 }
 
-
-
-
 /* header animation */
 
 .inner_header_con .inner_header_con_top {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .inner_header_con .header_search_box {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .inner_header_con.search_active .inner_header_con_top {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   -ms-transform: translateY(-100%);
@@ -545,11 +549,11 @@ export default {
 }
 
 .inner_header_con.search_active .header_search_box {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  --transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  --transition: all 0.3s ease;
+  transition: all 0.3s ease;
   -webkit-transform: translateY(-90px);
   -moz-transform: translateY(-90px);
   -ms-transform: translateY(-90px);
@@ -570,53 +574,53 @@ export default {
 
 .inner_nav_item {
   float: left;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.inner_nav_item>a {
+.inner_nav_item > a {
   display: inline-block;
   padding: 0 40px;
   font-size: 16px;
   color: #d4d4d4;
   line-height: 90px;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
 }
 
-.inner_nav_item>a:hover {
+.inner_nav_item > a:hover {
   color: #fff;
 }
 
-.inner_nav_item.active>a {
+.inner_nav_item.active > a {
   color: #fff;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(1) a:after,
-.inner_nav .inner_nav_list>li:nth-child(4) a:after,
-.inner_nav .inner_nav_list>li:nth-child(5) a:after,
-.inner_nav .inner_nav_list>li:nth-child(6) a:after,
-.inner_nav .inner_nav_list>li:nth-child(7) a:after {
+.inner_nav .inner_nav_list > li:nth-child(1) a:after,
+.inner_nav .inner_nav_list > li:nth-child(4) a:after,
+.inner_nav .inner_nav_list > li:nth-child(5) a:after,
+.inner_nav .inner_nav_list > li:nth-child(6) a:after,
+.inner_nav .inner_nav_list > li:nth-child(7) a:after {
   margin-top: -30px;
-  content: ' ';
+  content: " ";
   display: block;
   width: 100%;
   height: 2px;
   background: #fff;
   left: 0;
   bottom: 30px;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   opacity: 0;
   -webit-transform: scale(0);
   -moz-transform: scale(0);
@@ -625,11 +629,11 @@ export default {
   transform: scale(0);
 }
 
-.inner_nav .inner_nav_list>li:nth-child(1):hover a:after,
-.inner_nav .inner_nav_list>li:nth-child(4):hover a:after,
-.inner_nav .inner_nav_list>li:nth-child(5):hover a:after,
-.inner_nav .inner_nav_list>li:nth-child(6):hover a:after,
-.inner_nav .inner_nav_list>li:nth-child(7):hover a:after {
+.inner_nav .inner_nav_list > li:nth-child(1):hover a:after,
+.inner_nav .inner_nav_list > li:nth-child(4):hover a:after,
+.inner_nav .inner_nav_list > li:nth-child(5):hover a:after,
+.inner_nav .inner_nav_list > li:nth-child(6):hover a:after,
+.inner_nav .inner_nav_list > li:nth-child(7):hover a:after {
   opacity: 1;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -638,11 +642,11 @@ export default {
   transform: scale(1);
 }
 
-.inner_nav .inner_nav_list>li:nth-child(1).active a:after,
-.inner_nav .inner_nav_list>li:nth-child(4).active a:after,
-.inner_nav .inner_nav_list>li:nth-child(5).active a:after,
-.inner_nav .inner_nav_list>li:nth-child(6).active a:after,
-.inner_nav .inner_nav_list>li:nth-child(7).active a:after {
+.inner_nav .inner_nav_list > li:nth-child(1).active a:after,
+.inner_nav .inner_nav_list > li:nth-child(4).active a:after,
+.inner_nav .inner_nav_list > li:nth-child(5).active a:after,
+.inner_nav .inner_nav_list > li:nth-child(6).active a:after,
+.inner_nav .inner_nav_list > li:nth-child(7).active a:after {
   opacity: 1;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -651,9 +655,9 @@ export default {
   transform: scale(1);
 }
 
-.inner_nav .inner_nav_list>li:nth-child(2)>a:after,
-.inner_nav .inner_nav_list>li:nth-child(3)>a:after {
-  content: ' ';
+.inner_nav .inner_nav_list > li:nth-child(2) > a:after,
+.inner_nav .inner_nav_list > li:nth-child(3) > a:after {
+  content: " ";
   display: block;
   width: 48px;
   margin: 0 auto;
@@ -663,11 +667,11 @@ export default {
   left: 50%;
   margin-left: -24px;
   bottom: 30px;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   opacity: 0;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
@@ -676,12 +680,12 @@ export default {
   transform: scale(0);
 }
 
-.inner_nav .inner_nav_list>li:nth-child(3)>a:after {
+.inner_nav .inner_nav_list > li:nth-child(3) > a:after {
   bottom: 27px;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(2).active>a:after,
-.inner_nav .inner_nav_list>li:nth-child(3).active>a:after {
+.inner_nav .inner_nav_list > li:nth-child(2).active > a:after,
+.inner_nav .inner_nav_list > li:nth-child(3).active > a:after {
   opacity: 1;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -690,12 +694,12 @@ export default {
   transform: scale(1);
 }
 
-.inner_nav .inner_nav_list>li:nth-child(2) {
+.inner_nav .inner_nav_list > li:nth-child(2) {
   margin-left: 10px;
   position: relative;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(2):hover .sub_list {
+.inner_nav .inner_nav_list > li:nth-child(2):hover .sub_list {
   /*height: 182px;*/
   height: auto;
   opacity: 1;
@@ -712,7 +716,7 @@ export default {
   text-align: center;
   border-top: 2px solid #ebebeb;
   padding: 15px 0;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   z-index: 200;
   height: 0;
   opacity: 0;
@@ -720,11 +724,11 @@ export default {
 }
 
 .inner_nav .sub_list li {
-  -o-transition: all .3s ease;
-  -webkit-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  transition: all .3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .inner_nav .sub_list li:hover {
@@ -737,37 +741,37 @@ export default {
   font-size: 12px;
   color: #656565;
   line-height: 50px;
-  -webkit-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(3) {
+.inner_nav .inner_nav_list > li:nth-child(3) {
   margin-left: 100px;
   position: relative;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(3):hover .sub_list {
+.inner_nav .inner_nav_list > li:nth-child(3):hover .sub_list {
   height: 182px;
   opacity: 1;
 }
 
-.inner_nav .inner_nav_list>li:hover:nth-child(2)>a,
-.inner_nav .inner_nav_list>li:hover:nth-child(3)>a {
+.inner_nav .inner_nav_list > li:hover:nth-child(2) > a,
+.inner_nav .inner_nav_list > li:hover:nth-child(3) > a {
   background: #fff;
   color: #000;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(3)>a {
+.inner_nav .inner_nav_list > li:nth-child(3) > a {
   padding-right: 40px;
 }
 
-.inner_nav .inner_nav_list>li:nth-child(4) a,
-.inner_nav .inner_nav_list>li:nth-child(5) a,
-.inner_nav .inner_nav_list>li:nth-child(6) a,
-.inner_nav .inner_nav_list>li:nth-child(7) a {
+.inner_nav .inner_nav_list > li:nth-child(4) a,
+.inner_nav .inner_nav_list > li:nth-child(5) a,
+.inner_nav .inner_nav_list > li:nth-child(6) a,
+.inner_nav .inner_nav_list > li:nth-child(7) a {
   padding-left: 18px;
   max-width: 122px;
   overflow: hidden;
@@ -792,9 +796,6 @@ export default {
 .inner_header .m_header .m_logo {
   display: none;
 }
-
-
-
 
 /* 移动端适配 */
 
@@ -919,7 +920,7 @@ export default {
   .inner_header .nav_wrapper .nav_sub_list a,
   .inner_header .nav_wrapper .nav_sub_list router-link {
     font-weight: 200;
-    padding-left: 56px
+    padding-left: 56px;
   }
   .inner_header .search_list {
     overflow: auto;
@@ -983,11 +984,11 @@ export default {
     border-radius: 20px;
     background: #f8ef1c;
     font-weight: bold;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .inner_header .search_list .list .item .apply_btn:hover {
@@ -996,7 +997,7 @@ export default {
   .searchValue {
     display: none;
   }
-  .inner_header .search_head .search_input:focus{
+  .inner_header .search_head .search_input:focus {
     outline: none;
   }
 }

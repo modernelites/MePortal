@@ -44,6 +44,7 @@ import org from '@/components/org/org';
 import trainingCamp from '@/components/training_camp/training_camp';
 import portrait from '@/components/portrait/portrait';
 import region from '@/components/region/region';
+import carousel from '@/components/carousel/carousel';
 
 Vue.use(Router);
 Vue.use(VueResource);
@@ -51,10 +52,10 @@ Vue.use(VueResource);
 
 export default new Router({
   routes: [{
-    path: '/',
-    name: 'home',
-    component: home
-  },
+      path: '/',
+      name: 'home',
+      component: home
+    },
     {
       path: '/index',
       name: 'home',
@@ -86,9 +87,9 @@ export default new Router({
       redirect: '/about/about0',
       component: about,
       children: [{
-        path: 'about0',
-        component: about0
-      },
+          path: 'about0',
+          component: about0
+        },
         {
           path: 'about1',
           component: about1
@@ -97,16 +98,17 @@ export default new Router({
           component: about2,
           redirect: 'about2/about20',
           children: [{
-            path: 'about20',
-            component: about20
-          },
+              path: 'about20',
+              component: about20
+            },
             {
               path: 'about21',
               component: about21
             }, {
               path: 'about22',
               component: about22
-            }]
+            }
+          ]
         }
       ]
     }, {
@@ -158,33 +160,33 @@ export default new Router({
       children: [{
         path: 'personal_center1',
         component: personalCenter1
-      //   meta: {
-      //     keepAlive: false
-      // }
+        //   meta: {
+        //     keepAlive: false
+        // }
       }, {
         path: 'personal_center2',
         component: personalCenter2
-      //   meta: {
-      //     keepAlive: false
-      // }
+        //   meta: {
+        //     keepAlive: false
+        // }
       }, {
         path: 'personal_center3',
         component: personalCenter3
-      //   meta: {
-      //     keepAlive: false
-      // }
+        //   meta: {
+        //     keepAlive: false
+        // }
       }, {
         path: 'personal_center4',
         component: personalCenter4
-      //   meta: {
-      //     keepAlive: false
-      // }
+        //   meta: {
+        //     keepAlive: false
+        // }
       }, {
         path: 'personal_center5',
         component: personalCenter5
-      //   meta: {
-      //     keepAlive: false
-      // }
+        //   meta: {
+        //     keepAlive: false
+        // }
       }]
     }, {
       path: '/register/',
@@ -237,6 +239,10 @@ export default new Router({
       path: '/region',
       name: 'region',
       component: region
+    }, {
+      path: '/carousel',
+      name: 'carousel',
+      component: carousel
     }
   ]
 });

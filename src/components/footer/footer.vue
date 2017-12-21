@@ -76,7 +76,7 @@
   }
 
   .footer .footer_list li.contact {
-    margin-right: 70px;
+    margin-right: 20px;
   }
 
   .footer .footer_list li.contact a {

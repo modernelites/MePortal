@@ -30,8 +30,6 @@
           </span>
           <a href="javascript:;" title="选择期数" class="select_btn" @click="periodMaskShow=true"> 选择期数</a>
           <span class="show_info course_show_info" v-show="SelectPeriod.PeriodID" ref="course_result_info" v-text="'第'+SelectPeriod.PeriodNum+'期'+(SelectPeriod.PeriodName?SelectPeriod.PeriodName:'')"></span>
-          <!-- <div class="tips">说明：三阶课程（ <span class="text">仅限参加一二期的老学员</span> ）<span
-          class="date">时间：2017.7.1~2017.7.12</span></div> -->
         </div>
       </div>
       <dl class="content_item">

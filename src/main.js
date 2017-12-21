@@ -56,14 +56,12 @@ Vue.filter("datediff", function (date) {
     return '----';
   }
 });
+
+window.eventBus = new Vue();
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: {App}
-});
-
-$(document).ready(function () {
-  // body...
 });

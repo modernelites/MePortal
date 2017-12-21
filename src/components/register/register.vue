@@ -26,7 +26,6 @@
       selectOption(m) {
         this.slidShow = false;
         this.SelectCourseType = m;
-        //this.Course_Items_Fillter = this.Course_List_Fillter(m.CourseTypeID);
       },
       CourseType_List() {
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
@@ -537,7 +536,6 @@
 
   .register_p .item_bottom_con .parent_box label span.ex_address_info {
     width: auto;
-    /*margin-left: -54px; */
   }
 
   .register_p .add_wrapper label {
@@ -625,10 +623,6 @@
     margin: 0 auto;
     background: url("./../../assets/img/25_special_remind@2x.png") no-repeat top left;
   }
-  /* 
-  .register_p .volunteer_wrapper .add_wrapper div.tips_area {
-    background: url("./../../assets/img/25_special_remind@2x.png") no-repeat 45px 0;
-  } */
 
   .register_p .add_wrapper .tips_item {
     display: block;
@@ -944,6 +938,8 @@
     margin-bottom: 36px;
   }
   /* 移动端适配 */
+
+
 
   @media screen and (max-width: 1120px) {
 
