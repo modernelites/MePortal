@@ -299,7 +299,7 @@ export default {
   outline: none;
   width: 200px;
   height: 60px;
-  line-height: 60px;
+  /* line-height: 60px; */
   text-align: center;
   border-radius: 16px;
   background: #f24d4d;

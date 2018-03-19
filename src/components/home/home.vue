@@ -22,7 +22,7 @@
     <!-- Swiper end  -->
     <div class="section_course_type ">
       <ul class="m_row clearfix list">
-        <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-bind:key="index"  v-if="CourseTypeItem.CourseTypeID<5">
+        <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-bind:key="index" v-if="CourseTypeItem.CourseTypeID<5">
           <div class="item_box">
             <div class="course_img">
               <img :src="CourseTypeItem.FilePath">
@@ -45,14 +45,14 @@
     </div>
     <!-- section_2 -->
     <div class="section_2">
-      <h1 class="title_1">推荐课程</h1>
+      <!-- <h1 class="title_1">推荐课程</h1> -->
       <div class="course_swiper_wrap">
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="title_3 title_3_i_1">
                 <a :href="'#/training_camp/1/11'">
-                  <img src="./../../assets/img/t1.jpg">
+                  <img src="./../../assets/img/t1.png">
                 </a>
               </div>
               <a :href="'#/training_camp/1/11'" class="btn details_btn_i_3"></a>
@@ -60,7 +60,7 @@
             <div class="swiper-slide">
               <div class="title_3 title_3_i_2">
                 <a :href="'#/training_camp/1/10'">
-                  <img src="./../../assets/img/t2.jpg">
+                  <img src="./../../assets/img/t2.png">
                 </a>
               </div>
               <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
@@ -68,7 +68,7 @@
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <a :href="'#/training_camp/3/12'">
-                  <img src="./../../assets/img/t3.jpg">
+                  <img src="./../../assets/img/t3.png">
                 </a>
               </div>
               <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
@@ -76,7 +76,7 @@
             <div class="swiper-slide">
               <div class="title_3 title_3_i_3">
                 <a :href="'#/training_camp/1/2'">
-                  <img src="./../../assets/img/t4.jpg">
+                  <img src="./../../assets/img/t4.png">
                 </a>
               </div>
               <a :href="'#/training_camp/1/2'" class="btn details_btn_i_1"></a>
@@ -85,7 +85,7 @@
               <div class="title_3 title_3_i_3">
                 <!-- <a :href="'#/training_camp/4/19'"> -->
                 <a :href="'#/training_camp/4/19'">
-                  <img src="./../../assets/img/t5.jpg">
+                  <img src="./../../assets/img/t5.png">
                 </a>
               </div>
               <a href="'#/training_camp/4/19'" class="btn details_btn_i_1"></a>
@@ -134,31 +134,31 @@
           <div class="swiper-wrapper">
             <div class="swiper-item swiper-slide">
               <a :href="'#/training_camp/1/11'">
-                <img src="./../../assets/img/t1.jpg">
+                <img src="./../../assets/img/t1.png">
               </a>
               <a :href="'#/training_camp/1/11'" class="btn details_btn_i_1"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <a :href="'#/training_camp/1/10'">
-                <img src="./../../assets/img/t2.jpg">
+                <img src="./../../assets/img/t2.png">
               </a>
               <a :href="'#/training_camp/1/10'" class="btn details_btn_i_2"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <a :href="'#/training_camp/3/12'">
-                <img src="./../../assets/img/t3.jpg">
+                <img src="./../../assets/img/t3.png">
               </a>
               <a :href="'#/training_camp/3/12'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <a :href="'#/training_camp/1/2'">
-                <img src="./../../assets/img/t4.jpg">
+                <img src="./../../assets/img/t4.png">
               </a>
               <a :href="'#/training_camp/1/2'" class="btn details_btn_i_3"></a>
             </div>
             <div class="swiper-item swiper-slide">
               <a :href="'#/training_camp/4/19'">
-                <img src="./../../assets/img/t5.jpg">
+                <img src="./../../assets/img/t5.png">
               </a>
               <a :href="'#/training_camp/4/19'" class="btn details_btn_i_3"></a>
             </div>
@@ -208,7 +208,8 @@
           response = response.body;
           this.CourseType_List = response.Data;
           this.CourseType_List.splice(4, 5);
-          // console.log(this.CourseType_List);
+
+          console.log(this.CourseType_List);
         }, function () {
           console.log('请求发送失败');
         });
@@ -242,10 +243,11 @@
     },
     beforeUpdate() {
       this.$nextTick(function () {
-        var mySwiper = new Swiper('.home_banner .swiper-container', {
-          direction: 'horizontal',
-          loop: true
-        });
+        // var mySwiper = new Swiper('.home_banner .swiper-container', {
+          // direction: 'horizontal',
+          // loop: true,
+          // autoplay:4000
+        // });
         // Swiper 推荐课程
         var swiper2 = new Swiper('.course_swiper_wrap .swiper-container', {
           slidesPerView: 3,
@@ -375,9 +377,11 @@
   .home_p .section_course_type .list .item_box:hover .nav .nav_list {
     display: block;
   }
+
   /* .home_p .section_course_type .list .item_box:hover .nav .title_3 {
     background: #fff;
   } */
+
   /* hover显示下拉菜单 */
 
   .home_p .section_course_type .list .item_box .nav .nav_list {
@@ -414,8 +418,11 @@
   }
 
   .home_p .section_2 {
-    height: 612px;
-    background: #1e2022;
+    height: 680px;
+    padding-top: 20px;
+    /* background: #1e2022; */
+    background: url(banner1.png) no-repeat;
+    background-size: cover;
   }
 
   .home_p .section_2 {
@@ -426,7 +433,7 @@
     font-size: 24px;
     color: #fff;
     text-align: center;
-    padding: 36px 0 0;
+    padding: 10px 0 0;
   }
 
   .home_p .section_2 .title_3 {
@@ -547,15 +554,13 @@
 
   .home_p .course_swiper_wrap .swiper-button-next {
     top: 45%;
-    right: -80px;
-    width: 80px;
-    height: 80px;
-    margin-top: -40px;
-    background-color: #36373a;
-    background-image: url("./../../assets/img/right_arrow.png");
-    background-position: -5px 0px;
+    right: -100px;
+    width: 60px;
+    height: 60px;
+    margin-top: 0px;
+    background-image: url("./../../assets/img/下一张@2x.png");
     background-repeat: no-repeat;
-    background-size: 80px;
+    background-size: 50px;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -564,20 +569,18 @@
   }
 
   .home_p .course_swiper_wrap .swiper-button-next:hover {
-    background-color: #525354;
+    background-color: rgba(0, 0, 0, .3);
   }
 
   .home_p .course_swiper_wrap .swiper-button-prev {
     top: 45%;
-    left: -80px;
-    width: 80px;
-    height: 80px;
-    margin-top: -40px;
-    background-color: #36373a;
-    background-image: url("./../../assets/img/left_arrow.png");
-    background-position: 3px 0px;
+    left: -100px;
+    width: 60px;
+    height: 60px;
+    margin-top: 0px;
+    background-image: url("./../../assets/img/上一张@2x.png");
     background-repeat: no-repeat;
-    background-size: 80px;
+    background-size: 50px;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -586,7 +589,7 @@
   }
 
   .home_p .course_swiper_wrap .swiper-button-prev:hover {
-    background-color: #525354;
+    background-color: rgba(0, 0, 0, .3);
   }
 
   .home_p .m_section_2 {
@@ -603,7 +606,9 @@
 
   .home_p .section_3 {
     display: none;
+
   }
+
   /* 移动端适配 */
 
   @media screen and (max-width: 1020px) {
@@ -697,7 +702,8 @@
       display: block;
     }
     .home_p .section_3 {
-      background: #1f2022;
+      /* background: #1f2022; */
+      background: url(banner1.png) no-repeat;
       margin-top: 50px;
       padding-bottom: 45px;
       margin-bottom: 35px;
@@ -752,7 +758,7 @@
 
 
     .home_p .section_3 .swiper-button-next {
-      background-image: url("./../../assets/img/rec_right_next@2x.png");
+      background-image: url("./../../assets/img/下一张@2x.png");
       background-size: 40px;
       width: 40px;
       height: 40px;
@@ -760,7 +766,7 @@
     }
 
     .home_p .section_3 .swiper-button-prev {
-      background-image: url("./../../assets/img/rec_left_pre@2x.png");
+      background-image: url("./../../assets/img/上一张@2x.png");
       background-size: 40px;
       height: 40px;
       width: 40px;

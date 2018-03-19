@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    
+
     <my-footer></my-footer>
     <my-server-mask></my-server-mask>
   </div>
@@ -133,7 +133,7 @@
   .about_p .content_left .nav_item {
     font-size: 16px;
     color: #656565;
-    line-height: 56px;
+    height: 56px;
     line-height: 56px;
     text-align: center;
     position: relative;
@@ -206,6 +206,7 @@
     color: #656565;
     line-height: 16px;
     padding: 22px 8px 22px 0;
+    width: 100%;
   }
 
   .about_p .content_right .m_row img {
@@ -362,6 +363,7 @@
       padding: 30px;
       padding-top: 10px;
       margin-bottom: 0;
+      width: 100%;
     }
     .about_p .content_right .we_char_single .m_row .m_col-lg-6 {
       width: 100%;
@@ -439,22 +441,25 @@
 
     .about_p .slide_tab_wrapper.active .list {
       display: block;
+      padding: 0;
     }
-
-    .about_p .slide_tab_wrapper .item {
+    .about_p .slide_tab_wrapper.active .list li .item {
       display: block;
       text-align: center;
       line-height: 40px;
       color: #fff;
+      height: 40px;
     }
+
     .about_p .content_right .content_item .title {
       font-size: 14px;
       color: #000;
       font-weight: 700;
       padding: 18px 0 10px;
     }
-    .about_p .content_right .text {
+    .about_p .content_right .right_text {
       padding: 0;
+      width: 100%;
     }
     .about_p .content_right .m_row img {
       margin: 10px 0;

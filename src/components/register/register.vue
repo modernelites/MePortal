@@ -1016,7 +1016,9 @@
       font-size: 12px;
       width: 70px;
     }
-
+    .content_wrapper .content_item{
+      width: 100%;
+    }
     .content_wrapper .content_item .info_box span,
     .content_wrapper .content_item .item_bottom_con span {
       font-size: 12px;

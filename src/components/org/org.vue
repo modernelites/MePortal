@@ -17,6 +17,43 @@
           <dl class="content_item ">
             <h3 class="title_3"> 简介 </h3>
             <p class="text">
+              无敌熊少儿英语（麦克米伦出版社合作品牌） 
+            </p>
+            <!-- <div class="m_row tow_img_wrapper clearfix">
+              <div class="m_col-lg-6">
+                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
+              </div>
+              <div class="m_col-lg-6">
+                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
+              </div>
+            </div> -->
+            <p class="text">
+              专注于3~12岁幼儿及少儿英语培训；具备独立研发，培训系统的少儿英语品牌 </p>
+            <p class="text">2017年初上海唐镇校区成立，500坪米精致学习空间，包含6间主题教室，周边停车及配套设施齐全。</p>
+            <p class="text"> 电话：021-58597391</p>
+            <p class="text"> 地址：浦东新区唐镇唐安路618号（近高科东路）</p>
+            <p class="text">以正面管教为优先，结合故事情景教学，创造快乐的学习成效。</p>
+            <p class="text">Let kids be kids!</p>
+            <p class="text">我们不只在乎成绩，更让孩子爱上学习；我们不只追求第一，更让孩子共享荣耀；</p>
+            <p class="text">我们不只重视现在，更让孩子看见未来</p>
+            <h3 class="title_3 other_title_3"> 四大特色</h3>
+            <p class="text">1.原版进口教材，同步美国课标：</p>
+            <p class="text">2.全英文主题式互动教学环境；</p>
+            <p class="text">3.完整的学习生态：线下课堂学习，线上客户端巩固</p>
+            <p class="text">4.每月的多元主题活动：</p>
+            <!-- <div class="m_row three_img_wrapper clearfix">
+              <div class="m_col-lg-4">
+                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
+              </div>
+              <div class="m_col-lg-4">
+                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
+              </div>
+              <div class="m_col-lg-4">
+                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
+              </div>
+            </div> -->
+            <!-- <h3 class="title_3 other_title_3"> 其他 </h3>
+            <p class="text">
               课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
               课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
             </p>
@@ -31,8 +68,8 @@
             <p class="text">
               课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
               课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-            </p>
-            <div class="m_row three_img_wrapper clearfix">
+            </p> -->
+            <!-- <div class="m_row three_img_wrapper clearfix">
               <div class="m_col-lg-4">
                 <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
               </div>
@@ -42,35 +79,7 @@
               <div class="m_col-lg-4">
                 <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
               </div>
-            </div>
-            <h3 class="title_3 other_title_3"> 其他 </h3>
-            <p class="text">
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-            </p>
-            <div class="m_row tow_img_wrapper clearfix">
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-            </div>
-            <p class="text">
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-            </p>
-            <div class="m_row three_img_wrapper clearfix">
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-            </div>
+            </div> -->
           </dl>
         </div>
       </div>
@@ -300,36 +309,35 @@
   }
 
   @media screen and (max-width: 1020px) {
-    .sub_mechanism_p{
+    .sub_mechanism_p {
       max-width: 750px;
       min-width: 320px;
       margin: 0 auto;
       width: auto;
     }
     .sub_mechanism_p .content {
-
       margin: 5px;
       position: relative;
       padding-top: 5px;
       /* display: flex; */
-    }
-  .sub_mechanism_p .content_wrapper {
-    width:auto;
-  }    
-    .sub_mechanism_p .content_right {
-      flex:auto;
+     }
+    .sub_mechanism_p .content_wrapper {
       width: auto;
     }
-    .sub_mechanism_p .content_right .text{
+    .sub_mechanism_p .content_right {
+      flex: auto;
+      width: auto;
+    }
+    .sub_mechanism_p .content_right .text {
       font-size: 9px;
     }
-    .sub_mechanism_p .content_right .title_3{
-          font-size: 9px;
-    color: #000;
-    padding: 12px 0 8px;
-    font-weight: bold;
+    .sub_mechanism_p .content_right .title_3 {
+      font-size: 9px;
+      color: #000;
+      padding: 12px 0 8px;
+      font-weight: bold;
     }
-    .sub_mechanism_p .content_right .title_3:before{
+    .sub_mechanism_p .content_right .title_3:before {
       display: none;
     }
     .sub_mechanism_p .content_left li.active .title_3 a {

@@ -132,7 +132,8 @@
           touchRatio: 0.2,
           loop: true,
           loopedSlides: 20, //looped slides should be the same
-          slideToClickedSlide: true
+          slideToClickedSlide: true,
+          centeredSlides:true//当前图片居中
         });
         galleryTop.params.control = galleryThumbs;
         galleryThumbs.params.control = galleryTop;
