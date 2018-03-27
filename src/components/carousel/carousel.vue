@@ -294,6 +294,9 @@
     margin: 0 auto;
     margin-top: 130px;
   }
+  .wrapper .carousel .swiper-container img{
+    width: auto !important;
+  }
 
   .wrapper .carousel .gallery-top {
     height: 74%;
@@ -452,7 +455,6 @@
     }
     .wrapper .mobile .m_content .swiper-wrapper .line1 {
       height: 175px;
-      /* width: 100%; */
       max-width: 375px;
       overflow: hidden;
       margin: 0 auto;
@@ -461,7 +463,6 @@
     }
     .wrapper .mobile .m_content .swiper-wrapper .line1 .line1_left {
       flex: 2;
-      /* max-width: 250px; */
     }
 
     .wrapper .mobile .m_content .swiper-wrapper .line1 .line1_left img {

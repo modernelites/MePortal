@@ -21,10 +21,11 @@
       <address class="d_footer">
         <div class="company_name">上海摩英商务咨询有限公司</div>
 
-        经营许可证编号：<a href="javascript:;">京ICP备 05067667</a>
+        经营许可证编号：
+        <a href="javascript:;">京ICP备 05067667</a>
         <a href="javascript:;">京ICP证060601</a>
         <a href="javascript:;">京网文（2016）5762-750号</a>
-        </span> 京公安备110108021790 </p>
+        <a href="javascript:;"> 京公安备110108021790 </a>
         <h6 class="title_6"> copy ying 2012-2016 Newwordcenfal ceroaclicn all Pights Pceves </h6>
       </address>
       <div class="m_footer">
@@ -57,14 +58,16 @@
 <style scoped>
   /* footer */
 
-  .footer {
+  /* .footer {
     background: #ebecee;
-  }
+  } */
 
   .footer {
     background: #bdbdbd;
     text-align: center;
-    width: 100%
+    width: 100%;
+    /* max-width: 1440px;
+    margin: 0 auto; */
   }
 
   .footer .footer_list {
@@ -93,7 +96,7 @@
     color: #000;
   }
 
-  .footer .footer_list .item {
+  .footer .footer_list .item { 
     display: inline-block;
   }
 
@@ -110,6 +113,7 @@
   address {
     font-size: 8px;
     color: #656565;
+    margin-bottom: 0 !important;
   }
 
   address a {
@@ -128,6 +132,7 @@
   footer .m_footer {
     display: none;
   }
+
   /* 移动端适配 */
 
   @media screen and (max-width: 1020px) {
@@ -170,7 +175,7 @@
     .footer .footer_list li.contact {
       margin: 0 auto;
     }
-    address{
+    address {
       margin-bottom: 0;
     }
   }

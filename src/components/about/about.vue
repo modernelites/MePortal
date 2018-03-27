@@ -11,7 +11,6 @@
           </ul>
         </div>
 
-
         <div class="content_right" id="about_p_contnet">
           <router-view> </router-view>
         </div>
@@ -83,6 +82,7 @@
     mounted() {
       this.selectUrl();
       this.getMenuList();
+      
     },
     watch: {
       '$route': 'selectUrl'

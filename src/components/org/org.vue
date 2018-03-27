@@ -161,8 +161,8 @@
   @import url("../../assets/css/media.css");
   .sub_mechanism_p {
     background: #f7f7f7;
-    width: 1000px;
-    margin: 0 auto;
+    /* width: 1000px; */
+    /* margin: 0 auto; */
   }
 
   .sub_mechanism_p .content_wrapper {
@@ -245,7 +245,7 @@
     display: block;
   }
 
-  .sub_mechanism_p .content_left li.active img {}
+  /* .sub_mechanism_p .content_left li.active img {} */
 
   .sub_mechanism_p .content_left li.active .title_3 a {
     color: #000;

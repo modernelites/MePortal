@@ -11,18 +11,17 @@
             <img class="imgload" :src="banner1" alt="首页banner图片01">
           </div>
           <div class="swiper-slide">
-            <img class="imgload" :src="banner2" alt="首页banner图片02">
-          </div>
-          <div class="swiper-slide">
-            <img class="imgload" :src="banner3" alt="首页banner图片02">
+            <a href="#/carousel" class="carousel_link">
+              <img class="imgload" :src="banner2" alt="首页banner图片02">
+            </a>
           </div>
         </div>
       </div>
     </div>
     <!-- Swiper end  -->
     <div class="section_course_type ">
-      <ul class="m_row clearfix list">
-        <li class="m_col-lg-3" v-for="(CourseTypeItem,index) in CourseType_List" v-bind:key="index" v-if="CourseTypeItem.CourseTypeID<5">
+      <ul class=" clearfix list">
+        <li class="m_col-lg-3" v-for="CourseTypeItem in CourseType_List"  v-if="CourseTypeItem.CourseTypeID<5">
           <div class="item_box">
             <div class="course_img">
               <img :src="CourseTypeItem.FilePath">
@@ -30,7 +29,7 @@
             <div class="nav">
               <a href="javascript:;" class="title_3">{{CourseTypeItem.CourseTypeName}}</a>
               <ul class="nav_list">
-                <li class="item" v-for="CourseItem in CourseListFillter(Course_List,CourseTypeItem.CourseTypeID)" v-bind:key="CourseItem.index">
+                <li class="item" v-for="CourseItem in CourseListFillter(Course_List,CourseTypeItem.CourseTypeID)" >
                   <!--<a :href="'#/training_camp/' +CourseTypeItem.CourseTypeID +','+ CourseItem.CourseID">{{CourseItem.CourseName}}</a>-->
                   <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link>
                 </li>
@@ -110,10 +109,10 @@
       <div class="swiper-container_outer">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-item swiper-slide" v-for="item in CourseType_List">
+            <div class="swiper-item swiper-slide" v-for="item in CourseType_List" >
               <h3 class="title">{{item.CourseTypeName}}</h3>
               <ul class="nav_list">
-                <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID) ">
+                <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID)">
                   <a :href=" '#/training_camp/' +item.CourseTypeID+'/'+ courseItem.CourseID ">{{courseItem.CourseName}}</a>
 
                 </li>
@@ -167,11 +166,9 @@
           <div class="swiper-button-next swiper-button-next-2"></div>
           <div class="swiper-button-prev swiper-button-prev-2"></div>
         </div>
+
       </div>
     </div>
-
-
-
 
     <!-- 分割线 -->
     <div class="utting_line"></div>
@@ -193,8 +190,7 @@
     data() {
       return {
         banner1: '../static/images/1_banner@3x.png',
-        banner2: '../static/images/1_banner@3x.png',
-        banner3: '../static/images/1_banner@3x.png',
+        banner2: '../static/images/jingcai.jpg',
         CourseType_List: {},
         Course_List: {},
         showNum: 4
@@ -209,7 +205,7 @@
           this.CourseType_List = response.Data;
           this.CourseType_List.splice(4, 5);
 
-          console.log(this.CourseType_List);
+          // console.log(this.CourseType_List);
         }, function () {
           console.log('请求发送失败');
         });
@@ -243,11 +239,11 @@
     },
     beforeUpdate() {
       this.$nextTick(function () {
-        // var mySwiper = new Swiper('.home_banner .swiper-container', {
-          // direction: 'horizontal',
-          // loop: true,
-          // autoplay:4000
-        // });
+        var mySwiper = new Swiper('.home_banner .swiper-container', {
+          direction: 'horizontal',
+          loop: true,
+          autoplay: 4000
+        });
         // Swiper 推荐课程
         var swiper2 = new Swiper('.course_swiper_wrap .swiper-container', {
           slidesPerView: 3,
@@ -307,7 +303,7 @@
   }
 
   .swiper-container img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 
@@ -324,6 +320,9 @@
   .home_p .home_header .inner_header {
     background: none;
   }
+  .carousel_link{
+    cursor: pointer;
+  }
 
   .home_p .swiper-container {
     width: 100%;
@@ -332,14 +331,14 @@
     margin-right: auto;
   }
 
-  .home_p .swiper-slide {}
-
   .home_p .section_course_type {
     padding-top: 108px;
     padding-bottom: 64px;
   }
 
-  .home_p .section_course_type .list {}
+  .home_p .section_course_type .list {
+    padding: 0 14%;
+  }
 
   .home_p .section_course_type .list .item_box {
     text-align: center;
@@ -391,7 +390,6 @@
     left: 0;
     width: 100%;
     display: none;
-    /* float: none; */
   }
 
   .home_p .section_course_type .list .item_box .nav .item a {
@@ -524,8 +522,6 @@
     padding-bottom: 40px;
   }
 
-  .home_p .section_2 .course_swiper_wrap .swiper-slide {}
-
   .home_p .section_2 .swiper-container-free-mode>.swiper-wrapper>div:nth-child(3n+2) .info {
     color: #a26ee3;
   }
@@ -645,8 +641,6 @@
     }
     .home_p .m_section_2 .pics_wrapper .m_row .m_col-md-3 img {
       max-width: 100%;
-      /* width: auto;
-      height: auto; */
     }
     .home_p .m_section_2 .swiper-container {
       width: 100%;
@@ -788,3 +782,4 @@
   }
 
 </style>
+

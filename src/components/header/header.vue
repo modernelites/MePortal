@@ -12,7 +12,7 @@
           <!-- 下面是inner_header 的导航部分 -->
           <nav class="inner_nav">
             <ul class="inner_nav_list clearfix">
-              <li class="inner_nav_item" v-for="(m,index) in menuFillter(menuList,0)">
+              <li class="inner_nav_item" v-for="(m,index) in menuFillter(menuList,0)" >
                 <a :href="m.Link">{{m.MenuName}}</a>
                 <ul class="sub_list">
                   <li v-for="(m2,index) in menuFillter(menuList,m.MenuID)" class="item" @click="select(index)">
@@ -35,7 +35,7 @@
                 <router-link :to="{path:'/login/login3'}" style="padding: 0" class="person_center">|&nbsp;注册</router-link>
               </li>
               <li>
-                          <a href="javascript:;" class="toggle_search_btn" @click="show"></a>
+                <a href="javascript:;" class="toggle_search_btn" @click="show"></a>
               </li>
             </ul>
           </nav>
@@ -50,19 +50,18 @@
         <div class="header_search_box">
           <form method="" action="">
             <a href="javascript:;" class="header_search_close_btn" @click="hide"></a>
-            <input type="text" name="header_search" class="header_search_input" @focus="show_search_input" 
-              v-model="searchTable.value" ref="searchValueTable"
-              autocomplete="off">
+            <input type="text" name="header_search" class="header_search_input" @focus="show_search_input" v-model="searchTable.value"
+              ref="searchValueTable" autocomplete="off">
             <input type="submit" name="search_submit" class="header_search_submit header_search_btn" value="" autocomplete="off">
             <!-- 搜索提示 -->
             <ul class="list header_search_box_list" ref='searchBoxList'>
-                <li class="item"  v-for="item in searchResultTable">
-                  <div class="info_box">
-                    <p class="text">{{item.CourseName}}</p>
-                    <p class="date">{{item.CreateTime}}</p>
-                  </div>
-                  <a :href="'#/training_camp/'+item.CourseTypeID+'/'+item.CourseID" class="apply_btn">报名</a>
-                </li>
+              <li class="item" v-for="item in searchResultTable" v-bind:key="item">
+                <div class="info_box">
+                  <p class="text">{{item.CourseName}}</p>
+                  <p class="date">{{item.CreateTime}}</p>
+                </div>
+                <a :href="'#/training_camp/'+item.CourseTypeID+'/'+item.CourseID" class="apply_btn">报名</a>
+              </li>
             </ul>
           </form>
         </div>
@@ -326,8 +325,7 @@
       search: {
         handler: function (val, oldval) {
           this.searchResult = [];
-
-          console.log(this.$refs.searchValue.value)
+          // console.log(this.$refs.searchValue.value)
           let str = this.$refs.searchValue.value.replace(/(^\s+)|(\s+$)/g, "");
           for (let i = 0, l = this.classList.length; i < l; i++) {
             if (this.classList[i].CourseName.indexOf(str) > -1) {
@@ -354,12 +352,36 @@
   };
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+
+<style scoped lang='scss'>
+  @mixin scale ($value:1) {
+    opacity: $value;
+    -webkit-transform: scale($value);
+    -moz-transform: scale($value);
+    -ms-transform: scale($value);
+    -o-transform: scale($value);
+    transform: scale($value);
+  }
+
+  @mixin transition($dur:0.3s, $props:all, $timing:ease) {
+    -webkit-transition: $props $dur $timing;
+    -moz-transition: $props $dur $timing;
+    -ms-transition: $props $dur $timing;
+    -o-transition: $props $dur $timing;
+    transition: $props $dur $timing;
+  }
+  @mixin transform($val){
+    -webkit-transform:$val;
+    -moz-transform: $val;
+    -ms-transform: $val;
+    -o-transform: $val;
+    transform: $val;
+  }
   .inner_header {
     position: relative;
     height: 152px;
-    background: url("./../../assets/img/top_bg_3.png") no-repeat center 0;
+    background: url("./../../assets/img/pc_header@2x.png") no-repeat center 0;
+    // max-width: 1440px;
     margin: 0 auto;
   }
 
@@ -373,7 +395,6 @@
   .toggle_search_btn {
     position: absolute;
     top: 36px;
-    /* right: 16%; */
     margin-left: 80px;
     display: inline-block;
     width: 28px;
@@ -381,11 +402,7 @@
     background: url("./../../assets/img/search_2.png") no-repeat center center;
     vertical-align: middle;
     opacity: 0.6;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
     z-index: 101;
   }
 
@@ -465,11 +482,7 @@
     border-radius: 20px;
     background: #f8ef1c;
     font-weight: bold;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
     z-index: 22;
   }
 
@@ -484,11 +497,7 @@
     vertical-align: middle;
     background: url("./../../assets/img/searchh_close.png") no-repeat center center;
     opacity: 0.6;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
   }
 
   .header_search_box .header_search_close_btn:hover {
@@ -504,11 +513,7 @@
     vertical-align: middle;
     background: url("./../../assets/img/inner_search_3x.png") no-repeat center center;
     opacity: 0.6;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
   }
 
   .header_search_box .header_search_btn:hover {
@@ -534,57 +539,29 @@
     position: absolute;
     left: 50%;
     top: 16px;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
+    @include transform(translateX(-50%));
   }
 
   /* header animation */
 
-  .inner_header_con .inner_header_con_top {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-
-  .inner_header_con .header_search_box {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+  .inner_header_con .inner_header_con_top ,
+   .inner_header_con .header_search_box{
+    @include transition();
   }
 
   .inner_header_con.search_active .inner_header_con_top {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition:  all .3s ease;
+    -o-transition:  all .3s ease;
+    transition:  all .3s ease;
+    @include transform(translateY(-100%));
     opacity: 0;
   }
 
   .inner_header_con.search_active .header_search_box {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    --transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    -webkit-transform: translateY(-90px);
-    -moz-transform: translateY(-90px);
-    -ms-transform: translateY(-90px);
-    -o-transform: translateY(-90px);
-    transform: translateY(-90px);
+    @include transition();
+    @include transform(translateY(-90px));
     opacity: 1;
   }
 
@@ -592,6 +569,7 @@
     height: 90px;
     width: 650px;
     margin: 0 auto;
+    padding-left: 40px;
   }
 
   .inner_nav_list {
@@ -600,11 +578,7 @@
 
   .inner_nav_item {
     float: left;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
   }
 
   .inner_nav_item>a {
@@ -614,19 +588,12 @@
     color: #d4d4d4;
     line-height: 90px;
     height: 70px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
     position: relative;
   }
 
-  .inner_nav_item>a:hover {
-    color: #fff;
-  }
-
-  .inner_nav_item.active>a {
+  .inner_nav_item>a:hover ,
+  .inner_nav_item.active>a{
     color: #fff;
   }
 
@@ -643,43 +610,22 @@
     background: #fff;
     left: 0;
     bottom: 30px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    opacity: 0;
-    -webit-transform: scale(0);
-    -moz-transform: scale(0);
-    -o-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
+    @include transition();
+    @include scale(0);
+    opacity: 1;
   }
 
   .inner_nav .inner_nav_list>li:nth-child(1):hover a:after,
   .inner_nav .inner_nav_list>li:nth-child(4):hover a:after,
   .inner_nav .inner_nav_list>li:nth-child(5):hover a:after,
   .inner_nav .inner_nav_list>li:nth-child(6):hover a:after,
-  .inner_nav .inner_nav_list>li:nth-child(7):hover a:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-
+  .inner_nav .inner_nav_list>li:nth-child(7):hover a:after,
   .inner_nav .inner_nav_list>li:nth-child(1).active a:after,
   .inner_nav .inner_nav_list>li:nth-child(4).active a:after,
   .inner_nav .inner_nav_list>li:nth-child(5).active a:after,
   .inner_nav .inner_nav_list>li:nth-child(6).active a:after,
   .inner_nav .inner_nav_list>li:nth-child(7).active a:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
+    @include scale;
   }
 
   .inner_nav .inner_nav_list>li:nth-child(2)>a:after,
@@ -694,31 +640,12 @@
     left: 50%;
     margin-left: -24px;
     bottom: 30px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    opacity: 0;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
-    transform: scale(0);
+    @include transition();
+    @include scale(0);
   }
 
   .inner_nav .inner_nav_list>li:nth-child(3)>a:after {
     bottom: 27px;
-  }
-
-  .inner_nav .inner_nav_list>li:nth-child(2).active>a:after,
-  .inner_nav .inner_nav_list>li:nth-child(3).active>a:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
   }
 
   .inner_nav .inner_nav_list>li:nth-child(2) {
@@ -727,38 +654,36 @@
   }
 
   .inner_nav .inner_nav_list>li:nth-child(2):hover .sub_list {
-    /*height: 182px;*/
     height: auto;
+    visibility: visible;
     opacity: 1;
-    /* 这里的高度正常情况下是auto 当初为何下182px 是不是个别页面有显示层级问题需要插件 */
   }
 
   .inner_nav .sub_list {
     position: absolute;
     box-sizing: border-box;
     left: 0;
-    top: 68px;
-    background-color: rgba(0,0,0,.3);
-   width: 100%;
+    top: 70px;
+    background-color: rgba(0, 0, 0, .3);
+    width: 100%;
     text-align: center;
-    transition: all 0.3s ease;
     z-index: 200;
-    /* height: 30px; */
+    visibility: hidden;
     opacity: 0;
+    -o-transition: visibility 0s, opacity 0.3s linear;
+    -webkit-transition: visibility 0s, opacity 0.3s linear;
+    -ms-transition: visibility 0s, opacity 0.3s linear;
+    -moz-transition: visibility 0s, opacity 0.3s linear;
+    transition: visibility 0s, opacity 0.3s linear;
     overflow: hidden;
-
   }
 
   .inner_nav .sub_list li {
-    -o-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    @include transition();
   }
 
   .inner_nav .sub_list li:hover {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
     color: #ebebeb
   }
 
@@ -766,13 +691,8 @@
     padding: 0 6px;
     display: block;
     font-size: 12px;
-    color: #d4d4d4;
+    color: #fff;
     line-height: 50px;
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    transition: all 0.3s ease;
   }
 
   .inner_nav .inner_nav_list>li:nth-child(3) {
@@ -781,7 +701,7 @@
   }
 
   .inner_nav .inner_nav_list>li:nth-child(3):hover .sub_list {
-    /* height: 150px; */
+    visibility: visible;
     opacity: 1;
   }
 
@@ -808,14 +728,12 @@
 
   .person_center_item {
     max-width: 122px;
-    /*overflow: hidden;*/
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .person_center_item a {
     max-width: 122px;
-    /*overflow: hidden;*/
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -905,7 +823,6 @@
       margin-left: 22px;
       background: url("./../../assets/img/search@2x.png") no-repeat center;
       background-size: 20px;
-      /* cursor: pointer; */
     }
     .inner_header .nav_wrapper {
       padding: 18px 20px 0;
@@ -1009,11 +926,7 @@
       border-radius: 20px;
       background: #f8ef1c;
       font-weight: bold;
-      -webkit-transition: all 0.3s ease;
-      -moz-transition: all 0.3s ease;
-      -ms-transition: all 0.3s ease;
-      -o-transition: all 0.3s ease;
-      transition: all 0.3s ease;
+      @include transition();
     }
 
     .inner_header .search_list .list .item .apply_btn:hover {

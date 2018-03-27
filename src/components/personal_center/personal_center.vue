@@ -457,7 +457,9 @@
   .personal_center_p .m_content {
     display: none;
   }
-
+.personal_center_p .content_item .no_data_wrapper .no_data_content{
+  text-align: center;}
+  
   @media screen and (max-width: 1020px) {
     .personal_center_p {
       max-width: 750px;

@@ -421,7 +421,7 @@
   }
 
   .register_p .info_box .sex {
-    appearance: button;
+    /* appearance: button; */
     -moz-appearance: button;
     /* Firefox */
     -webkit-appearance: button;
@@ -558,10 +558,9 @@
   }
 
   .register_p .add_wrapper .origin {
-    appearance: none;
+    /* appearance: none; */
     -moz-appearance: none;
     -webkit-appearance: none;
-    webkit-appearance: none;
     outline: none;
   }
 
@@ -709,7 +708,7 @@
   }
 
   .register_p .info_box .radio {
-    appearance: button;
+    /* appearance: button; */
     -moz-appearance: button;
     -webkit-appearance: button;
     outline: none;
@@ -827,7 +826,7 @@
   }
 
   .register_p .modal_box_middle .radio {
-    appearance: button;
+    /* appearance: button; */
     -moz-appearance: button;
     /* Firefox */
     -webkit-appearance: button;
@@ -899,7 +898,7 @@
   }
 
   .register_p .add_wrapper .radio {
-    appearance: button;
+    /* appearance: button; */
     -moz-appearance: button;
     /* Firefox */
     -webkit-appearance: button;
@@ -1046,9 +1045,9 @@
     .content_wrapper .content_item .item_bottom_con .phone_area {
       padding-left: 90px;
     }
-    .content_wrapper .content_item .item_bottom_con label.address_label {
+    /* .content_wrapper .content_item .item_bottom_con label.address_label { */
       /* margin-left: -10px; */
-    }
+    /* } */
     .register_p .item_bottom_con .parent_box input.expressage_address {
       width: 300px;
     }

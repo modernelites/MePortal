@@ -23,7 +23,7 @@
       getLoginName(data) {
         if (data === null) {
           console.log('未登录');
-        }else{
+        } else {
           this.loginName = data;
           console.log(this.loginName);
         }
@@ -96,6 +96,10 @@
 
   .login_p .content_box input {
     box-sizing: border-box;
+  }
+
+  .login_content_wrapper {
+    padding-right: 20%;
   }
 
   .login_p .content_box .input_item {
@@ -259,7 +263,7 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, .3);
       max-width: 388px;
     }
-    .login_p .tips{
+    .login_p .tips {
       background-color: #353535;
     }
   }

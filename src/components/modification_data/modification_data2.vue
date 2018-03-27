@@ -28,7 +28,7 @@
     data() {
       return {
         noPwd: JSON.parse(window.localStorage.getItem("user")).Pwd == 1 ? true : false,
-        tips:'密码要求至少6位数字或者号码或数字中来切超过6位'
+        tips:'密码要求至少6位数字或字符'
       }
     },
     methods: {

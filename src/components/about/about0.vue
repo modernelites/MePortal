@@ -6,7 +6,7 @@
       <div class="rich_media_inner">
         <div id="page-content" class="rich_media_area_primary">
           <div id="img-content">
-            <h1 class="rich_media_title" id="activity-name"> 【摩英教育 青少年领袖梦工厂】我在这里，奇迹开始的地方~ </h1>
+            <!-- <h1 class="rich_media_title" id="activity-name"> 【摩英教育 青少年领袖梦工厂】我在这里，奇迹开始的地方~ </h1> -->
             <div class="rich_media_thumb_wrp" id="media"> </div>
             <div class="rich_media_content " id="js_content">
               <p style="white-space: normal;line-height: 25.6px;max-width: 100%;min-height: 1em;text-align: center;box-sizing: border-box !important;word-wrap: break-word !important;">
@@ -268,27 +268,88 @@
               <p style="white-space: normal;line-height: 25.6px;max-width: 100%;min-height: 1em;text-align: center;box-sizing: border-box !important;word-wrap: break-word !important;">
                 <br>
               </p>
-              <p style="white-space: normal;line-height: 28.4444px;">
-                <img class="" data-copyright="0" data-ratio="0.6666666666666666" data-s="300,640" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYcn4PiaxJhsyEebBCVGyZiaTiaYSm3Xex6hQQ34rSPvw3IMf0G2aI38vmA/640?wx_fmt=jpeg"
-                  data-type="jpeg" data-w="750" src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYcn4PiaxJhsyEebBCVGyZiaTiaYSm3Xex6hQQ34rSPvw3IMf0G2aI38vmA/640?wx_fmt=jpeg">
-                <br>
-              </p>
-              <p style="white-space: normal;">
-                <img class="" data-copyright="0" data-ratio="0.6675567423230975" data-s="300,640" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYVFibq9mTCplHPWT38KfjT2aV1t2JbjiaFricxib8vA8pClNU2ucuicib1o6g/640?wx_fmt=jpeg"
-                  data-type="jpeg" data-w="749" src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYVFibq9mTCplHPWT38KfjT2aV1t2JbjiaFricxib8vA8pClNU2ucuicib1o6g/640?wx_fmt=jpeg">
-                <img class="" data-copyright="0" data-ratio="0.6666666666666666" data-s="300,640" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYNlhcKNxmZlOsWJzlmbkSmrUEWYnJVrvI8VuCOMNwLh1UNemIY7fDJQ/640?wx_fmt=jpeg"
-                  data-type="jpeg" data-w="750" src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYNlhcKNxmZlOsWJzlmbkSmrUEWYnJVrvI8VuCOMNwLh1UNemIY7fDJQ/640?wx_fmt=jpeg">
-              </p>
-              <p style="white-space: normal;">
-                <img class="" data-copyright="0" data-ratio="0.6666666666666666" data-s="300,640" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYrFoPL3LXOFMSfzeQIg2bf4bibvic1FjxMlnZ9o3kSgdSt2LQnekm5O4g/640?wx_fmt=jpeg"
-                  data-type="jpeg" data-w="750" src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYrFoPL3LXOFMSfzeQIg2bf4bibvic1FjxMlnZ9o3kSgdSt2LQnekm5O4g/640?wx_fmt=jpeg">
-                <br>
-              </p>
-              <p style="white-space: normal;">
-                <img class="" data-copyright="0" data-ratio="0.6666666666666666" data-s="300,640" data-src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYln7pFJ6G7caIRpkLMHNxd4DbzssVtFNNiaHtibd5VuRiaZ59VlrFe6ibNA/640?wx_fmt=jpeg"
-                  data-type="jpeg" data-w="750" src="https://mmbiz.qpic.cn/mmbiz_jpg/1MqicHJj8tNNgCJ8Na2pEPRDwDW0rLzYYln7pFJ6G7caIRpkLMHNxd4DbzssVtFNNiaHtibd5VuRiaZ59VlrFe6ibNA/640?wx_fmt=jpeg">
-                <br>
-              </p>
+
+
+
+
+
+              <!-- <div class="swipeboxEx"> -->
+
+              <!-- <a href="../../../static/lib/swipebox/img/1.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/1.jpeg" alt="image">
+                </a>
+                <a href="../../../static/lib/swipebox/img/2.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/2.jpeg" alt="image">
+                </a>
+                <a href="../../../static/lib/swipebox/img/3.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/3.jpeg" alt="image">
+                </a>
+                <a href="../../../static/lib/swipebox/img/4.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/4.jpeg" alt="image">
+                </a>
+                <a href="../../../static/lib/swipebox/img/5.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/5.jpeg" alt="image">
+                </a>
+                <a href="../../../static/lib/swipebox/img/5.jpeg" class="swipebox">
+                  <img src="../../../static/lib/swipebox/img/5.jpeg" alt="image">
+                </a> -->
+              <!-- </div> -->
+
+
+              <div class="swiper-container about-swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/1.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/2.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/3.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/4.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/5.jpeg">
+                  </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-button-next swiper-button-next"></div>
+                <div class="swiper-button-prev swiper-button-prev"></div>
+              </div>
+
+              <div class="swiper-container-thumb">
+
+                <div class="swiper-wrapper">
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/1.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/2.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/3.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/4.jpeg">
+                  </div>
+                  <div class="swiper-item swiper-slide">
+                    <img src="../../../static/lib/swipebox/img/5.jpeg">
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
               <p style="white-space: normal;line-height: 23.2727px;">
                 <br>
               </p>
@@ -502,7 +563,7 @@
                         data-w="480" data-src="https://v.qq.com/iframe/preview.html?vid=p0505wjwhdz&amp;width=500&amp;height=375&amp;auto=0"
                         src="https://v.qq.com/iframe/player.html?vid=p0505wjwhdz&amp;width=2005&amp;height=NaN&amp;auto=0"
                         height="NaN" style="width: 2018px;height:NaNpx !important;" width="2005"></iframe> -->
-                      <video class="edui-upload-video  vjs-default-skin video-js" controls="" preload="auto" width="420" height="280"  src="/upload/video/20171122/青少年领袖3.mp4"
+                      <video class="edui-upload-video  vjs-default-skin video-js" controls="" preload="auto" width="420" height="280" src="/upload/video/20171122/青少年领袖3.mp4"
                         data-setup="{}"></video>
                     </p>
                     <p style="line-height: 23.2727px;">
@@ -1448,17 +1509,79 @@
 
   </dl>
 </template>
-<style>
-  img,
-  iframe {
-    width: 100% !important;
+<script>
+  import "../../../static/lib/swipebox/jquery-2.1.0.min.js";
+  import swipebox from "../../../static/lib/swipebox/jquery.swipebox.js";
+  import Swiper from "@/../static/js/swiper.min.js";
+  export default {
+    mounted() {
+      // (function ($) {
+      //   $('.swipebox').swipebox();
+      // })(jQuery);
+
+      var galleryTop = new Swiper('.about-swiper-container', {
+        nextButton: ".swiper-button-next",
+        prevButton: ".swiper-button-prev",
+        spaceBetween: 10,
+        // autoplay: 5000,
+        onSlideChangeEnd: function (swiper) {
+          this.img_index = swiper.realIndex;
+          console.log(this.img_index);
+        },
+        loop: true,
+        loopedSlides: 20 //looped slides should be the same
+      });
+      var galleryThumbs = new Swiper('.swiper-container-thumb', {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        touchRatio: 0.2,
+        loop: true,
+        loopedSlides: 20, //looped slides should be the same
+        slideToClickedSlide: true,
+        centeredSlides: true //当前图片居中
+      });
+      galleryTop.params.control = galleryThumbs;
+      galleryThumbs.params.control = galleryTop;
+    },
+    beforeUpdate() {
+      this.$nextTick(function () {
+
+      })
+    },
+  }
+
+</script>
+
+<style lang="scss" scoped>
+  @import url("../../../static/lib/swipebox/swipebox.min.css");
+  @import url("../../assets/css/swiper-3.4.2.min.css");
+  #img-content img {
+    max-width: 100%;
+  }
+
+  .swipeboxEx {
+    font-size: 0;
+  }
+
+  .swipeboxEx img {
+    width: 286px;
+    height: 200px;
   }
 
   video {
     margin: 0 auto;
   }
 
+ .about-swiper-container{
+    margin-top: 100px;
+    display: block !important;
+  }
 
-  @media screen and (min-width: 1020px) {}
+  .swiper-container-thumb {
+    overflow: hidden;
+  }
 
+  /* @media screen and (min-width: 1020px) {} */
 </style>
+
+
