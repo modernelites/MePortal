@@ -57,7 +57,7 @@
         this.$nextTick(function () {
           this.$http.get(this.ApiUrl + 'me/Menu/Menu_List').then((response) => {
             response = response.body;
-            this.menuList = response.Data;
+            this.menuList = response.Data[0];
           }, function () {
             console.log('请求发送失败');
           });

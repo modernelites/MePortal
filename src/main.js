@@ -5,13 +5,25 @@ import App from './App';
 import router from './router';
 import $ from 'jquery';
 import layer from 'vue-layer'
-
+import VueResource from 'vue-resource';
+import VueAMap from 'vue-amap';
 // layer
 Vue.prototype.$layer = layer(Vue);
 Vue.config.productionTip = false;
-
-Vue.prototype.ApiUrl = 'http://172.16.0.111:2017/';// dev
-// Vue.prototype.ApiUrl = 'http://120.26.218.68:2017/'; // 正式
+Vue.use(VueResource);
+//允许携带cookie作为验证
+Vue.http.options.credentials = true;
+// Vue.prototype.ApiUrl = 'http://172.16.0.222:2017/';// dev
+Vue.prototype.ApiUrl = 'http://127.0.0.1:8081/';
+// Vue.prototype.ApiUrl = 'http://172.16.0.222:8081/';
+// Vue.prototype.ApiUrl = 'http://www.myjy.biz:8081/'; // 正式
+Vue.use(VueAMap);
+VueAMap.initAMapApiLoader({
+  key: 'fe6368a8dc43340cfe1cc36ce218e1ed',
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
+  // 默认高德 sdk 版本为 1.4.4
+  v: '1.4.4'
+});
 // 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
@@ -63,5 +75,30 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: {App}
+  components: {
+    App
+  }
 });
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

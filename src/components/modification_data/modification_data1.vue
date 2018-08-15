@@ -5,7 +5,7 @@
         <!-- 下面是头像内容 -->
         <div class="portrait_box">
           <div data-toggle="modal" data-target="#avatar-modal" class="up-img-cover" id="up-img-touch">
-            <img class="am-circle" alt="点击图片上传" src="./../../assets/img/header_logo.png">
+            <img class="am-circle" alt="" :src="user.FilePath">
             <!-- 引入框架头像 start -->
             <div class="user_pic">
               <img src="" />
@@ -122,38 +122,89 @@
 
     data() {
       return {
-        user:{
-          UserID:JSON.parse(window.localStorage.getItem("user")).UserID,
-          LoginName:JSON.parse(window.localStorage.getItem("user")).LoginName,
-          Pwd:JSON.parse(window.localStorage.getItem("user")).Pwd,
-          UserName:JSON.parse(window.localStorage.getItem("user")).UserName,
-          Gender:JSON.parse(window.localStorage.getItem("user")).Gender,
-          School:JSON.parse(window.localStorage.getItem("user")).School,
-          Grade:JSON.parse(window.localStorage.getItem("user")).Grade,
-          Birthday:JSON.parse(window.localStorage.getItem("user")).Birthday,
-          Phone:JSON.parse(window.localStorage.getItem("user")).Phone,
-          Email:JSON.parse(window.localStorage.getItem("user")).Email,
-          FName:JSON.parse(window.localStorage.getItem("user")).FName,
-          FPhone:JSON.parse(window.localStorage.getItem("user")).FPhone,
-          MName:JSON.parse(window.localStorage.getItem("user")).MName,
-          MPhone:JSON.parse(window.localStorage.getItem("user")).MPhone,
-          Address:JSON.parse(window.localStorage.getItem("user")).Address
+        user: {
+          UserID: JSON.parse(window.localStorage.getItem("user")).UserID,
+          LoginName: JSON.parse(window.localStorage.getItem("user")).LoginName,
+          Pwd: JSON.parse(window.localStorage.getItem("user")).Pwd,
+          UserName: JSON.parse(window.localStorage.getItem("user")).UserName,
+          Gender: JSON.parse(window.localStorage.getItem("user")).Gender,
+          School: JSON.parse(window.localStorage.getItem("user")).School,
+          Grade: JSON.parse(window.localStorage.getItem("user")).Grade,
+          Birthday: JSON.parse(window.localStorage.getItem("user")).Birthday.slice(0, 10),
+          Phone: JSON.parse(window.localStorage.getItem("user")).Phone,
+          Email: JSON.parse(window.localStorage.getItem("user")).Email,
+          FName: JSON.parse(window.localStorage.getItem("user")).FName,
+          FPhone: JSON.parse(window.localStorage.getItem("user")).FPhone,
+          MName: JSON.parse(window.localStorage.getItem("user")).MName,
+          MPhone: JSON.parse(window.localStorage.getItem("user")).MPhone,
+          Address: JSON.parse(window.localStorage.getItem("user")).Address,
+          FilePath: JSON.parse(window.localStorage.getItem("user")).FilePath
         }
       }
     },
     methods: {
-        submit:function(){
-          this.$http.post(this.ApiUrl + 'me/User/UserInfo_Edit',this.user).then((response)=>{
+      submit: function () {
+        console.log(this.user)
+        if (JSON.parse(window.localStorage.getItem("user")).FilePath) {
+          this.user.FilePath = JSON.parse(window.localStorage.getItem("user")).FilePath;
+        } else {
+          this.user.FilePath = 'default';
+        }
+        if (!this.user.MPhone && !this.user.FPhone) {
+          this.$layer.alert("父母手机号至少填写一项!");
+        } else {
+          this.$http.post(this.ApiUrl + 'me/User/UserInfo_Edit', this.user).then((response) => {
             response = response.body;
-            console.log(response);
-            window.localStorage.setItem('user',JSON.stringify(this.user));
-          },function(){
+            if (response.Status == 200) {
+              this.$layer.alert("修改成功!");
+              window.localStorage.setItem('user', JSON.stringify(this.user));
+            }
+            if (response.Msg == "not login") {
+              this.$layer.alert("登录已失效 请重新登录");
+            }
+          }, function () {
+
             console.log('failure');
           })
-
         }
-    }
+
+
+      }
+    },
+    mounted() {}
 
   }
 
 </script>
+<style>
+  img.am-circle {
+    position: relative;
+  }
+
+  img.am-circle:after {
+    content: '';
+    background: url('./../../assets/img/header_logo.png') no-repeat;
+    position: absolute;
+    background-size: 190px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 1020px) {
+
+    img.am-circle {
+      position: relative;
+
+    }
+    img.am-circle:after {
+      content: '';
+      background: url('./../../assets/img/header_logo.png') no-repeat;
+      background-size: 90px;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+</style>

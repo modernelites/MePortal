@@ -243,7 +243,9 @@
     cursor: pointer;
     outline: none;
   }
-
+    .login_p .tips {
+      background-color: #353535;
+    }
   @media screen and (max-width: 1020px) {
     .login_p {
       background: #fefefe;

@@ -45,10 +45,13 @@ import trainingCamp from '@/components/training_camp/training_camp';
 import portrait from '@/components/portrait/portrait';
 import region from '@/components/region/region';
 import carousel from '@/components/carousel/carousel';
+import mobile from '@/components/mobile/mobile';
 
 Vue.use(Router);
 Vue.use(VueResource);
 // Vue.use(axios);
+//允许携带cookie作为验证
+Vue.http.options.credentials = true;
 
 export default new Router({
   routes: [{
@@ -60,6 +63,11 @@ export default new Router({
       path: '/index',
       name: 'home',
       component: home
+    },
+    {
+      path: '/mobile',
+      name: 'mobile',
+      component:mobile
     },
     {
       path: '/index,:id',

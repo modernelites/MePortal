@@ -5,7 +5,7 @@
       <!-- 头像内容信息 -->
       <div class="portrai_wrapper">
         <div class="pic_wrappper">
-          <img src="./../../assets/img/header_logo.png">
+          <img class="por" :src="user.FilePath">
         </div>
         <a href="#/modification_data/modification_data1" class="mod_btn">修改资料</a>
         <h3 class="name">{{!user.UserName?user.LoginName:user.UserName}}</h3>
@@ -18,41 +18,41 @@
       <div class="content_main_wrapper">
         <nav>
           <ul class="nav_list" id="personal_center_p_nav_list">
-                <li class="nav_item" v-on:click="selectOption(0),optionShow=false"><a href="javascript:;">
-                                    <router-link :to="{path:'/personal_center1'}" style="padding: 0" class="item">
-                    集训营课程&nbsp;
-                  </router-link>
-                </a>
-
-                </li>
-                <li class="nav_item" v-on:click="selectOption(1),optionShow=false">
-                  <a href="javascript:;">
-                  <router-link :to="{path:'/personal_center2'}" style="padding: 0" class="item">
-                    大学生课程&nbsp;
-                  </router-link>
-                  </a>
-                </li>
-                <li class="nav_item" v-on:click="selectOption(2),optionShow=false">
-                  <a href="javascript:;">
-                  <router-link :to="{path:'/personal_center3'}" style="padding: 0" class="item">
-                    海外游学课程&nbsp;
-                  </router-link>
-                  </a>
-                </li>
-                <li class="nav_item" v-on:click="selectOption(3),optionShow=false">
-                  <a href="javascript:;">
-                  <router-link :to="{path:'/personal_center4'}" style="padding: 0" class="item">
-                    摩英网校&nbsp;
-                  </router-link>
-                  </a>
-                </li>
-                <li class="nav_item" v-on:click="selectOption(4),optionShow=false">
-                  <a href="javascript:;">
-                  <router-link :to="{path:'/personal_center5'}" style="padding: 0" class="item">
-                    助教·义工&nbsp;
-                  </router-link>
-                  </a>
-                </li>
+            <li class="nav_item" v-on:click="selectOption(0),optionShow=false">
+              <a href="javascript:;">
+                <router-link :to="{path:'/personal_center1'}" style="padding: 0" class="item">
+                  集训营课程&nbsp;
+                </router-link>
+              </a>
+            </li>
+            <li class="nav_item" v-on:click="selectOption(1),optionShow=false">
+              <a href="javascript:;">
+                <router-link :to="{path:'/personal_center2'}" style="padding: 0" class="item">
+                  大学生课程&nbsp;
+                </router-link>
+              </a>
+            </li>
+            <li class="nav_item" v-on:click="selectOption(2),optionShow=false">
+              <a href="javascript:;">
+                <router-link :to="{path:'/personal_center3'}" style="padding: 0" class="item">
+                  海外游学课程&nbsp;
+                </router-link>
+              </a>
+            </li>
+            <li class="nav_item" v-on:click="selectOption(3),optionShow=false">
+              <a href="javascript:;">
+                <router-link :to="{path:'/personal_center4'}" style="padding: 0" class="item">
+                  摩英网校&nbsp;
+                </router-link>
+              </a>
+            </li>
+            <li class="nav_item" v-on:click="selectOption(4),optionShow=false">
+              <a href="javascript:;">
+                <router-link :to="{path:'/personal_center5'}" style="padding: 0" class="item">
+                  助教·义工&nbsp;
+                </router-link>
+              </a>
+            </li>
           </ul>
         </nav>
         <div class="content_list" id="personal_center_p_content_list">
@@ -124,13 +124,13 @@
             </keep-alive>
           </div>
         </div>
-        <div class="content_footer">
+        <!-- <div class="content_footer">
           <div class="left_area">
           </div>
           <div class="right_area">
             <a href="javascript:;" class="cancel_btn">取消报名</a>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- 移动端适配end -->
     </div>
@@ -164,14 +164,13 @@
       getUrl() {
         // window.location.reload(true);
       }
-    },    
+    },
     watch: {
-      // 如果路由有变化，会再次执行该方法
       "$route": "getUrl"
 
     },
     beforeCreate() {},
-    
+
     activated() {
       this.$nextTick(function () {
         if (window.localStorage.getItem('user') === null) {
@@ -205,11 +204,15 @@
         this.selectType = 4;
       }
     },
-    beforeRouteUpdate() {
-
-    },
+    beforeRouteUpdate() {},
     mounted() {
-
+      if (JSON.parse(window.localStorage.getItem("user")).Grade) {
+        let grade = ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级', '初一', '初二', '初三', '高一', '高二', '高三', '大一', '大二', '大三',
+          '大四'
+        ]
+        this.user.Grade = grade[JSON.parse(window.localStorage.getItem("user")).Grade - 1];
+        // console.log(this.user.Grade)
+      }
       // let url = window.location.href;
       // if (url.indexOf('personal_center1') > 0) {
       //   this.selectType = 0;
@@ -457,9 +460,42 @@
   .personal_center_p .m_content {
     display: none;
   }
-.personal_center_p .content_item .no_data_wrapper .no_data_content{
-  text-align: center;}
-  
+
+  .personal_center_p .content_item .no_data_wrapper .no_data_content {
+    text-align: center;
+  }
+
+  img.por {
+    position: relative;
+    width: 100%;
+  }
+
+  img.por:after {
+    content: '';
+    background: url('./../../assets/img/header_logo.png') no-repeat;
+    position: absolute;
+    background-size: 190px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 1020px) {
+
+    img.por {
+      position: relative;
+      width: 100%;
+    }
+    img.por:after {
+      content: '';
+      background: url('./../../assets/img/header_logo.png') no-repeat;
+      background-size: 90px;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
   @media screen and (max-width: 1020px) {
     .personal_center_p {
       max-width: 750px;

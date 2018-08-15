@@ -41,7 +41,7 @@
             <input type="text" name="username" class="username" required="" v-model="CourseReg.StuName">
           </label>
           <label class="sex_label">
-            
+
             <span>性别：
               <u class="star">*</u>
             </span>
@@ -52,10 +52,11 @@
 
           </label>
           <label class="grade_label gl">
-            <div class="sc">          
-                <span>就读学校： </span>
-            <i class="school">学校：</i>
-            <input type="text" name="school_input" class="school_input" v-model="CourseReg.School"></div>
+            <div class="sc">
+              <span>就读学校： </span>
+              <i class="school">学校：</i>
+              <input type="text" name="school_input" class="school_input" v-model="CourseReg.School">
+            </div>
 
             <div class="grade_area">
               <i class="grade_i"> 年级：</i>
@@ -110,7 +111,8 @@
             <span>出生日期：
               <u class="star">*</u>
             </span>
-            <input type="date" name="date" class="birth_date" v-model="CourseReg.Birthday">
+            <!-- <input type="text" name="date" class="birth_date" onfocus="(this.type='date')" v-model="CourseReg.Birthday"> -->
+            <vue-datepicker-local name="date" class="birth_date" format="YYYY-MM-DD" v-model="num" />
           </label>
           <label class="s_phone">
             <span>学员手机：</span>
@@ -129,8 +131,8 @@
               <u class="star">*</u>
             </span>
             <div class="sel">
-                          <input type="radio" name="radio_OldStu" class="radio radio_1" value="true" v-model="CourseReg.Is_OldStu">是
-            <input type="radio" name="radio_OldStu" class="radio radio_2" value="false" v-model="CourseReg.Is_OldStu">否
+              <input type="radio" name="radio_OldStu" class="radio radio_1" value="true" v-model="CourseReg.Is_OldStu">是
+              <input type="radio" name="radio_OldStu" class="radio radio_2" value="false" v-model="CourseReg.Is_OldStu">否
             </div>
 
           </label>
@@ -140,9 +142,9 @@
           <div class="parent_box">
             <label>
               <div class="f_name">
-              <span>父亲：</span>
-              <i class="name_i"> 姓名：</i>
-              <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
+                <span>父亲：</span>
+                <i class="name_i"> 姓名：</i>
+                <input type="text" name="father_name" class="father_name" v-model="CourseReg.FName">
               </div>
 
               <div class="phone_area">
@@ -153,9 +155,9 @@
             </label>
             <label>
               <div class="m_name">
-              <span>母亲：</span>
-              <i class="name_i"> 姓名：</i>
-              <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
+                <span>母亲：</span>
+                <i class="name_i"> 姓名：</i>
+                <input type="text" name="mom_name" class="mom_name" v-model="CourseReg.MName">
               </div>
 
               <div class="phone_area">
@@ -173,12 +175,12 @@
         <!-- 集训营课程报名 新添加内容 -->
         <div class="add_wrapper">
           <label class="origin_label">
-                        <div class="origin_1">
-            <span>填表人 ：</span>
+            <div class="origin_1">
+              <span>填表人 ：</span>
 
               <input type="radio" name="radio_origin" class="origin_man origin" value="父亲" v-model="CourseReg.RegName" @click="showRegName=false;">父亲
               <input type="radio" name="radio_origin" class="origin_girl origin" value="母亲" v-model="CourseReg.RegName" @click="showRegName=false;">母亲
-              </div>
+            </div>
             <div class="origin_2">
               <input type="radio" name="radio_origin" class="origin_self origin" value="学生本人" v-model="CourseReg.RegName" @click="showRegName=false;">学生本人
               <input type="radio" name="radio_origin" class="originx_other origin" value="其他" @click="showRegName=true;CourseReg.RegName=''">其他</div>
@@ -268,7 +270,7 @@
 </template>
 <script>
   import region from '@/components/region/region';
-
+  import VueDatepickerLocal from 'vue-datepicker-local';
   export default {
     data() {
       return {
@@ -299,7 +301,11 @@
           StuIDCardNum: '',
           RegName: '母亲',
           Channel: '',
-          CourseTypeID: 1
+          CourseTypeID: 1,
+
+          Is_OldAssistant: '',
+          Join_Period: '',
+          Is_Leader: ''
         },
         slidShow: false,
         courseMaskShow: false,
@@ -321,11 +327,20 @@
         CourseType_Items: []
       }
     },
+    computed: {
+      num: {
+        get: function () {
+          return this.CourseReg.Birthday; //获取的时候直接获取值
+        },
+        set: function (value) {
+          this.CourseReg.Birthday = value.Format("yyyy-MM-dd"); //设置的时候变为大写
+        }
+      }
+    },
     methods: {
       showRegion(data) {
         let dataString = data.Province + data.City + data.County;
         this.CourseReg.Area = dataString;
-        console.log(this.CourseReg.Area)
       },
       selectOption(m) {
         this.slidShow = false;
@@ -343,8 +358,8 @@
       CourseType_List() {
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
-          this.CourseType_Items = response.Data;
-          this.SelectCourseType = response.Data[0];
+          this.CourseType_Items = response.Data[0];
+          this.SelectCourseType = response.Data[0][0];
         }, function () {
           console.log('请求发送失败');
         });
@@ -355,7 +370,6 @@
           response = response.body;
           this.Course_Items = response.Data;
           this.Course_Items_Fillter = this.Course_List_Fillter(1);
-          // console.log(this.Course_Items);
         }, function () {
           console.log('请求发送失败');
         });
@@ -374,7 +388,7 @@
       Period_List() {
         this.$http.get(this.ApiUrl + 'me/Period/Period_List?CourseID=0').then((response) => {
           response = response.body;
-          this.Period_Items = response.Data;
+          this.Period_Items = response.Data[0];
         }, function () {
           console.log('请求发送失败');
         });
@@ -398,7 +412,7 @@
         this.Period_Items_Fillter = arr;
       },
       Period_Select(m) {
-        //this.SelectCourse = {CourseName: "",CourseID:0};
+        // this.SelectCourse = {CourseName: "",CourseID:0};
         this.SelectPeriod = {
           PeriodName: "",
           PeriodID: 0
@@ -407,7 +421,12 @@
       },
       /** 课程报名*/
       CourseReg_Add() {
+      if (window.localStorage.getItem("user") === null) {
+          this.$layer.alert('请先登录/注册，再进行报名')
+        } else {
+
         let user = JSON.parse(window.localStorage.getItem("user"));
+        let reg = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
         this.CourseReg.CourseID = this.SelectCourse.CourseID;
         this.CourseReg.PeriodID = this.SelectPeriod.PeriodID;
         this.CourseReg.UserID = user.UserID;
@@ -427,16 +446,39 @@
           this.$layer.alert("请选择出生日期!");
           return;
         }
-        if (!this.CourseReg.FPhone && !!this.CourseReg.MPhone) {
+        if (!this.CourseReg.FPhone && !this.CourseReg.MPhone) {
           this.$layer.alert("父母手机号请至少填写一个!");
           return;
         }
+        if (this.CourseReg.FPhone) {
+          if (!reg.test(this.CourseReg.FPhone)) {
+            this.$layer.alert("请输入正确的父亲手机号码!");
+            return;
+          }
+        }
+        if (this.CourseReg.MPhone) {
+          if (!reg.test(this.CourseReg.MPhone)) {
+            this.$layer.alert("请输入正确的母亲手机号码!");
+            return;
+          }
+        }
+
+
+        console.log(this.CourseReg)
         this.$http.post(this.ApiUrl + 'me/Course/CourseReg_Add', this.CourseReg).then((response) => {
           response = response.body;
-          this.$layer.alert("报名成功!");
+          if (response.Status == 200) {
+            this.$layer.alert("报名成功!");
+          } else {
+            console.log(response.Msg);
+          }
         }, function () {
           console.log('请求发送失败');
         });
+        }
+
+
+
       }
     },
     mounted() {
@@ -445,7 +487,8 @@
       this.CourseType_List();
     },
     components: {
-      region: region
+      region,
+      VueDatepickerLocal
     }
   }
 

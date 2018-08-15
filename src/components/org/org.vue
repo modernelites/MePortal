@@ -19,14 +19,6 @@
             <p class="text">
               无敌熊少儿英语（麦克米伦出版社合作品牌） 
             </p>
-            <!-- <div class="m_row tow_img_wrapper clearfix">
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-            </div> -->
             <p class="text">
               专注于3~12岁幼儿及少儿英语培训；具备独立研发，培训系统的少儿英语品牌 </p>
             <p class="text">2017年初上海唐镇校区成立，500坪米精致学习空间，包含6间主题教室，周边停车及配套设施齐全。</p>
@@ -41,45 +33,7 @@
             <p class="text">2.全英文主题式互动教学环境；</p>
             <p class="text">3.完整的学习生态：线下课堂学习，线上客户端巩固</p>
             <p class="text">4.每月的多元主题活动：</p>
-            <!-- <div class="m_row three_img_wrapper clearfix">
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-            </div> -->
-            <!-- <h3 class="title_3 other_title_3"> 其他 </h3>
-            <p class="text">
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-            </p>
-            <div class="m_row tow_img_wrapper clearfix">
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-              <div class="m_col-lg-6">
-                <img src="./../../assets/img/smail_2.png" title="活动" alt="精彩瞬间照片">
-              </div>
-            </div>
-            <p class="text">
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-              课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
-            </p> -->
-            <!-- <div class="m_row three_img_wrapper clearfix">
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-              <div class="m_col-lg-4">
-                <img src="./../../assets/img/xamll_1.png" title="活动2" alt="活动2 照片">
-              </div>
-            </div> -->
+
           </dl>
         </div>
       </div>
@@ -126,7 +80,7 @@
 
           this.$http.get(this.ApiUrl + 'me/Menu/Menu_List').then((response) => {
             response = response.body;
-            this.menuList = response.Data;
+            this.menuList = response.Data[0];
           }, function () {
             console.log('请求发送失败');
           });

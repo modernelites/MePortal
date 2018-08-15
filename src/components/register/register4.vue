@@ -218,8 +218,8 @@
     CourseType_List() {
       this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
         response = response.body;
-        this.CourseType_Items = response.Data;
-        this.SelectCourseType = response.Data[3];
+          this.CourseType_Items = response.Data[0];
+        this.SelectCourseType = response.Data[0][3];
       }, function () {
         console.log('请求发送失败');
       });
@@ -311,6 +311,9 @@
     },
     /** 课程报名*/
     CourseReg_Add() {
+            if (window.localStorage.getItem("user") === null) {
+          this.$layer.alert('请先登录/注册，再进行报名')
+        } else {
       let user = JSON.parse(window.localStorage.getItem("user"));
       this.CourseReg.CourseID = this.SelectCourse.CourseID;
       this.CourseReg.PeriodID = this.SelectPeriod.PeriodID;
@@ -345,7 +348,7 @@
       }, function () {
         console.log('请求发送失败');
       });
-    }
+    }}
   },
   mounted() {
     this.Course_List();

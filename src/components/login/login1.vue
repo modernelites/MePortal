@@ -34,23 +34,30 @@ export default {
     // 用户登录方法
     loginMethod: function() {
       // if (userName === null) {
-        console.log('未登录');
+        // console.log('未登录');
       // } else {
 
      let userName = this.$refs.username.value;
       let passWord = md5(md5(this.$refs.password.value));
+      // let passWord = this.$refs.password.value;
       if (!userName || !passWord) {
         this.tips = '账号或者密码为空 请重新输入';
         return this.tips;
       }
-      var param = { LoginName: userName, Pwd: passWord, LoginType: 1 };
+      var param = { username: userName, password: passWord, LoginType: 1 };
+          //  var param = { username: userName, password: passWord}; 
+          console.log(param)
       this.$http.post(this.ApiUrl + 'me/Account/Login', param).then((response) => {
-        response = response.body;
+
+        response = response.data;
+
         this.login = response;
+
         if (this.login.Status !== 200) {
           this.tips = '账号或者密码错误请重新输入';
         } else {
          window.localStorage.setItem('user', JSON.stringify(response.Data));
+      //  window.localStorage.setItem('user',response.Data); 
           this.$router.push({
             path: '/index,1'
           })

@@ -62,8 +62,8 @@
           btn.disabled = true;
           this.info = this.nums + '秒后可重新获取';
           this.clock = setInterval(this.doLoop, 1000);
-        }, function () {
-          console.log('请求发送失败');
+        }, function (err) {
+          console.log('请求发送失败',err);
         });
       },
       doLoop() {
@@ -94,7 +94,7 @@
         var param = {
           LoginName: userName,
           Pwd: '',
-          LoginType: 2,
+          LoginType: 3,
           SMSCode: SMSCode
         };
         this.$http.post(path + 'me/Account/Login', param).then((response) => {
@@ -103,9 +103,15 @@
           if (this.login.Status !== 200) {
             this.tips = '验证码错误请重新输入';
           } else {
-            window.localStorage.setItem('user', JSON.stringify(response.Data));
+            // this.$layer.alert("注册成功!");
+            this.$layer.open({
+              content: '注册成功！点击确定跳转至登录页面',
+              style: 'background-color:#fff; color:#000; border:none;width:70%',
+              time: 4
+            });
+            // window.localStorage.setItem('user', JSON.stringify(response.Data));
             this.$router.push({
-              path: '/index,1'
+              path: '/login/login2'
             })
           }
         }, function () {

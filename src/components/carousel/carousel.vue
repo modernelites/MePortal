@@ -2,6 +2,12 @@
   <div class="wrapper">
     <div class="nav">
       <ul>
+        <li class="logo">
+          <a href="#/">
+            <img src="./../../assets/img/logo_2.png" alt="logo">
+          </a>
+
+        </li>
         <li v-for="item in carouselList" v-bind:key="item.ImgTypeID" @click="shiftPic(item.ImgTypeID)">{{item.ImgTypeName}}</li>
       </ul>
     </div>
@@ -10,7 +16,7 @@
         <div class="swiper-wrapper ">
           <div class="swiper-slide" v-for="item in Img_Lists" v-bind:key="item.index">
             <span>
-              <img :src='item.FilePath' onError="this.src='./../../assets/img/加载失败@2x.png'" @click="imgDetailPath = item.FilePath ,imgDetailShow=true">
+              <img :src='item.FilePath' v-on:error.once="errHandler($event)" @click="imgDetailPath = item.FilePath ,imgDetailShow=true">
             </span>
           </div>
         </div>
@@ -22,7 +28,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="item in Img_Lists" v-bind:key="item.index">
             <span>
-              <img :src='item.FilePath' onError="this.src='./../../assets/img/加载失败@2x.png'">
+              <img :src='item.FilePath' v-on:error.once="errHandler($event)">
             </span>
           </div>
         </div>
@@ -45,10 +51,10 @@
       </div>
       <div class="msk img_detail" v-show="imgDetailShow">
         <button @click="imgDetailShow=false">x</button>
-     
-           <img v-bind:src="imgDetailPath" alt="" >
 
-       
+        <img v-bind:src="imgDetailPath" alt="">
+
+
       </div>
     </div>
     <div class="mobile">
@@ -62,21 +68,21 @@
             <div class="img">
               <div class="line1">
                 <div class="line1_left">
-                  <img :src="item.Img_List[0].FilePath" onError="this.src='./../../assets/img/加载失败@2x.png'">
+                  <img :src="item.Img_List[0].FilePath" v-on:error.once="errHandler($event)">
                 </div>
                 <div class="line1_right">
-                  <img :src='item.Img_List[1].FilePath' onError="this.src='./../../assets/img/加载失败@2x.png'">
+                  <img :src='item.Img_List[1].FilePath' v-on:error.once="errHandler($event)">
                 </div>
               </div>
               <div class="line2">
                 <div>
-                  <img :src="item.Img_List[2].FilePath" onError="this.src='./../../assets/img/加载失败@2x.png'">
+                  <img :src="item.Img_List[2].FilePath" v-on:error.once="errHandler($event)">
                 </div>
                 <div>
-                  <img :src="item.Img_List[3].FilePath" onError="this.src='./../../assets/img/加载失败@2x.png'">
+                  <img :src="item.Img_List[3].FilePath" v-on:error.once="errHandler($event)">
                 </div>
                 <div>
-                  <img :src="item.Img_List[4].FilePath" onError="this.src='./../../assets/img/加载失败@2x.png'">
+                  <img :src="item.Img_List[4].FilePath" v-on:error.once="errHandler($event)">
                 </div>
               </div>
             </div>
@@ -91,7 +97,7 @@
 <script>
   // import highlight from "../../assets/js/highlight.min.js";
   // import baguetteBox from "../../assets/js/baguetteBox.min.js";
-  import Swiper from "@/../static/js/swiper.min.js";
+  import Swiper from 'swiper';
   import myHeader from "@/components/header/header";
   import detail from "./carouselDetail.vue";
   import MScript from "@/../static/js/script.js";
@@ -105,7 +111,7 @@
         Img_Lists: [],
         ImgPath: "",
         imgDetailShow: false,
-        imgDetailPath:''
+        imgDetailPath: ''
       };
     },
     updated() {
@@ -115,8 +121,10 @@
           _this.carouselDisplay = val;
         });
         var galleryTop = new Swiper(" .carousel .gallery-top", {
-          nextButton: ".swiper-button-next",
-          prevButton: ".swiper-button-prev",
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
           spaceBetween: 10,
           // autoplay: 5000,
           onSlideChangeEnd: function (swiper) {
@@ -133,10 +141,10 @@
           loop: true,
           loopedSlides: 20, //looped slides should be the same
           slideToClickedSlide: true,
-          centeredSlides:true//当前图片居中
+          centeredSlides: true //当前图片居中
         });
-        galleryTop.params.control = galleryThumbs;
-        galleryThumbs.params.control = galleryTop;
+        galleryTop.controller.control = galleryThumbs;
+        galleryThumbs.controller.control = galleryTop;
         var mySwiper = new Swiper(".mobile  .swiper-container", {
           direction: "vertical",
           slidesPerView: 1,
@@ -144,22 +152,27 @@
           loop: true
           // ,autoplay: 1000
         });
-      });
 
-      
+        let imgNow = document.getElementsByClassName('gallery-thumbs')[0];
+        // swiper-slide-active
+        let i = imgNow.getElementsByClassName('swiper-slide-active')[0]
+        // imgNow.classList.add("hide");
+        console.log(imgNow.classList);
+      });
     },
     mounted() {
       this.$http.get(this.ApiUrl + "me/file/Images_List").then(response => {
         this.carouselList = response.body.Data;
         this.Img_Lists = this.carouselList[0].Img_List;
         this.ImgLength = this.Img_Lists.length;
+        console.log(this.carouselList[0].Img_List[0].FilePath);
       });
 
       window._bd_share_config = {
         common: {
           bdText: "摩英教育精彩图集，查看高清大图，猛击：",
           // bdDesc: "自定义分享摘要",
-          bdUrl: "http://172.16.0.111:2017/index.html#/Carousel",
+          bdUrl: "http://172.16.0.222:2018/index.html#/Carousel",
           bdPic: this.FilePath
         },
         share: [{
@@ -195,7 +208,6 @@
     },
     methods: {
       shiftPic: function (index) {
-        // console.log(index);
         for (let i = 0; i < this.carouselList.length; i++) {
           if (this.carouselList[i].ImgTypeID == index) {
             this.Img_Lists = this.carouselList[i].Img_List;
@@ -208,6 +220,9 @@
       carousel_display: function (num) {
         this.carouselDisplay = true;
         eventBus.$emit("imgTypeID", num);
+      },
+      errHandler: function (e) {
+        e.currentTarget.src = "/static/images/加载失败@2x.png"
       }
     },
     components: {
@@ -230,6 +245,10 @@
     overflow: hidden;
   }
 
+  .hide {
+    visibility: hidden;
+  }
+
   .wrapper .mobile {
     display: none;
   }
@@ -241,12 +260,13 @@
     color: #a1a1a1;
     position: absolute;
   }
+
   /* nav animate */
 
-  .wrapper .nav {
+  /* .wrapper .nav {
     animation: disappear 2s 3s ease;
     animation-fill-mode: forwards;
-  }
+  } */
 
   @keyframes disappear {
     100% {
@@ -266,9 +286,9 @@
     }
   }
 
-  .wrapper .nav:hover {
+  /* .wrapper .nav:hover {
     animation: appear;
-  }
+  } */
 
   .wrapper .nav ul {
     display: flex;
@@ -283,6 +303,10 @@
     cursor: pointer;
   }
 
+  .wrapper .nav li.logo {
+    padding-top: 10px;
+  }
+
   .wrapper .nav li:hover {
     color: #fff;
   }
@@ -294,7 +318,8 @@
     margin: 0 auto;
     margin-top: 130px;
   }
-  .wrapper .carousel .swiper-container img{
+
+  .wrapper .carousel .swiper-container img {
     width: auto !important;
   }
 
@@ -390,7 +415,7 @@
 
   .wrapper .carousel .img_detail button {
     color: #fff;
-    background-color:transparent;
+    background-color: transparent;
     border: none;
     outline: none;
     font-size: 28px;
@@ -400,17 +425,18 @@
     z-index: 20;
   }
 
-.wrapper .carousel .img_detail  img{
+  .wrapper .carousel .img_detail img {
     position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  max-height:100%;
-  text-align: center;
-  max-width: 100%;
-  max-height: 100%;
-} 
-@media screen and (max-width: 1020px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    text-align: center;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  @media screen and (max-width: 1020px) {
     .wrapper {
       max-width: 750px;
       min-width: 320px;
@@ -498,6 +524,8 @@
     .wrapper .mobile .swiper-container img {
       max-width: none;
     }
+
+
   }
 
 </style>

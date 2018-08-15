@@ -1512,7 +1512,7 @@
 <script>
   import "../../../static/lib/swipebox/jquery-2.1.0.min.js";
   import swipebox from "../../../static/lib/swipebox/jquery.swipebox.js";
-  import Swiper from "@/../static/js/swiper.min.js";
+  import Swiper from 'swiper';
   export default {
     mounted() {
       // (function ($) {
@@ -1520,8 +1520,11 @@
       // })(jQuery);
 
       var galleryTop = new Swiper('.about-swiper-container', {
-        nextButton: ".swiper-button-next",
-        prevButton: ".swiper-button-prev",
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
         spaceBetween: 10,
         // autoplay: 5000,
         onSlideChangeEnd: function (swiper) {
@@ -1532,6 +1535,7 @@
         loopedSlides: 20 //looped slides should be the same
       });
       var galleryThumbs = new Swiper('.swiper-container-thumb', {
+
         spaceBetween: 10,
         slidesPerView: 5,
         touchRatio: 0.2,
@@ -1540,8 +1544,8 @@
         slideToClickedSlide: true,
         centeredSlides: true //当前图片居中
       });
-      galleryTop.params.control = galleryThumbs;
-      galleryThumbs.params.control = galleryTop;
+      galleryTop.controller.control = galleryThumbs;
+      galleryThumbs.controller.control = galleryTop;
     },
     beforeUpdate() {
       this.$nextTick(function () {
@@ -1572,7 +1576,7 @@
     margin: 0 auto;
   }
 
- .about-swiper-container{
+  .about-swiper-container {
     margin-top: 100px;
     display: block !important;
   }
@@ -1582,6 +1586,5 @@
   }
 
   /* @media screen and (min-width: 1020px) {} */
+
 </style>
-
-

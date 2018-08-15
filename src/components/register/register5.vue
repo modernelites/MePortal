@@ -90,7 +90,7 @@
             </label>
             <label>
               <span>出生日期：<u class="star">*</u></span>
-              <input type="date" name="date" class="birth_date" v-model="CourseReg.Birthday">
+            <vue-datepicker-local name="date" class="birth_date" format="YYYY-MM-DD" v-model="num" />
             </label>
             <label>
               <span>学员手机：</span>
@@ -196,6 +196,7 @@
   </div>
 </template>
 <script>
+  import VueDatepickerLocal from 'vue-datepicker-local';
   export default {
     data() {
       return {
@@ -221,6 +222,16 @@
         Period_Items_All:[]
       }
     },
+      computed: {
+      num: {
+        get: function () {
+          return this.CourseReg.Birthday; //获取的时候直接获取值
+        },
+        set: function (value) {
+          this.CourseReg.Birthday = value.Format("yyyy-MM-dd"); //设置的时候变为大写
+        }
+      }
+    },
     methods: {
       selectOption(m) {
         this.slidShow = false;
@@ -232,8 +243,8 @@
       CourseType_List() {
         this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
           response = response.body;
-          this.CourseType_Items = response.Data;
-          this.SelectCourseType = response.Data[4];
+          this.CourseType_Items = response.Data[0];
+          this.SelectCourseType = response.Data[0][4];
         }, function () {
           console.log('请求发送失败');
         });
@@ -329,6 +340,9 @@
       },
       /** 课程报名*/
       CourseReg_Add() {
+              if (window.localStorage.getItem("user") === null) {
+          this.$layer.alert('请先登录/注册，再进行报名')
+        } else {
         let user = JSON.parse(window.localStorage.getItem("user"));
         this.CourseReg.CourseID = this.SelectCourse.CourseID;
         this.CourseReg.PeriodID = this.SelectPeriod.PeriodID;
@@ -362,7 +376,7 @@
           this.$layer.alert("报名成功!");
         }, function () {
           console.log('请求发送失败');
-        });
+        });}
       },
       Period_List_All(){
         this.$http.get(this.ApiUrl + 'me/Period/Period_List_All?Type=2').then((response) => {
@@ -378,6 +392,9 @@
       this.Period_List();
       this.CourseType_List();
       this.Period_List_All();
+    },
+    components: {
+      VueDatepickerLocal
     }
   }
 </script>

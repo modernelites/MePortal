@@ -7,21 +7,27 @@
     <div class="home_banner">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <img class="imgload" :src="banner1" alt="首页banner图片01">
           </div>
           <div class="swiper-slide">
             <a href="#/carousel" class="carousel_link">
               <img class="imgload" :src="banner2" alt="首页banner图片02">
             </a>
+          </div> -->
+          <div class="swiper-slide" v-for="bannerItem in BannerList">
+            <a :href="bannerItem.BannerUrl" class="carousel_link">
+              <img class="imgload" :src="bannerItem.FilePath" alt="首页banner图片">
+            </a>
           </div>
         </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
     <!-- Swiper end  -->
     <div class="section_course_type ">
       <ul class=" clearfix list">
-        <li class="m_col-lg-3" v-for="CourseTypeItem in CourseType_List"  v-if="CourseTypeItem.CourseTypeID<5">
+        <li class="m_col-lg-3" v-for="CourseTypeItem in CourseType_List" v-if="CourseTypeItem.CourseTypeID<5">
           <div class="item_box">
             <div class="course_img">
               <img :src="CourseTypeItem.FilePath">
@@ -29,9 +35,9 @@
             <div class="nav">
               <a href="javascript:;" class="title_3">{{CourseTypeItem.CourseTypeName}}</a>
               <ul class="nav_list">
-                <li class="item" v-for="CourseItem in CourseListFillter(Course_List,CourseTypeItem.CourseTypeID)" >
-                  <!--<a :href="'#/training_camp/' +CourseTypeItem.CourseTypeID +','+ CourseItem.CourseID">{{CourseItem.CourseName}}</a>-->
-                  <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link>
+                <li class="item" v-for="CourseItem in CourseListFillter(Course_List,CourseTypeItem.CourseTypeID)">
+                  <a :href="'#/training_camp/' +CourseTypeItem.CourseTypeID +'/'+ CourseItem.CourseID">{{CourseItem.CourseName}}</a>
+                  <!-- <router-link :to="{name:'trainingCamp',params:{ctid:CourseTypeItem.CourseTypeID,cid:CourseItem.CourseID}}">{{CourseItem.CourseName}}</router-link> -->
                 </li>
               </ul>
             </div>
@@ -109,7 +115,7 @@
       <div class="swiper-container_outer">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-item swiper-slide" v-for="item in CourseType_List" >
+            <div class="swiper-item swiper-slide" v-for="item in CourseType_List">
               <h3 class="title">{{item.CourseTypeName}}</h3>
               <ul class="nav_list">
                 <li class="item" v-for="courseItem in CourseListFillter(Course_List , item.CourseTypeID)">
@@ -177,7 +183,8 @@
   </div>
 </template>
 <script>
-  import Swiper from '@/../static/js/swiper.min.js';
+  // import Swiper from '@/../static/js/swiper.min.js';
+  import Swiper from 'swiper';
   import MScript from '@/../static/js/script.js';
   import myHeader from '@/components/header/header';
   import myFooter from '@/components/footer/footer';
@@ -193,19 +200,32 @@
         banner2: '../static/images/jingcai.jpg',
         CourseType_List: {},
         Course_List: {},
-        showNum: 4
+        showNum: 4,
+        BannerList: {}
       };
     },
     activated() {
       // 获取课程类型列表
       var path = globalPath();
       this.$nextTick(function () {
-        this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
-          response = response.body;
-          this.CourseType_List = response.Data;
-          this.CourseType_List.splice(4, 5);
+        this.$http.get(this.ApiUrl + 'me/Banner/Banner_List').then((response) => {
+          let temp = [];
+          response = response.body.Data;
+          response.forEach(e => {
+            if (e.Is_Show == 1) {
+              console.log(e)
+              temp.push(e);
+            }
+          });
+          this.BannerList = temp;
+        }, function () {
+          console.log('请求发送失败');
+        });
 
-          // console.log(this.CourseType_List);
+        this.$http.get(this.ApiUrl + 'me/CourseType/CourseType_List').then((response) => {
+          response = response.body.Data;
+          this.CourseType_List = response[0];
+          this.CourseType_List.splice(4, 5);
         }, function () {
           console.log('请求发送失败');
         });
@@ -242,25 +262,34 @@
         var mySwiper = new Swiper('.home_banner .swiper-container', {
           direction: 'horizontal',
           loop: true,
-          autoplay: 4000
+          autoplay: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            reverseDirection: true
+          },
         });
         // Swiper 推荐课程
         var swiper2 = new Swiper('.course_swiper_wrap .swiper-container', {
           slidesPerView: 3,
+          loop: true,
+          navigation: {
+            nextEl: '.swiper-button-next-01',
+            prevEl: '.swiper-button-prev-01',
+          },
           paginationClickable: true,
-          nextButton: '.swiper-button-next-01',
-          prevButton: '.swiper-button-prev-01',
           spaceBetween: 30,
           freeMode: true,
-          loop: true
         });
         var mySwiper3 = new Swiper('.m_section_2 .swiper-container', {
           slidesPerView: 1,
           paginationClickable: true,
           loop: true,
           autoHeight: true,
-          nextButton: '.swiper-button-next-1',
-          prevButton: '.swiper-button-prev-1',
+          navigation: {
+            nextEl: '.swiper-button-next-1',
+            prevEl: '.swiper-button-prev-1',
+          },
 
         });
         var mySwiper4 = new Swiper('.section_3 .swiper-container', {
@@ -268,8 +297,11 @@
           paginationClickable: true,
           loop: true,
           autoHeight: true,
-          nextButton: '.swiper-button-next-2',
-          prevButton: '.swiper-button-prev-2'
+          navigation: {
+            nextEl: '.swiper-button-next-2',
+            prevEl: '.swiper-button-prev-2',
+          },
+
         });
       })
     },
@@ -307,6 +339,21 @@
     height: auto;
   }
 
+  /* .swiper-pagination{
+  position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}  */
+
+  /* .swiper-pagination-bullet{
+   display: inline-block;
+background-color: #fff;
+width: 20px;
+height: 20px;
+margin: 0 5px;
+} */
+
   .home_p {
     background: #f7f7f7;
   }
@@ -320,7 +367,8 @@
   .home_p .home_header .inner_header {
     background: none;
   }
-  .carousel_link{
+
+  .carousel_link {
     cursor: pointer;
   }
 
@@ -329,6 +377,10 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #fff;
   }
 
   .home_p .section_course_type {
@@ -377,7 +429,7 @@
     display: block;
   }
 
-  /* .home_p .section_course_type .list .item_box:hover .nav .title_3 {
+  /* .home_p .section_course_type .list .item_box:hover .nav .title_3 {7
     background: #fff;
   } */
 
@@ -782,4 +834,3 @@
   }
 
 </style>
-

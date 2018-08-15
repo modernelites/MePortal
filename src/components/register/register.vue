@@ -22,6 +22,16 @@
         CourseType_Items: []
       };
     },
+    activated(){
+        //     this.$nextTick(function () {
+        // if (window.localStorage.getItem('user') === null) {
+        //   this.$router.push({
+        //     path: '/login/login1'
+        //   })
+        // }
+        //     })
+
+    },
     methods: {
       selectOption(m) {
         this.slidShow = false;
@@ -32,6 +42,7 @@
           response = response.body;
           this.CourseType_Items = response.Data;
           this.SelectCourseType = response.Data[0];
+
         }, function () {
           console.log('请求发送失败');
         });
@@ -196,6 +207,7 @@
 
   .register_p .content_header .course_wrapper {
     padding-top: 46px;
+    padding-left: 12px;
   }
 
   .register_p .content_header .course_wrapper .info {
@@ -273,6 +285,10 @@
     color: #656565;
   }
 
+  .register_p .info_box label.b_day {
+    width: 40%;
+  }
+
   .register_p .info_box .common_label {
     display: block;
     margin-bottom: 38px;
@@ -325,7 +341,7 @@
   }
 
   .register_p .info_box .school_input {
-    width: 268px;
+    width: 304px;
   }
 
   .register_p .info_box .grade_i {
@@ -334,15 +350,17 @@
 
   .register_p .info_box label span:first-child {
     display: inline-block;
-    width: 90px;
+    width: 114px;
     text-align: right;
     position: relative;
     margin-right: 16px;
   }
+
   /* 美化select */
 
   .register_p .info_box .grade_label .grade_area {
     display: inline-block;
+    margin-left: 108px;
   }
 
   .register_p .info_box .common_area {
@@ -401,6 +419,10 @@
     font-weight: bold;
   }
 
+  .register_p .info_box .s_select {
+    display: inline-block;
+  }
+
   .register_p .info_box .sex {
     width: 16px;
     height: 16px;
@@ -426,10 +448,6 @@
     /* Firefox */
     -webkit-appearance: button;
     /* Safari 和 Chrome */
-  }
-
-  .register_p .birth_date {
-    padding-right: 10px;
   }
 
   .register_p .birth_date::-webkit-inner-spin-button {
@@ -476,6 +494,7 @@
 
   .register_p .item_bottom_con .phone_area {
     display: inline-block;
+    margin-left: 100px;
   }
 
   .register_p .item_bottom_con i {
@@ -491,7 +510,8 @@
 
   .register_p .item_bottom_con .father_name,
   .register_p .item_bottom_con .mom_name {
-    width: 120px;
+    width: 352px;
+
   }
 
   .register_p .item_bottom_con .father_phone,
@@ -524,6 +544,14 @@
     line-height: 52px;
   }
 
+  .register_p .item_bottom_con .parent_box label {
+    margin-left: 30px;
+  }
+
+  .register_p .item_bottom_con .parent_box .address_label {
+    padding-left: 10px;
+  }
+
   .register_p .item_bottom_con .parent_box input.expressage_address {
     margin-left: 14px;
   }
@@ -543,6 +571,11 @@
     margin-bottom: 38px;
     font-size: 16px;
     color: #656565;
+  }
+
+  .register_p .add_wrapper .origin_label,
+  .register_p .add_wrapper .know_label {
+    padding-left: 30px;
   }
 
   .register_p .add_wrapper label span:first-child {
@@ -807,6 +840,8 @@
   .register_p .modal_box_middle {
     padding: 20px 0;
     border-bottom: 2px solid #e5e5e5;
+    max-height: 400px;
+    overflow: auto;
   }
 
   .register_p .modal_box_middle label {
@@ -924,21 +959,23 @@
   .register_p .info_box label.grade_label .sc,
   .register_p .parent_box .f_name,
   .register_p .parent_box .m_name {
-    /* width: 400px; */
     margin-bottom: 36px;
   }
 
   .register_p .info_box .sex_label .sel {
-    margin-left: 100px;
+    display: inline-block;
   }
 
 
   .modification_data_p .mod_data_con .item_top_con .info_box label.grade_label .school {
     margin-bottom: 36px;
   }
+
+
+
+
+
   /* 移动端适配 */
-
-
 
   @media screen and (max-width: 1120px) {
 
@@ -962,6 +999,7 @@
     }
     .register_p .content_header .course_wrapper {
       padding-top: 10px;
+
     }
     .register_p .content_header {
       padding-bottom: 10px;
@@ -1015,7 +1053,7 @@
       font-size: 12px;
       width: 70px;
     }
-    .content_wrapper .content_item{
+    .content_wrapper .content_item {
       width: 100%;
     }
     .content_wrapper .content_item .info_box span,
@@ -1023,7 +1061,12 @@
       font-size: 12px;
       font-weight: normal;
     }
-
+    .register_p .info_box label.b_day {
+      width: 100%;
+    }
+    .register_p .birth_date {
+      flex: 1;
+    } 
     .content_wrapper .content_item .info_box select,
     .content_wrapper .content_item .info_box region,
     .content_wrapper .content_item .info_box .grade_label i {
@@ -1043,10 +1086,11 @@
       margin-top: 10px;
     }
     .content_wrapper .content_item .item_bottom_con .phone_area {
-      padding-left: 90px;
+      padding-left: 0px;
+
     }
     /* .content_wrapper .content_item .item_bottom_con label.address_label { */
-      /* margin-left: -10px; */
+    /* margin-left: -10px; */
     /* } */
     .register_p .item_bottom_con .parent_box input.expressage_address {
       width: 300px;
@@ -1055,7 +1099,7 @@
       width: 70px;
     }
     .content_wrapper .content_item .item_bottom_con i.name_i {
-      margin-left: 20px;
+      margin-left: 0px;
       margin-right: 8px;
     }
     .content_wrapper .content_item .item_bottom_con i.phone_info {
@@ -1073,6 +1117,9 @@
     .content_wrapper .content_item .add_wrapper input {
       font-size: 14px;
     }
+    .register_p .add_wrapper label span:first-child {
+      display: inline;
+    }
     .content_wrapper .content_item .add_wrapper .textarea {
       width: 258px;
       height: 200px;
@@ -1080,11 +1127,12 @@
     .content_wrapper .content_item .add_wrapper .origin_1,
     .content_wrapper .content_item .add_wrapper .origin_2 {
       display: inline-block;
-
-      margin-left: 110px;
+      margin-left: 60px;
     }
+
     .content_wrapper .content_item .add_wrapper .origin_1 {
-      margin-left: -1px;
+      margin-left: 0px;
+
     }
     .content_wrapper .content_item .add_wrapper .origin_1 .origin_girl {
       margin-left: 47px;
@@ -1140,8 +1188,8 @@
     }
     .register_p .info_box .grade_i,
     .register_p .info_box .common_i {
-      margin-left: 70px;
-      margin-right: 0;
+      margin-left: 62px;
+      /* margin-right: 0; */
     }
     .register_p .info_box .school_input {
       width: auto;
@@ -1153,6 +1201,8 @@
     .content_wrapper .content_item .add_wrapper .origin_1,
     .content_wrapper .content_item .add_wrapper .origin_2 {
       font-size: 12px;
+      width: 90%;
+
     }
     .content_wrapper .content_item .add_wrapper .origin_1 .origin_girl {
       margin-left: 42px;
@@ -1164,7 +1214,9 @@
     .register_p .item_bottom_con .parent_box input {
       height: 46px;
     }
-
+    .register_p .item_bottom_con .parent_box label {
+      margin-left: 0;
+    }
     .register_p .parent_box .f_name,
     .register_p .parent_box .m_name,
     .register_p .parent_box label.address_label,
@@ -1174,6 +1226,10 @@
       height: 46px !important;
       line-height: 46px;
       margin-bottom: 18px;
+      margin-left: 0px;
+    }
+    .register_p .item_bottom_con .phone_area {
+      margin-left: 70px;
     }
     .register_p .add_wrapper .know_label select.know_select {
       display: inline-block;
@@ -1186,14 +1242,17 @@
       font-size: 12px;
       height: 46px;
       line-height: 46px;
+      width: 42px;
+      margin-right: 0;
     }
 
     .content_item .item_bottom_con .father_phone,
     .content_item .item_bottom_con .mom_phone {
-      margin-top: 0!important;
+      margin-top: 0 !important;
     }
     .register_p .add_wrapper label {
       margin-bottom: 18px;
+      padding-left: 14px !important;
     }
     .register_p .add_wrapper label.know_label .know_area {
       display: flex;
@@ -1304,6 +1363,7 @@
       display: flex;
       height: 46px;
       margin-bottom: 18px;
+      margin-left: 0;
     }
     .register_p .info_box label.gl {
       display: inline-block;

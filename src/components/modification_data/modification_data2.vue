@@ -28,7 +28,7 @@
     data() {
       return {
         noPwd: JSON.parse(window.localStorage.getItem("user")).Pwd == 1 ? true : false,
-        tips:'密码要求至少6位数字或字符'
+        tips: '密码要求至少6位数字或字符'
       }
     },
     methods: {
@@ -49,9 +49,12 @@
             // console.log(info);
             this.$http.post(this.ApiUrl + 'me/Account/UserInfo_Pwd_Upd', info).then((response) => {
               response = response.body;
+              if (response.Msg == "not login") {
+                this.$layer.alert("登录已失效 请重新登录");
+              } else if (response.IsSuccess === false) {
+                this.tips = '旧密码错误';
+              } else {
                 this.tips = '修改成功';
-              if (response.IsSuccess === false) {
-                  this.tips = '旧密码错误';
               }
             }, function () {
               console.log('failure');
@@ -73,12 +76,15 @@
             this.$http.post(this.ApiUrl + 'me/Account/UserInfo_Pwd_Upd', info).then((response) => {
               response = response.body;
               console.log(response.Msg);
+              if (response.Msg == "not login") {
+                this.$layer.alert("登录已失效 请重新登录");
+              }
             }, function () {
               console.log('failure');
             })
             console.log('修改成功');
           } else {
-            this.tips= '密码太短或不一致';
+            this.tips = '密码太短或不一致';
           }
         }
 

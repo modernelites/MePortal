@@ -12,16 +12,34 @@
           <!-- 下面是inner_header 的导航部分 -->
           <nav class="inner_nav">
             <ul class="inner_nav_list clearfix">
-              <li class="inner_nav_item" v-for="(m,index) in menuFillter(menuList,0)" >
-                <a :href="m.Link">{{m.MenuName}}</a>
+              <li class="inner_nav_item">
+                <a :href="'#/'">首页</a>
+              </li>
+              <li class="inner_nav_item">
+                <a :href="'#/org/'">子机构</a>
                 <ul class="sub_list">
-                  <li v-for="(m2,index) in menuFillter(menuList,m.MenuID)" class="item" @click="select(index)">
-                    <a :href="m2.Link+index">{{m2.MenuName}}</a>
+                  <li class="item">
+                    <a :href="'#/org/'"> 无敌熊少儿英语</a>
                   </li>
                 </ul>
               </li>
+              <li class="inner_nav_item">
+                <a :href="'#/about/about0'">关于摩英</a>
+                <ul class="sub_list">
+                  <li class="item">
+                    <a :href="'#/about/about0'"> 关于我们</a>
+                  </li>
+                  <li class="item">
+                    <a :href="'#/about/about1'"> 微信公众号</a>
+                  </li>
+                  <li class="item">
+                    <a :href="'#/about/about2/about20'"> 加入我们</a>
+                  </li>
+                </ul>
+              </li>
+
               <li class="inner_nav_item person_center_item" v-show="userName">
-                <router-link :to="{path:'/personal_center'}" style="padding: 0" class="person_center">
+                <router-link :to="{path:'/personal_center/personal_center1'}" style="padding: 0" class="person_center">
                   个人中心&nbsp;
                 </router-link>
               </li>
@@ -95,8 +113,15 @@
         <transition name="name">
           <nav v-show="navWrapperShow" class="nav_wrapper">
             <ul class="nav_list">
-              <li v-on:click="searchWrapShow=false" class="nav_item" v-for="(m,index) in menuFillter(menuList,0)">
-                <a :href="m.Link">{{m.MenuName}}</a>
+              <li v-on:click="searchWrapShow=false" class="nav_item">
+                <a :href="'#/'">首页</a>
+              </li>
+
+              <li v-on:click="searchWrapShow=false" class="nav_item">
+                <a :href="'#/org/'">子机构</a>
+              </li>
+              <li v-on:click="searchWrapShow=false" class="nav_item">
+                <a :href="'#/about/about0'">关于摩英</a>
               </li>
               <li v-on:click="searchWrapShow=false" class="nav_item">
                 <a href="javascript:;" @click="loginStates()" title="首页">个人中心</a>
@@ -200,7 +225,6 @@
         return arr;
       },
       getCourseID(CourseTypeID) {
-        // console.log(this.Course_List[CourseTypeID-1]);
         return this.CourseID_List[CourseTypeID - 1];
       },
       hide() {
@@ -240,7 +264,8 @@
         }
       },
       logout() {
-        window.localStorage.setItem("user", "");
+        // window.localStorage.setItem("user", "");
+        window.localStorage.removeItem('user')
         window.location.reload(true);
         this.getUser();
       },
@@ -263,20 +288,28 @@
       }
     },
     activated() {
+
+    },
+    mounted() {
+      this.getUser();
+      // 检测为移动端跳转至mobile页
+      if(window.innerWidth<770){
+      window.location.href = "#/mobile";
+      }
       var path = globalPath();
       // 获取导航菜单列表
       this.$nextTick(function () {
-        this.$http.get(this.ApiUrl + "me/Menu/Menu_List").then(response => {
-            response = response.body;
-            this.menuList = response.Data;
-          },
-          function () {
-            console.log("请求发送失败");
-          });
+        // this.$http.get(this.ApiUrl + "me/Menu/Menu_List").then(response => {
+        //     response = response.body;
+        //     // console.log(response);
+        //     this.menuList = response.Data[0];
+        //   },
+        //   function () {
+        //     console.log("请求发送失败");
+        //   });
 
-        this.$http.get(path + "me/CourseType/CourseType_List").then(response => {
-            response = response.body;
-            this.CourseType_List = response.Data;
+        this.$http.get(this.ApiUrl + "me/CourseType/CourseType_List").then(response => {
+            this.CourseType_List = response.body.Data[0];
             this.CourseType_List.splice(4, 5);
           },
           function () {
@@ -288,11 +321,11 @@
         }
         for (var i = 1; i < 5; i++) {
           this.$http
-            .get(path + "me/Course/Course_List?CourseTypeID=" + i)
+            .get(this.ApiUrl + "me/Course/Course_List?CourseTypeID=" + i)
             .then(
               response => {
-                response = response.body;
-                this.Course_List = response.Data;
+                this.Course_List = response.body.Data;
+                // debugger 
                 this.CourseID_List.push(this.Course_List[0].CourseID);
                 this.CourseID_List = this.CourseID_List.sort(sortNumber);
               },
@@ -302,9 +335,7 @@
             );
         }
       });
-    },
-    mounted() {
-      this.getUser();
+      //搜索比对数据
       this.$http
         .get(this.ApiUrl + "me/Course/Course_List?CourseTypeID=0")
         .then(
@@ -312,7 +343,6 @@
             response = response.body;
             this.classList = response.Data;
             this.searchResult = this.classList;
-            // console.log(this.searchResult);
           },
           function () {
             console.log("请求发送失败");
@@ -370,18 +400,19 @@
     -o-transition: $props $dur $timing;
     transition: $props $dur $timing;
   }
-  @mixin transform($val){
-    -webkit-transform:$val;
+
+  @mixin transform($val) {
+    -webkit-transform: $val;
     -moz-transform: $val;
     -ms-transform: $val;
     -o-transform: $val;
     transform: $val;
   }
+
   .inner_header {
     position: relative;
     height: 152px;
     background: url("./../../assets/img/pc_header@2x.png") no-repeat center 0;
-    // max-width: 1440px;
     margin: 0 auto;
   }
 
@@ -544,17 +575,17 @@
 
   /* header animation */
 
-  .inner_header_con .inner_header_con_top ,
-   .inner_header_con .header_search_box{
+  .inner_header_con .inner_header_con_top,
+  .inner_header_con .header_search_box {
     @include transition();
   }
 
   .inner_header_con.search_active .inner_header_con_top {
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
-    -ms-transition:  all .3s ease;
-    -o-transition:  all .3s ease;
-    transition:  all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
     @include transform(translateY(-100%));
     opacity: 0;
   }
@@ -592,8 +623,8 @@
     position: relative;
   }
 
-  .inner_nav_item>a:hover ,
-  .inner_nav_item.active>a{
+  .inner_nav_item>a:hover,
+  .inner_nav_item.active>a {
     color: #fff;
   }
 
