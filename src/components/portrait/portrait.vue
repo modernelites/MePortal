@@ -102,9 +102,10 @@
           imgBase64.base64Str = src;
           imgBase64.UserID = JSON.parse(window.localStorage.getItem("user")).UserID;
           $.ajax({
-            url: 'http://127.0.0.1:8081/me/File/File_Upload_base64',
+            // url: 'http://127.0.0.1:8081/me/File/File_Upload_base64',
+            // url: 'http://127.0.0.1:8081/me/File/File_Upload_base64_micro',
             // url: 'http://www.myjy.biz:8081/me/File/File_Upload_base64', 
-            // url: 'http://172.16.0.222:8081/me/File/File_Upload_base64',
+            url: 'http://172.16.0.222:8081/me/File/File_Upload_base64',
             data: imgBase64,
             type: "POST",
             dataType: 'json',

@@ -26,6 +26,10 @@
                 <img src="./../../assets/img/23_audio_book@2x.png">
                 <h6 class="info audio_title_6"> 摩英全套有声书</h6>
             </div>
+            <div class="m_col-lg-6">
+                <img src="./../../assets/img/哇咔咔.png">
+                <h6 class="info">哇咔咔</h6>
+            </div> 
         </div>
     </dl>
 </template>

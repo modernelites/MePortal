@@ -46,14 +46,19 @@
       </ul>
     </div>
     <div class="qrCode">
-      <ul>
-        <li>
-          <div class="qrImg">
-            <img src="./../../assets/img/公众号@2x.png" alt="">
-          </div>
+      <!-- <ul>
+        <li> -->
+      <div class="qrImg">
+        <img src="./../../assets/img/公众号@2x.png" alt="">
+      </div>
+      <div class="qrCode_detail">
+        <span>关注摩英服务号，进学员中心，探索海量学习资料</span>
+        <p>特别提醒：</p>
+        <p>点学员中心，进入个人中心，点头像，绑定手机号，能看到老学员才能访问的额外福利哦～</p>
+        <!-- <p></p> -->
+      </div>
 
-          <span>摩英公众号二维码</span>
-        </li>
+      <!-- </li>
         <li>
           <div class="qrImg">
             <img src="./../../assets/img/哇咔咔@2x.png" alt="">
@@ -61,7 +66,7 @@
 
           <span>哇咔咔二维码</span>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
@@ -116,7 +121,7 @@
     margin-right: 20px;
     font-size: 18px;
     color: #fff;
-        font-weight: bolder;
+    font-weight: bolder;
   }
 
   .wrapper .contentImg {
@@ -139,10 +144,12 @@
     z-index: 10;
     font-weight: bolder;
   }
-.wrapper .course{
+
+  .wrapper .course {
     padding-top: 18px;
     background-color: #fff;
-}
+  }
+
   .wrapper .course ul {
     margin-top: -6px;
   }
@@ -151,7 +158,6 @@
     text-align: center;
     width: 86%;
     margin: 0px auto 30px;
-
   }
 
   .wrapper .course li span {
@@ -181,50 +187,54 @@
 
   .wrapper .qrCode {
     width: 100%;
-    height:160px;
+    height: 180px;
     overflow: hidden;
     background-color: #f1f1f1;
-  }
-
-  .wrapper .qrCode ul {
-    width: 72%;
-    margin: 20px auto;
+    margin: 0 auto;
     text-align: center;
   }
 
-  .wrapper .qrCode li {
-    float: left;
-    text-align: center;
-    width: 124px;
-    height: 124px;
-    padding: 4px;
-  }
-
-  .wrapper .qrCode li .qrImg {
+  .wrapper .qrCode .qrImg {
     width: 90px !important;
     height: 90px;
-    margin: 0 auto;
+    margin: 14px auto 0;
   }
 
-  .wrapper .qrCode li img {
+  .wrapper .qrCode img {
     width: 100%;
   }
 
-  .wrapper .qrCode li span {
+  .wrapper .qrCode .qrCode_detail {
+    text-align: center;
+  }
+
+  .wrapper .qrCode .qrCode_detail span {
+    display: block;
+    font-size: 12px;
+    color: #333;
+    /* font-weight: bolder; */
+    margin: 8px auto 4px;
+  }
+
+  .wrapper .qrCode .qrCode_detail p {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 10px;
+    line-height: 1.3;
+    color: #666;
+  }
+
+  /* .wrapper .qrCode li span {
     display: block;
     margin-top: 10px;
     font-size: 14px;
-  }
+  } */
 
-  .wrapper .qrCode li+li {
+  /* .wrapper .qrCode li+li {
     margin-left: 14%;
-  }
+  } */
 
-  .wrapper .qrCode li img {
-    width: 100%;
-  }
-
-  @media screen and (max-width:410px) {
+  /* @media screen and (max-width:410px) {
     .wrapper .qrCode ul {
       width: 84%;
     }
@@ -268,6 +278,6 @@
     .wrapper .qrCode ul {
       width: 78%;
     }
-  }
+  } */
 
 </style>
