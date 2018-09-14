@@ -69,6 +69,7 @@
           $(".avatar-wrapper").children().remove;
           return false;
         }
+        
         if (!this.files[0].type.match(/image.*/)) {
           alert('请选择正确的图片!');
         } else {
@@ -102,10 +103,9 @@
           imgBase64.base64Str = src;
           imgBase64.UserID = JSON.parse(window.localStorage.getItem("user")).UserID;
           $.ajax({
-            // url: 'http://127.0.0.1:8081/me/File/File_Upload_base64',
-            // url: 'http://127.0.0.1:8081/me/File/File_Upload_base64_micro',
+            url: 'http://127.0.0.1:8081/me/File/File_Upload_base64',
             // url: 'http://www.myjy.biz:8081/me/File/File_Upload_base64', 
-            url: 'http://172.16.0.222:8081/me/File/File_Upload_base64',
+            // url: 'http://172.16.0.222:8081/me/File/File_Upload_base64',
             data: imgBase64,
             type: "POST",
             dataType: 'json',
@@ -256,10 +256,6 @@
     height: 2px;
     background: #e5e5e5;
   }
-
-</style>
-
-<style>
   .preview-lg {
     border-radius: 50% !important;
   }
@@ -279,5 +275,4 @@
   .cropper-point.point-se:before {
     background-color: #f8e81c !important;
   }
-
 </style>

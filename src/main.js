@@ -13,8 +13,8 @@ Vue.config.productionTip = false;
 Vue.use(VueResource);
 //允许携带cookie作为验证
 Vue.http.options.credentials = true;
-// Vue.prototype.ApiUrl = 'http://127.0.0.1:8081/';
-Vue.prototype.ApiUrl = 'http://172.16.0.222:8081/';
+Vue.prototype.ApiUrl = 'http://127.0.0.1:8081/';
+// Vue.prototype.ApiUrl = 'http://172.16.0.222:8081/';
 // Vue.prototype.ApiUrl = 'http://www.myjy.biz:8081/'; // 正式
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
